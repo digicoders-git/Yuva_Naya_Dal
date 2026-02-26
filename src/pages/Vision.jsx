@@ -57,7 +57,7 @@ const Vision = () => {
                     >
                         <div className="absolute inset-0 bg-saffron/10 rounded-[40px] md:rounded-[60px] rotate-3 scale-105" />
                         <div className="bg-white p-4 rounded-[40px] md:rounded-[60px] shadow-3xl relative z-10 border border-slate-100">
-                            <img src={image37} className="rounded-[30px] md:rounded-[50px] w-full" />
+                            <img src={image37} className="rounded-[30px] md:rounded-[50px] w-full h-160 object-cover" />
                             <div className="absolute bottom-10 left-10 right-10 bg-navy-flag/90 backdrop-blur-md p-6 rounded-3xl text-white border border-white/10">
                                 <h4 className="text-xl font-black">गगन बाजपेई</h4>
                                 <p className="text-saffron text-xs font-bold uppercase tracking-widest">राष्ट्रीय उपाध्यक्ष</p>

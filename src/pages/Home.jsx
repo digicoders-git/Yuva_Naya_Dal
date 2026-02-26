@@ -353,7 +353,7 @@ const LeaderCard = ({ img, name, title, desc }) => (
         className="relative group bg-slate-50 rounded-[40px] md:rounded-[60px] overflow-hidden border border-slate-100 shadow-xl transition-all duration-500"
     >
         <div className="aspect-[4/5] relative overflow-hidden">
-            <img src={img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
+            <img src={img} className="w-full h-full object-cover  group-hover:-0 transition-all duration-1000 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-flag via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
             <div className="absolute bottom-10 left-10 right-10 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform">

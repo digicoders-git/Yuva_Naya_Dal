@@ -92,11 +92,11 @@ const AboutUs = () => {
                         </div>
                         <h2 className="text-3xl md:text-6xl font-black text-navy-flag mb-8 leading-tight">
                             युवा शक्ति: <br />
-                            <span className="text-navy-flag/40">राष्ट्र की असली पूंजी</span>
+                            <span className="text-slate-600">राष्ट्र की असली पूंजी</span>
                         </h2>
                         <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-medium text-justify">
                             <p className="italic border-l-8 border-green-flag pl-8 py-2">
-                                "देश का भविष्य युवाओं के हाथ में है, और यदि उन्हें सही दिशा, अवसर और मंच मिले तो वे राष्ट्र निर्माण में महत्वपूर्ण भूमिका निभा सकते हैं।"
+                                देश का भविष्य युवाओं के हाथ में है, और यदि उन्हें सही दिशा, अवसर और मंच मिले तो वे राष्ट्र निर्माण में महत्वपूर्ण भूमिका निभा सकते हैं।
                             </p>
                             <p>
                                 युवा न्याय दल एक प्रगतिशील और युवा-नेतृत्व वाला संगठन है, जिसका उद्देश्य समाज में न्याय, समानता और पारदर्शिता को बढ़ावा देना है। हम मानते हैं कि भारत का पुनर्जांतरण केवल जागरूक और संगठित युवाओं द्वारा ही संभव है।
@@ -114,8 +114,8 @@ const AboutUs = () => {
                         className="relative"
                     >
                         <div className="absolute inset-0 bg-saffron rounded-[60px] md:rounded-[100px] rotate-3 scale-105 opacity-10" />
-                        <div className="relative bg-white p-3 md:p-5 rounded-[60px] md:rounded-[100px] shadow-3xl border border-slate-100 overflow-hidden group">
-                            <img src={image37} className="w-full h-auto rounded-[50px] md:rounded-[90px] group-hover:scale-110 transition-transform duration-1000" />
+                        <div className="relative  bg-center  bg-white p-3 md:p-5 rounded-[60px] md:rounded-[100px] shadow-3xl border border-slate-100 overflow-hidden group">
+                            <img src={image37} className="w-150 bg-contain  h-150 object-cover rounded-[50px] md:rounded-[90px] group-hover:scale-110 transition-transform duration-1000" />
 
                             {/* Stats Overlay (Improved for Mobile) */}
                             <div className="md:absolute md:bottom-10 md:left-10 md:right-10 flex justify-center mt-6 md:mt-0">
@@ -140,7 +140,7 @@ const AboutUs = () => {
                     <div className="text-center mb-20">
                         <span className="text-green-flag font-black uppercase tracking-[0.4em] text-sm block mb-4">Core Principles</span>
                         <h2 className="text-4xl md:text-7xl font-black text-navy-flag mb-8">संगठन के <span className="text-green-flag">स्तंभ</span></h2>
-                        <div className="h-2 w-32 bg-saffron mx-auto rounded-full" />
+                        <div className="h-2 w-32 bg-green-flag mx-auto rounded-full" />
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8 md:gap-12">
@@ -185,7 +185,7 @@ const AboutUs = () => {
                                 <span className="p-5 bg-saffron rounded-3xl text-navy-flag shadow-xl shadow-saffron/20"><HiOutlineSparkles size={40} /></span>
                                 <div>
                                     <h3 className="text-3xl md:text-4xl font-black text-saffron">Vision</h3>
-                                    <p className="text-white/30 text-xs font-bold uppercase tracking-[0.3em]">(हमारी दूरदर्शिता)</p>
+                                    <p className="text-gray-300 text-xs font-bold uppercase tracking-[0.3em]">(हमारी दूरदर्शिता)</p>
                                 </div>
                             </div>
 
@@ -221,7 +221,7 @@ const AboutUs = () => {
                                 <span className="p-5 bg-green-flag rounded-3xl text-white shadow-xl shadow-green-flag/20"><HiOutlineCheckCircle size={40} /></span>
                                 <div>
                                     <h3 className="text-3xl md:text-4xl font-black text-green-flag">Mission</h3>
-                                    <p className="text-slate-200 text-xs font-bold uppercase tracking-[0.3em]">(हमारा लक्ष्य)</p>
+                                    <p className="text-gray-900 text-xs font-bold uppercase tracking-[0.3em]">(हमारा लक्ष्य)</p>
                                 </div>
                             </div>
 
@@ -259,7 +259,7 @@ const AboutUs = () => {
                     className="relative bg-navy-flag p-12 md:p-24 rounded-[40px] md:rounded-[80px] text-center overflow-hidden shadow-[0_50px_100px_-20px_rgba(1,23,59,0.3)]"
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[100px]" />
-                    <img src={logo} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 opacity-[0.05] grayscale brightness-200 pointer-events-none" />
+                    <img src={logo} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 opacity-[0.05]  brightness-200 pointer-events-none" />
 
                     <div className="relative z-10 max-w-5xl mx-auto">
                         <FaQuoteLeft className="text-saffron text-5xl md:text-8xl mx-auto mb-10 opacity-40" />
@@ -284,9 +284,9 @@ const ValueItem = ({ img, icon, title, desc }) => (
         whileHover={{ y: -15 }}
         className="bg-white rounded-[50px] overflow-hidden border border-slate-100 shadow-xl group transition-all duration-500"
     >
-        <div className="h-[250px] md:h-[300px] relative overflow-hidden bg-slate-100 flex items-center justify-center">
-            <img src={img} className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/40 to-transparent" />
+        <div className="h-[250px] md:h-[300px] relative overflow-hidden flex items-center justify-center">
+            <img src={img} className="max-h-full max-w-full object-contain  group-hover:-0 transition-all duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0   to-transparent" />
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-saffron/90 backdrop-blur-md p-5 rounded-3xl shadow-2xl border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 {icon}
             </div>

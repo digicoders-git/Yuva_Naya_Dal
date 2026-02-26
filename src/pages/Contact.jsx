@@ -52,7 +52,7 @@ const Contact = () => {
                     <div className="lg:col-span-5 flex flex-col gap-8">
                         <div className="mb-8">
                             <span className="text-saffron font-black uppercase tracking-[0.3em] text-sm block mb-4">Contact Info</span>
-                            <h3 className="text-3xl md:text-5xl font-black text-navy-flag leading-tight">सीधे हमसे <br /><span className="text-saffron">जुड़ें</span></h3>
+                            <h3 className="text-3xl md:text-5xl font-black text-navy-flag leading-tight">सीधे हमसे <span className="text-saffron">जुड़ें</span></h3>
                         </div>
 
                         <InfoCard
@@ -62,20 +62,6 @@ const Contact = () => {
                             color="bg-saffron/10 text-saffron"
                         />
 
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <InfoCard
-                                icon={<HiOutlinePhone size={32} />}
-                                title="कॉल करें"
-                                desc="+91 91234 56789"
-                                color="bg-navy-flag/10 text-navy-flag"
-                            />
-                            <InfoCard
-                                icon={<HiOutlineMail size={32} />}
-                                title="ईमेल"
-                                desc="help@yuvanyaydal.com"
-                                color="bg-green-flag/10 text-green-flag"
-                            />
-                        </div>
 
                         {/* Timing Card */}
                         <div className="bg-slate-50 p-8 md:p-10 rounded-[40px] border border-slate-100 flex items-center gap-6 shadow-sm">
@@ -87,7 +73,7 @@ const Contact = () => {
                         </div>
 
                         {/* Quick Chat Buttons */}
-                        <div className="mt-4 flex flex-wrap gap-4">
+                        <div className="mt-4 flex flex-right flex-wrap gap-4">
                             <button className="flex-1 flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 px-6 rounded-2xl font-black shadow-xl hover:scale-105 transition-transform">
                                 <FaWhatsapp size={24} /> WhatsApp
                             </button>
@@ -102,7 +88,7 @@ const Contact = () => {
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[60px] shadow-[0_50px_100px_-20px_rgba(1,23,59,0.1)] border border-slate-100 relative overflow-hidden"
+                        className="lg:col-span-7 bg-white p-8 md:p-16 h-200 rounded-[60px] shadow-[0_50px_100px_-20px_rgba(1,23,59,0.1)] border border-slate-100 relative overflow-hidden"
                     >
                         {/* Decorative background logo */}
                         <div className="absolute top-[-5%] right-[-5%] w-64 h-64 bg-saffron/5 rounded-full blur-3xl" />
@@ -174,10 +160,10 @@ const Contact = () => {
 
             <div className="container mx-auto px-6 max-w-7xl pb-32">
                 {/* 4. MAP PREVIEW SECTION (Decorative) */}
-                <div className="mt-32 md:mt-48 relative overflow-hidden rounded-[40px] md:rounded-[80px] h-[300px] md:h-[500px] bg-slate-200 shadow-2xl group">
+                <div className="mt-32 md:mt-0 relative overflow-hidden rounded-[40px] md:rounded-[80px] h-[300px] md:h-[500px] bg-slate-200 shadow-2xl group">
                     <img
                         src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2000"
-                        className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
+                        className="w-full h-full object-cover  opacity-50 group-hover:-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/90 via-navy-flag/40 to-transparent" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-6">

@@ -53,14 +53,14 @@ const Gallery = () => {
                             />
 
                             {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/90 via-navy-flag/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div className="absolute inset-0   opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <p className="text-white font-black text-sm md:text-base tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 leading-tight">
                                     {num === 36 ? (
                                         <>राष्ट्रीय उपाध्यक्ष,<br />ओम प्रकाश यादव पूर्व राज्य मंत्री उत्तर प्रदेश सरकार</>
                                     ) : num === 37 ? (
                                         <>गगन बाजपेई,<br />राष्ट्रीय उपाध्यक्ष</>
                                     ) : (
-                                        `युवा न्याय दल - झलकी ${num}`
+                                        ''
                                     )}
                                 </p>
                             </div>

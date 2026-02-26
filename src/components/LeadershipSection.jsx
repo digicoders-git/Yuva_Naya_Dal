@@ -17,13 +17,13 @@ const LeadershipSection = () => {
                         name="ओम प्रकाश यादव"
                         title="राष्ट्रीय उपाध्यक्ष"
                         subtitle="पूर्व राज्य मंत्री उत्तर प्रदेश सरकार"
-                        msg="युवाओं की शक्ति ही देश की असली शक्ति है। हमसे जुड़ें और बदलाव लाएं।"
+                        msg={`युवाओं की शक्ति ही देश की असली शक्ति है। हमसे जुड़ें और बदलाव लाएं।`}
                     />
                     <LeaderBox
                         img={image37}
                         name="गगन बाजपेई"
                         title="राष्ट्रीय उपाध्यक्ष"
-                        msg="न्याय और समानता की इस लड़ाई को हर घर तक पहुंचाना हमारा संकल्प है।"
+                        msg={`न्याय और समानता की इस लड़ाई को हर घर तक पहुंचाना हमारा संकल्प है।`}
                     />
                 </div>
             </div>
@@ -37,9 +37,9 @@ const LeaderBox = ({ img, name, title, subtitle, msg }) => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         whileHover={{ y: -10 }}
-        className="bg-white p-8 md:p-10 rounded-[40px] md:rounded-[50px] border border-slate-200 flex flex-col md:flex-row items-center gap-8 group shadow-xl hover:shadow-2xl transition-all duration-500"
+        className="bg-white p-8 md:p-10 rounded-[40px] md:rounded-[50px] border border-slate-200 flex flex-col md:flex-row items-center gap-8 group shadow-xl   transition-all duration-500"
     >
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden shrink-0 border-4 border-white shadow-lg grayscale group-hover:grayscale-0 transition-all">
+        <div className="w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden shrink-0 border-4 border-white shadow-lg     transition-all">
             <img src={img} className="w-full h-full object-cover" />
         </div>
         <div className="text-center md:text-left flex-1">
