@@ -13,8 +13,8 @@ import {
 } from 'react-icons/hi';
 import { FaQuoteLeft, FaHandshake, FaBullhorn, FaUsers } from 'react-icons/fa';
 import AnimatedPage from '../components/AnimatedPage';
-import logo from '../assets/logo.jpeg';
-import flag from '../assets/flag.png';
+import LeadershipSection from '../components/LeadershipSection';
+import { logo, flag, image1, image5, image10, image13, image36, image37 } from '../utils/images';
 
 const AboutUs = () => {
     return (
@@ -115,7 +115,7 @@ const AboutUs = () => {
                     >
                         <div className="absolute inset-0 bg-saffron rounded-[60px] md:rounded-[100px] rotate-3 scale-105 opacity-10" />
                         <div className="relative bg-white p-3 md:p-5 rounded-[60px] md:rounded-[100px] shadow-3xl border border-slate-100 overflow-hidden group">
-                            <img src="/src/assets/image-13.jpeg" className="w-full h-auto rounded-[50px] md:rounded-[90px] group-hover:scale-110 transition-transform duration-1000" />
+                            <img src={image37} className="w-full h-auto rounded-[50px] md:rounded-[90px] group-hover:scale-110 transition-transform duration-1000" />
 
                             {/* Stats Overlay (Improved for Mobile) */}
                             <div className="md:absolute md:bottom-10 md:left-10 md:right-10 flex justify-center mt-6 md:mt-0">
@@ -145,25 +145,28 @@ const AboutUs = () => {
 
                     <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                         <ValueItem
-                            img="/src/assets/image-1.jpeg"
+                            img={image1}
                             icon={<HiOutlineShieldCheck size={32} />}
                             title="न्याय और समानता"
                             desc="समाज के हर वंचित वर्ग को सही दिशा और समान अवसर प्रदान करना हमारा परम धर्म है।"
                         />
                         <ValueItem
-                            img="/src/assets/image-5.jpeg"
+                            img={image5}
                             icon={<HiOutlineUserGroup size={32} />}
                             title="लोकतांत्रिक एकता"
                             desc="युवाओं को निर्णय प्रक्रिया में सक्रिय भागीदारी दिलाना और एकजुट करना हमारी ताकत है।"
                         />
                         <ValueItem
-                            img="/src/assets/image-10.jpeg"
+                            img={image36}
                             icon={<HiOutlineFlag size={32} />}
                             title="राष्ट्र प्रथम"
                             desc="व्यक्तिगत हितों से ऊपर राष्ट्र के प्रति समर्पण ही हमारी पहचान और हमारा संकल्प है।"
                         />
                     </div>
                 </div>
+
+                {/* Leadership Message Section */}
+                <LeadershipSection />
 
                 {/* 4. MISSION & VISION (Split Layout with Watermark Flag) */}
                 <div className="relative mb-32 md:mb-48">
@@ -183,6 +186,15 @@ const AboutUs = () => {
                                 <div>
                                     <h3 className="text-3xl md:text-4xl font-black text-saffron">Vision</h3>
                                     <p className="text-white/30 text-xs font-bold uppercase tracking-[0.3em]">(हमारी दूरदर्शिता)</p>
+                                </div>
+                            </div>
+
+                            {/* Vision Profile Badge */}
+                            <div className="flex items-center gap-4 mb-8 bg-white/5 p-3 rounded-2xl border border-white/10 w-fit">
+                                <img src={image37} className="w-12 h-12 rounded-xl object-cover border border-white/20" />
+                                <div>
+                                    <p className="text-white font-bold text-sm">गगन बाजपेई</p>
+                                    <p className="text-saffron text-[10px] font-bold uppercase tracking-wider">राष्ट्रीय उपाध्यक्ष</p>
                                 </div>
                             </div>
                             <ul className="space-y-8">
@@ -210,6 +222,15 @@ const AboutUs = () => {
                                 <div>
                                     <h3 className="text-3xl md:text-4xl font-black text-green-flag">Mission</h3>
                                     <p className="text-slate-200 text-xs font-bold uppercase tracking-[0.3em]">(हमारा लक्ष्य)</p>
+                                </div>
+                            </div>
+
+                            {/* Mission Profile Badge */}
+                            <div className="flex items-center gap-4 mb-8 bg-slate-50 p-3 rounded-2xl border border-slate-100 w-fit">
+                                <img src={image36} className="w-12 h-12 rounded-xl object-cover border border-navy-flag/10" />
+                                <div>
+                                    <p className="text-navy-flag font-bold text-sm">ओम प्रकाश यादव</p>
+                                    <p className="text-green-flag text-[10px] font-bold uppercase tracking-wider">राष्ट्रीय उपाध्यक्ष</p>
                                 </div>
                             </div>
                             <ul className="space-y-8">

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import AnimatedPage from '../components/AnimatedPage';
+import { galleryImages } from '../utils/images';
+import LeadershipSection from '../components/LeadershipSection';
 
 const Gallery = () => {
     // Array from 1 to 37
@@ -9,7 +11,7 @@ const Gallery = () => {
         <AnimatedPage>
             {/* Header Section */}
             <div className="relative pt-16 pb-20 text-center bg-slate-50">
-                <div className="absolute top-0 left-0 w-full h-1 gov-gradient opacity-50" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gray-300  opacity-50" />
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -41,7 +43,7 @@ const Gallery = () => {
                         >
                             {/* We use the public URL path for Vite development */}
                             <img
-                                src={`/src/assets/image-${num}.jpeg`}
+                                src={galleryImages[num]}
                                 alt={`Yuva Nyay Dal Activity ${num}`}
                                 loading="lazy"
                                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110"
@@ -51,9 +53,15 @@ const Gallery = () => {
                             />
 
                             {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                <p className="text-white font-bold text-sm tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    युवा न्याय दल - झलकी {num}
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/90 via-navy-flag/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <p className="text-white font-black text-sm md:text-base tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 leading-tight">
+                                    {num === 36 ? (
+                                        <>राष्ट्रीय उपाध्यक्ष,<br />ओम प्रकाश यादव पूर्व राज्य मंत्री उत्तर प्रदेश सरकार</>
+                                    ) : num === 37 ? (
+                                        <>गगन बाजपेई,<br />राष्ट्रीय उपाध्यक्ष</>
+                                    ) : (
+                                        `युवा न्याय दल - झलकी ${num}`
+                                    )}
                                 </p>
                             </div>
 
@@ -65,6 +73,9 @@ const Gallery = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Leadership Message Section */}
+            <LeadershipSection />
 
             {/* Motivation Banner */}
             <div className="bg-navy-flag py-16 px-6 text-center text-white relative overflow-hidden">

@@ -10,7 +10,8 @@ import {
 } from 'react-icons/hi';
 import { FaWhatsapp, FaFacebookMessenger, FaMapMarkedAlt } from 'react-icons/fa';
 import AnimatedPage from '../components/AnimatedPage';
-import flag from '../assets/flag.png';
+import { flag } from '../utils/images';
+import LeadershipSection from '../components/LeadershipSection';
 
 const Contact = () => {
     return (
@@ -166,7 +167,12 @@ const Contact = () => {
                         </div>
                     </motion.div>
                 </div>
+            </div>
 
+            {/* Leadership Message Section */}
+            <LeadershipSection />
+
+            <div className="container mx-auto px-6 max-w-7xl pb-32">
                 {/* 4. MAP PREVIEW SECTION (Decorative) */}
                 <div className="mt-32 md:mt-48 relative overflow-hidden rounded-[40px] md:rounded-[80px] h-[300px] md:h-[500px] bg-slate-200 shadow-2xl group">
                     <img
@@ -203,6 +209,29 @@ const InfoCard = ({ icon, title, desc, color }) => (
             </p>
         </div>
         <div className="h-1 w-10 bg-slate-100 rounded-full group-hover:w-full group-hover:bg-saffron/30 transition-all duration-500 shrink-0" />
+    </motion.div>
+);
+
+const LeadershipContact = ({ img, name, title, subtitle, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay }}
+        className="bg-white p-8 rounded-[50px] shadow-2xl border border-slate-100 flex flex-col items-center gap-6 relative group overflow-hidden"
+    >
+        <div className="absolute inset-0 bg-saffron opacity-0 group-hover:opacity-5 transition-opacity" />
+        <div className="w-28 h-28 md:w-36 md:h-36 rounded-[35px] overflow-hidden border-4 border-white shadow-xl group-hover:scale-105 transition-transform">
+            <img src={img} className="w-full h-full object-cover" />
+        </div>
+        <div>
+            <h4 className="text-xl md:text-2xl font-black text-navy-flag">{name}</h4>
+            <div className="flex flex-col gap-1 mt-2">
+                <span className="text-saffron font-bold text-xs md:text-sm uppercase tracking-widest">{title}</span>
+                {subtitle && <span className="text-slate-400 font-bold text-[10px] md:text-xs tracking-tight">{subtitle}</span>}
+            </div>
+        </div>
+        <div className="h-1 w-12 bg-slate-100 rounded-full group-hover:w-full group-hover:bg-saffron/30 transition-all duration-500" />
     </motion.div>
 );
 

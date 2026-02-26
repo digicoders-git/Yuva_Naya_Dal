@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-import logo from '../assets/logo.jpeg';
-import flag from '../assets/flag.png';
+import LeadershipSection from '../components/LeadershipSection';
+import { logo, flag, galleryImages, image36, image37 } from '../utils/images';
 import {
     HiOutlineShieldCheck,
     HiOutlineGlobe,
@@ -20,7 +20,7 @@ import { FaQuoteLeft, FaHandshake, FaBullhorn, FaUsers, FaBalanceScale, FaGradua
 
 const Home = () => {
     // Gallery images for the slider (subset for performance)
-    const sliderImages = [1, 5, 10, 15, 20, 25, 30, 35];
+    const sliderImages = [1, 5, 10, 15, 20, 25, 30, 35, 36, 37];
 
     return (
         <AnimatedPage>
@@ -132,7 +132,7 @@ const Home = () => {
                             <div key={`gov-s-${num}-${index}`} className="h-[280px] md:h-[340px] w-[280px] md:w-[calc(25vw-2rem)] shrink-0 rounded-2xl overflow-hidden border-2 border-slate-200 shadow-xl bg-white p-3 md:p-4 hover:border-saffron transition-all group flex items-center justify-center">
                                 <div className="w-full h-full relative overflow-hidden rounded-xl bg-slate-100 flex items-center justify-center">
                                     <img
-                                        src={`/src/assets/image-${num}.jpeg`}
+                                        src={galleryImages[num]}
                                         alt="Work Highlights"
                                         className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110 shadow-sm"
                                     />
@@ -150,7 +150,7 @@ const Home = () => {
             <div className="py-24 md:py-40 bg-white">
                 <div className="container mx-auto px-6 text-center mb-16 md:mb-24">
                     <span className="text-saffron font-black uppercase tracking-[.2em] md:tracking-[0.3em] text-[10px] md:text-sm block mb-4">Our Values</span>
-                    <h2 className="text-4xl md:text-7xl font-black text-navy-flag mb-6 md:mb-8">हमारी <span className="text-navy-flag/20">पंच</span> प्रतिबद्धताएं</h2>
+                    <h2 className="text-4xl md:text-7xl font-black text-navy-flag mb-6 md:mb-8">हमारी <span className="text-orange-500">पंच</span> प्रतिबद्धताएं</h2>
                     <div className="h-1.5 md:h-2 w-24 md:w-32 bg-green-flag mx-auto rounded-full" />
                 </div>
 
@@ -238,7 +238,7 @@ const Home = () => {
                     >
                         <div className="absolute inset-0 bg-navy-flag/5 rounded-[40px] md:rounded-[80px] -rotate-3 scale-105" />
                         <div className="bg-white p-3 md:p-4 rounded-[40px] md:rounded-[80px] shadow-3xl relative z-10">
-                            <img src={`/src/assets/image-13.jpeg`} className="rounded-[30px] md:rounded-[70px] w-full shadow-inner" />
+                            <img src={image36} className="rounded-[30px] md:rounded-[70px] w-full shadow-inner" />
                         </div>
                         {/* Decorative Badge */}
                         <div className="absolute -bottom-6 md:-bottom-10 -right-2 md:-right-4 bg-saffron p-5 md:p-8 rounded-full text-white shadow-2xl z-20 hidden md:block">
@@ -248,7 +248,34 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* 5. CALL TO ACTION - CONNECT */}
+            {/* Leadership Message Section */}
+            <LeadershipSection />
+
+            {/* 5. SENIOR LEADERSHIP SECTION */}
+            <div className="py-24 md:py-40 bg-white">
+                <div className="container mx-auto px-6 text-center mb-16 md:mb-24">
+                    <span className="text-green-flag font-black uppercase tracking-[0.4em] text-sm block mb-4">Our Pillars</span>
+                    <h2 className="text-4xl md:text-7xl font-black text-navy-flag mb-6 md:mb-8">प्रमुख <span className="text-saffron">नेतृत्व</span></h2>
+                    <div className="h-2 w-32 bg-saffron mx-auto rounded-full" />
+                </div>
+
+                <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 max-w-6xl">
+                    <LeaderCard
+                        img={image36}
+                        name="ओम प्रकाश यादव"
+                        title="राष्ट्रीय उपाध्यक्ष"
+                        desc="पूर्व राज्य मंत्री उत्तर प्रदेश सरकार"
+                    />
+                    <LeaderCard
+                        img={image37}
+                        name="गगन बाजपेई"
+                        title="राष्ट्रीय उपाध्यक्ष"
+                        desc="संगठन के प्रेरणा स्रोत एवं पथ-प्रदर्शक"
+                    />
+                </div>
+            </div>
+
+            {/* 6. CALL TO ACTION - CONNECT */}
             <div className="py-24 md:py-40 bg-navy-flag text-white text-center relative overflow-hidden px-4">
                 <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-saffron/10 rounded-full blur-[80px] md:blur-[100px]" />
                 <div className="absolute bottom-0 left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-green-flag/10 rounded-full blur-[60px] md:blur-[100px]" />
@@ -311,12 +338,31 @@ const CommitmentCard = ({ icon, title, desc, num }) => (
         whileHover={{ y: -10 }}
         className="bg-slate-50 p-8 md:p-12 rounded-[30px] md:rounded-[60px] border border-slate-100 shadow-sm hover:shadow-xl transition-all relative group overflow-hidden"
     >
-        <span className="absolute top-6 md:top-10 right-6 md:right-10 text-4xl md:text-6xl font-black text-navy-flag/5 group-hover:text-navy-flag/10 transition-colors uppercase italic">{num}</span>
+        <span className="absolute top-6 md:top-10 right-6 md:right-10 text-4xl md:text-6xl font-black text-saffron/80 group-hover:text-saffron/90 transition-colors uppercase italic">{num}</span>
         <div className="text-saffron mb-8 md:mb-10 bg-white w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-lg transition-transform group-hover:rotate-6">
             {icon}
         </div>
         <h4 className="text-xl md:text-2xl font-black text-navy-flag mb-4 md:mb-6 border-b-4 border-saffron/20 pb-2 w-fit">{title}</h4>
         <p className="text-sm md:text-base text-slate-500 font-medium leading-loose text-justify italic">{desc}</p>
+    </motion.div>
+);
+
+const LeaderCard = ({ img, name, title, desc }) => (
+    <motion.div
+        whileHover={{ y: -15 }}
+        className="relative group bg-slate-50 rounded-[40px] md:rounded-[60px] overflow-hidden border border-slate-100 shadow-xl transition-all duration-500"
+    >
+        <div className="aspect-[4/5] relative overflow-hidden">
+            <img src={img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-flag via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+
+            <div className="absolute bottom-10 left-10 right-10 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                <h4 className="text-2xl md:text-4xl font-black mb-2">{name}</h4>
+                <p className="text-saffron font-bold text-sm md:text-base uppercase tracking-widest mb-4">{title}</p>
+                <div className="h-1 w-12 bg-white/30 rounded-full group-hover:w-full transition-all duration-700" />
+                <p className="mt-4 text-slate-300 font-medium italic text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-300">{desc}</p>
+            </div>
+        </div>
     </motion.div>
 );
 

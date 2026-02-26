@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi';
-import logo from '../assets/logo.jpeg';
+import { logo } from '../utils/images';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,8 +26,11 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Our Gallery', path: '/gallery' },
+        { name: 'Our Vision', path: '/vision' },
+        { name: 'Our Mission', path: '/mission' },
         { name: 'Contact Us', path: '/contact' },
-        { name: 'Connect With Us', path: '/connect' },
+        // { name: 'Terms', path: '/terms' },
+        // { name: 'Privacy', path: '/privacy' },
     ];
 
     return (
@@ -52,40 +55,48 @@ const Header = () => {
                 </NavLink>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden xl:flex items-center gap-6">
                     {navLinks.map((link) => (
                         <NavLink
                             key={link.path}
                             to={link.path}
                             className={({ isActive }) =>
-                                `nav-link transition-colors relative py-1 ${isActive ? 'text-saffron after:w-full' : ''}`
+                                `nav-link transition-all relative py-1 font-bold text-md ${isActive ? 'text-saffron active-nav' : 'text-navy-flag'}`
                             }
                         >
                             {link.name}
                         </NavLink>
                     ))}
-                    <NavLink to="/connect" className="bg-navy-flag hover:bg-saffron text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg hover:shadow-saffron/20 group">
+                    <NavLink
+                        to="/connect"
+                        className={({ isActive }) =>
+                            `px-5 py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-saffron/20 group border-2 text-sm ${isActive
+                                ? 'bg-saffron text-white border-saffron'
+                                : 'bg-navy-flag text-white border-navy-flag hover:bg-saffron hover:border-saffron'
+                            }`
+                        }
+                    >
                         Connect Now
                     </NavLink>
                 </div>
 
-                {/* Mobile Menu Button */}
+                {/* Mobile Menu Button (Switch at XL) */}
                 <button
-                    className="md:hidden text-3xl text-navy-flag outline-none focus:outline-none"
+                    className="xl:hidden text-3xl text-navy-flag outline-none focus:outline-none"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt3 />}
                 </button>
             </nav>
 
-            {/* Mobile Menu Drawer */}
+            {/* Mobile Menu Drawer (Switch at XL) */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white/95 border-b border-gray-100 overflow-hidden shadow-xl"
+                        className="xl:hidden bg-white/95 border-b border-gray-100 overflow-hidden shadow-xl"
                     >
                         <ul className="container mx-auto px-6 py-8 flex flex-col gap-6 font-medium">
                             {navLinks.map((link) => (

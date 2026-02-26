@@ -11,7 +11,7 @@ import {
     FaInstagram,
     FaYoutube
 } from 'react-icons/fa';
-import logo from '../assets/logo.jpeg';
+import { logo } from '../utils/images';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -60,7 +60,7 @@ const Footer = () => {
                     <ul className="flex flex-col gap-4 text-slate-600 font-medium">
                         <li><Link to="/vision" className="hover:text-saffron transition-colors">Our Vision</Link></li>
                         <li><Link to="/mission" className="hover:text-saffron transition-colors">Our Mission</Link></li>
-                        <li><Link to="/volunteers" className="hover:text-saffron transition-colors">Join as Volunteer</Link></li>
+                        <li><Link to="/contact" className="hover:text-saffron transition-colors">Join as Volunteer</Link></li>
                         <li><Link to="/terms" className="hover:text-saffron transition-colors">Terms & Conditions</Link></li>
                         <li><Link to="/privacy" className="hover:text-saffron transition-colors">Privacy Policy</Link></li>
                     </ul>

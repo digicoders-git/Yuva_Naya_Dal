@@ -9,8 +9,12 @@ import {
     FaArrowRight
 } from 'react-icons/fa';
 import AnimatedPage from '../components/AnimatedPage';
+import LeadershipSection from '../components/LeadershipSection';
+import { useNavigate } from 'react-router-dom';
+
 
 const Connect = () => {
+    const navigate = useNavigate();
     return (
         <AnimatedPage>
             {/* Header / Hero */}
@@ -79,6 +83,9 @@ const Connect = () => {
                     />
                 </div>
 
+                {/* Leadership Message Section */}
+                <LeadershipSection />
+
                 {/* Membership CTA */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -92,7 +99,9 @@ const Connect = () => {
                         युवा न्याय दल (अराजनैतिक) का हिस्सा बनें और समाज में सकारात्मक परिवर्तन लाएं।
                         आज ही सदस्य बनें!
                     </p>
-                    <button className="bg-navy-flag hover:bg-saffron text-white px-8 md:px-12 py-4 md:py-5 rounded-2xl md:rounded-[22px] font-black text-lg md:text-xl shadow-xl hover:shadow-saffron/20 transition-all flex items-center justify-center gap-4 md:gap-6 mx-auto group">
+                    <button
+                        onClick={() => navigate('/contact')}
+                        className="bg-navy-flag group-hover:translate-x-4 transition-transform cursor-pointer hover:bg-saffron text-white px-8 md:px-12 py-4 md:py-5 rounded-2xl md:rounded-[22px] font-black text-lg md:text-xl shadow-xl hover:shadow-saffron/20 transition-all flex items-center justify-center gap-4 md:gap-6 mx-auto group">
                         Be a Member <FaArrowRight className="group-hover:translate-x-4 transition-transform" />
                     </button>
                     <p className="text-[10px] md:text-sm text-slate-400 font-bold tracking-widest uppercase mt-8 md:mt-12 italic">Join the Justice Movement Today</p>
