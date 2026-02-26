@@ -1,1 +1,61 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+    --color-saffron: #ff9933;
+    --color-green-flag: #138808;
+    --color-navy-flag: #000080;
+}
+
+:root {
+    --color-saffron: #ff9933;
+    --color-green-flag: #138808;
+    --color-navy: #000080;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    @apply bg-slate-50 text-slate-900;
+}
+
+.gov-gradient {
+    background: linear-gradient(to right, var(--color-saffron) 33%, #fff 33%, #fff 66%, var(--color-green-flag) 66%);
+    height: 5px;
+}
+
+.nav-link {
+    @apply relative text-navy-flag font-medium transition-colors hover:text-saffron outline-none;
+}
+
+.nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-[-2px] w-0 h-[2px] bg-saffron transition-all duration-300;
+}
+
+.nav-link:hover::after {
+    @apply w-full;
+}
+
+.card-shine {
+    @apply relative overflow-hidden;
+}
+
+.card-shine::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 55%);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    pointer-events: none;
+}
+
+.card-shine:hover::before {
+    top: 150%;
+    left: 150%;
+}
