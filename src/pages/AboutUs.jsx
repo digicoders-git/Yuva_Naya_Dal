@@ -273,7 +273,7 @@ const AboutUs = () => {
                                 <img
                                     src={image37}
                                     alt="Om Prakash Yadav"
-                                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                    className="relative w-[500px] h-[400px] md:h-[465px]   object-cover rounded-2xl shadow-2xl border-4 border-white"
                                 />
                             </motion.div>
                         </motion.div>
@@ -301,7 +301,7 @@ const AboutUs = () => {
                                 <img
                                     src={image36}
                                     alt="Gagan Bajpai"
-                                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                    className="relative  w-[500px] h-[400px] md:h-[465px]  object-cover rounded-2xl shadow-2xl border-4 border-white"
                                 />
                             </motion.div>
                             
