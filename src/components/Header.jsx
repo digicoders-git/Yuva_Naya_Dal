@@ -26,8 +26,7 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Our Gallery', path: '/gallery' },
-        { name: 'Our Vision', path: '/vision' },
-        { name: 'Our Mission', path: '/mission' },
+   
         { name: 'Contact Us', path: '/contact' },
         // { name: 'Terms', path: '/terms' },
         // { name: 'Privacy', path: '/privacy' },
@@ -44,18 +43,18 @@ const Header = () => {
                     <motion.img
                         src={logo}
                         alt="Yuva Nyay Dal"
-                        className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
+                        className="h-13 w-13 rounded- object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
                         <span className="text-navy-flag font-bold text-lg md:text-xl leading-none">युवा न्याय दल</span>
                         <span className="text-saffron text-xs font-medium tracking-widest">(अराजनैतिक)</span>
                     </div>
                 </NavLink>
 
                 {/* Desktop Menu */}
-                <div className="hidden xl:flex items-center gap-6">
+                <div className="hidden xl:flex items-center gap-9">
                     {navLinks.map((link) => (
                         <NavLink
                             key={link.path}
@@ -111,6 +110,19 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                             ))}
+                            <li className="mt-4">
+                                <NavLink
+                                    to="/connect"
+                                    className={({ isActive }) =>
+                                        `block text-center px-6 py-3 rounded-full font-bold transition-all shadow-lg ${isActive
+                                            ? 'bg-saffron text-white'
+                                            : 'bg-navy-flag text-white hover:bg-saffron'
+                                        }`
+                                    }
+                                >
+                                    Connect Now
+                                </NavLink>
+                            </li>
                         </ul>
                     </motion.div>
                 )}

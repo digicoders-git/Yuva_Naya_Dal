@@ -1,302 +1,453 @@
 import { motion } from 'framer-motion';
-import {
-    HiOutlineUserGroup,
-    HiOutlineGlobe,
-    HiOutlineAcademicCap,
-    HiOutlineBriefcase,
-    HiOutlineShieldCheck,
-    HiOutlineUserCircle,
-    HiOutlineFlag,
-    HiOutlineLightningBolt,
-    HiOutlineSparkles,
-    HiOutlineCheckCircle
-} from 'react-icons/hi';
-import { FaQuoteLeft, FaHandshake, FaBullhorn, FaUsers } from 'react-icons/fa';
-import AnimatedPage from '../components/AnimatedPage';
-import LeadershipSection from '../components/LeadershipSection';
-import { logo, flag, image1, image5, image10, image13, image36, image37 } from '../utils/images';
+import { image36, image37, logo, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const AboutUs = () => {
     return (
-        <AnimatedPage>
-            {/* 1. HERO SECTION (Upgraded with Flag & Logo) */}
-            <div className="relative h-[450px] md:h-[600px] overflow-hidden bg-navy-flag rounded-b-[40px] md:rounded-b-[80px] shadow-2xl mx-2 md:mx-4 mb-16 md:mb-24">
-                {/* Decorative background elements */}
-                <div className="absolute inset-x-0 bottom-0 top-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-                <motion.img
-                    src={flag}
-                    animate={{ x: [0, 20, 0], rotate: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-                    className="absolute top-10 right-[-5%] w-64 md:w-96 opacity-20 pointer-events-none"
-                />
-                <motion.img
-                    src={flag}
-                    animate={{ x: [0, -20, 0], rotate: [0, -5, 0] }}
-                    transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-                    className="absolute bottom-10 left-[-5%] w-64 md:w-96 opacity-10 pointer-events-none"
-                />
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+            {/* Hero Section */}
+            <section className="pt-32 pb-16 px-6">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Left - Description */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6"
+                        >
+                            <motion.h1
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl md:text-5xl font-bold text-navy-flag leading-tight"
+                            >
+                                युवा न्याय दल
+                            </motion.h1>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ delay: 0.4, duration: 0.6 }}
+                                className="h-1 w-32 bg-gradient-to-r from-saffron via-white to-green-flag"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.6 }}
+                                className="text-lg text-slate-700 leading-relaxed"
+                            >
+                                युवा न्याय दल एक प्रगतिशील और युवा-नेतृत्व वाला संगठन है, जो समाज में न्याय, समानता और पारदर्शिता को बढ़ावा देने के लिए प्रतिबद्ध है। हम युवाओं को सशक्त बनाने और उन्हें राष्ट्र निर्माण में सक्रिय भागीदार बनाने का प्रयास करते हैं।
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="text-slate-600 leading-relaxed"
+                            >
+                                हमारा विश्वास है कि देश का भविष्य युवाओं के हाथ में है। सही दिशा, अवसर और मंच मिलने पर युवा राष्ट्र के विकास में महत्वपूर्ण योगदान दे सकते हैं।
+                            </motion.p>
+                        </motion.div>
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
+                        {/* Right - Logo */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="flex justify-center"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.05, rotate: 2 }}
+                                className="relative"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/20 to-green-flag/20 rounded-  blur-3xl" />
+                                <img
+                                    src={logo}
+                                    alt="Yuva Nyay Dal Logo"
+                                    className="relative w-80 h-80 object-cover rounded-[100px] shadow-2xl border-8 border-white"
+                                />
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+                   {/* About Us Section */}
+            <section className="py-20 px-6 bg-white">
+                <div className="container mx-auto max-w-5xl">
                     <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                        className="relative mb-8"
-                    >
-                        <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full scale-150 animate-pulse" />
-                        <img
-                            src={logo}
-                            className="h-28 w-28 md:h-44 md:w-44 rounded-full border-4 md:border-8 border-white shadow-2xl relative z-10 bg-white p-1"
-                        />
-                        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-saffron text-navy-flag px-6 py-1.5 rounded-full font-black text-xs md:text-sm uppercase tracking-widest shadow-xl border border-white/20 whitespace-nowrap">
-                            अराजनैतिक संगठन
-                        </div>
-                    </motion.div>
-
-                    <motion.h1
                         initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="text-4xl md:text-8xl font-black text-white tracking-tighter drop-shadow-2xl mb-4"
-                    >
-                        युवा <span className="text-saffron italic">न्याय</span> दल
-                    </motion.h1>
-                    <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: 120, md: 200 }}
-                        className="h-2 md:h-3 bg-saffron rounded-full shadow-lg shadow-saffron/20"
-                    />
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                        className="text-slate-300 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm mt-6"
-                    >
-                        Social Justice • Equality • Transparency
-                    </motion.p>
-                </div>
-            </div>
-
-            <div className="container mx-auto px-6 max-w-7xl pb-24">
-
-                {/* 2. THE PHILOSOPHY (Intro Section with Image) */}
-                <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center mb-32 md:mb-48">
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-12"
                     >
-                        <div className="flex items-center gap-4 mb-8">
-                            <span className="p-3 bg-saffron/10 text-saffron rounded-xl"><HiOutlineLightningBolt size={24} /></span>
-                            <span className="text-saffron font-black uppercase tracking-widest text-sm">हमारा दर्शन</span>
-                        </div>
-                        <h2 className="text-3xl md:text-6xl font-black text-navy-flag mb-8 leading-tight">
-                            युवा शक्ति: <br />
-                            <span className="text-slate-600">राष्ट्र की असली पूंजी</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
+                             हमारे बारे में
                         </h2>
-                        <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-medium text-justify">
-                            <p className="italic border-l-8 border-green-flag pl-8 py-2">
-                                देश का भविष्य युवाओं के हाथ में है, और यदि उन्हें सही दिशा, अवसर और मंच मिले तो वे राष्ट्र निर्माण में महत्वपूर्ण भूमिका निभा सकते हैं।
-                            </p>
-                            <p>
-                                युवा न्याय दल एक प्रगतिशील और युवा-नेतृत्व वाला संगठन है, जिसका उद्देश्य समाज में न्याय, समानता और पारदर्शिता को बढ़ावा देना है। हम मानते हैं कि भारत का पुनर्जांतरण केवल जागरूक और संगठित युवाओं द्वारा ही संभव है।
-                            </p>
-                            <p>
-                                हमारा संगठन जाति, धर्म और राजनीति से ऊपर उठकर केवल "न्याय" और "अधिकार" की बात करता है। हम समाज के हर उस व्यक्ति की आवाज हैं जो किसी न किसी रूप में अन्याय का शिकार है।
-                            </p>
-                        </div>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-40 bg-gradient-to-r from-saffron via-white to-green-flag mx-auto"
+                        />
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="relative"
+                        transition={{ delay: 0.4, duration: 0.8 }}
+                        className="space-y-6 text-slate-700 leading-relaxed text-lg"
                     >
-                        <div className="absolute inset-0 bg-saffron rounded-[60px] md:rounded-[100px] rotate-3 scale-105 opacity-10" />
-                        <div className="relative  bg-center  bg-white p-3 md:p-5 rounded-[60px] md:rounded-[100px] shadow-3xl border border-slate-100 overflow-hidden group">
-                            <img src={image37} className="w-150 bg-contain  h-150 object-cover rounded-[50px] md:rounded-[90px] group-hover:scale-110 transition-transform duration-1000" />
-
-                            {/* Stats Overlay (Improved for Mobile) */}
-                            <div className="md:absolute md:bottom-10 md:left-10 md:right-10 flex justify-center mt-6 md:mt-0">
-                                <div className="bg-navy-flag/90 md:bg-navy-flag/80 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-[35px] md:rounded-[40px] shadow-2xl flex items-center gap-8 md:gap-12 relative z-10 w-full md:w-fit">
-                                    <div className="flex-1 text-center">
-                                        <h4 className="text-3xl md:text-4xl font-black text-saffron mb-1">10K+</h4>
-                                        <p className="text-white/60 text-[10px] uppercase font-bold tracking-widest leading-none">Volunteers</p>
-                                    </div>
-                                    <div className="w-[1px] h-12 bg-white/20" />
-                                    <div className="flex-1 text-center">
-                                        <h4 className="text-3xl md:text-4xl font-black text-white mb-1">50+</h4>
-                                        <p className="text-white/60 text-[10px] uppercase font-bold tracking-widest leading-none">Districts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <p>
+                            युवा न्याय दल एक प्रगतिशील और युवा-नेतृत्व वाला संगठन है, जिसका उद्देश्य समाज में न्याय, समानता और पारदर्शिता को बढ़ावा देना है। हमारा विश्वास है कि देश का भविष्य युवाओं के हाथ में है, और यदि उन्हें सही दिशा, अवसर और मंच मिले तो वे राष्ट्र निर्माण में महत्वपूर्ण भूमिका निभा सकते हैं।
+                        </p>
+                        <p>
+                            हम शिक्षा, रोजगार, सामाजिक न्याय, महिला सशक्तिकरण और भ्रष्टाचार मुक्त व्यवस्था के लिए प्रतिबद्ध हैं। हमारा प्रयास है कि समाज के हर वर्ग — विशेषकर युवाओं, छात्रों, किसानों और मजदूरों — की आवाज़ को मजबूत किया जाए और उनकी समस्याओं का समाधान लोकतांत्रिक तरीके से किया जाए।
+                        </p>
                     </motion.div>
                 </div>
+            </section>
 
-                {/* 3. CORE VALUES (Interactive Cards with Images) */}
-                <div className="mb-32 md:mb-48">
-                    <div className="text-center mb-20">
-                        <span className="text-green-flag font-black uppercase tracking-[0.4em] text-sm block mb-4">Core Principles</span>
-                        <h2 className="text-4xl md:text-7xl font-black text-navy-flag mb-8">संगठन के <span className="text-green-flag">स्तंभ</span></h2>
-                        <div className="h-2 w-32 bg-green-flag mx-auto rounded-full" />
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                        <ValueItem
-                            img={image1}
-                            icon={<HiOutlineShieldCheck size={32} />}
-                            title="न्याय और समानता"
-                            desc="समाज के हर वंचित वर्ग को सही दिशा और समान अवसर प्रदान करना हमारा परम धर्म है।"
-                        />
-                        <ValueItem
-                            img={image5}
-                            icon={<HiOutlineUserGroup size={32} />}
-                            title="लोकतांत्रिक एकता"
-                            desc="युवाओं को निर्णय प्रक्रिया में सक्रिय भागीदारी दिलाना और एकजुट करना हमारी ताकत है।"
-                        />
-                        <ValueItem
-                            img={image36}
-                            icon={<HiOutlineFlag size={32} />}
-                            title="राष्ट्र प्रथम"
-                            desc="व्यक्तिगत हितों से ऊपर राष्ट्र के प्रति समर्पण ही हमारी पहचान और हमारा संकल्प है।"
-                        />
-                    </div>
-                </div>
-
-                {/* Leadership Message Section */}
-                <LeadershipSection />
-
-                {/* 4. MISSION & VISION (Split Layout with Watermark Flag) */}
-                <div className="relative mb-32 md:mb-48">
-                    <img src={flag} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl opacity-[0.03] pointer-events-none" />
-
-                    <div className="grid lg:grid-cols-2 gap-12 relative z-10">
-                        {/* Vision Card */}
+            {/* Mission & Vision Section */}
+            <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-white">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12">
+                        {/* Mission */}
                         <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-navy-flag p-10 md:p-16 rounded-[40px] md:rounded-[60px] text-white shadow-2xl relative overflow-hidden group"
+                            transition={{ duration: 0.8 }}
+                            className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-saffron hover:shadow-2xl transition-all"
                         >
-                            <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 rotate-12 group-hover:rotate-45 transition-transform duration-1000"><HiOutlineFlag size={200} /></div>
-                            <div className="flex items-center gap-6 mb-12">
-                                <span className="p-5 bg-saffron rounded-3xl text-navy-flag shadow-xl shadow-saffron/20"><HiOutlineSparkles size={40} /></span>
-                                <div>
-                                    <h3 className="text-3xl md:text-4xl font-black text-saffron">Vision</h3>
-                                    <p className="text-gray-300 text-xs font-bold uppercase tracking-[0.3em]">(हमारी दूरदर्शिता)</p>
-                                </div>
-                            </div>
-
-                            {/* Vision Profile Badge */}
-                            <div className="flex items-center gap-4 mb-8 bg-white/5 p-3 rounded-2xl border border-white/10 w-fit">
-                                <img src={image37} className="w-12 h-12 rounded-xl object-cover border border-white/20" />
-                                <div>
-                                    <p className="text-white font-bold text-sm">गगन बाजपेई</p>
-                                    <p className="text-saffron text-[10px] font-bold uppercase tracking-wider">राष्ट्रीय उपाध्यक्ष</p>
-                                </div>
-                            </div>
-                            <ul className="space-y-8">
-                                <li className="flex gap-6 items-start">
-                                    <span className="text-saffron mt-1"><HiOutlineCheckCircle size={28} /></span>
-                                    <p className="text-xl md:text-2xl text-slate-100 font-medium leading-snug">एक ऐसा भारत जहाँ हर युवा को बिना किसी भेदभाव के समान अवसर और पूर्ण न्याय मिले।</p>
+                            <motion.h3
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl font-bold text-navy-flag mb-6"
+                            >
+                                🎯 Mission (मिशन)
+                            </motion.h3>
+                            <motion.ul
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="space-y-4 text-slate-700"
+                            >
+                                <li className="flex items-start gap-3">
+                                    <span className="text-saffron text-xl mt-1">•</span>
+                                    <span>युवाओं को नेतृत्व और निर्णय प्रक्रिया में सक्रिय भागीदारी दिलाना।</span>
                                 </li>
-                                <li className="flex gap-6 items-start">
-                                    <span className="text-saffron mt-1"><HiOutlineCheckCircle size={28} /></span>
-                                    <p className="text-xl md:text-2xl text-slate-100 font-medium leading-snug">पूर्णतः पारदर्शी, जवाबदेह और भ्रष्टाचार-मुक्त शासन एवं प्रशासनिक व्यवस्था का निर्माण।</p>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-saffron text-xl mt-1">•</span>
+                                    <span>गुणवत्तापूर्ण शिक्षा और कौशल विकास कार्यक्रमों को बढ़ावा देना।</span>
                                 </li>
-                            </ul>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-saffron text-xl mt-1">•</span>
+                                    <span>बेरोजगारी कम करने हेतु स्थानीय और राष्ट्रीय स्तर पर पहल करना।</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-saffron text-xl mt-1">•</span>
+                                    <span>महिला, किसान और श्रमिक वर्ग के अधिकारों की रक्षा करना।</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-saffron text-xl mt-1">•</span>
+                                    <span>डिजिटल और पारदर्शी प्रशासनिक प्रणाली को प्रोत्साहित करना।</span>
+                                </li>
+                            </motion.ul>
                         </motion.div>
 
-                        {/* Mission Card */}
+                        {/* Vision */}
                         <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white p-10 md:p-16 rounded-[40px] md:rounded-[60px] text-navy-flag shadow-2xl border border-slate-100 relative overflow-hidden group"
+                            transition={{ duration: 0.8 }}
+                            className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-green-flag hover:shadow-2xl transition-all"
                         >
-                            <div className="absolute top-0 right-0 p-12 opacity-[0.03] scale-150 rotate-12 group-hover:rotate-[-45deg] transition-transform duration-1000"><HiOutlineGlobe size={200} /></div>
-                            <div className="flex items-center gap-6 mb-12">
-                                <span className="p-5 bg-green-flag rounded-3xl text-white shadow-xl shadow-green-flag/20"><HiOutlineCheckCircle size={40} /></span>
-                                <div>
-                                    <h3 className="text-3xl md:text-4xl font-black text-green-flag">Mission</h3>
-                                    <p className="text-gray-900 text-xs font-bold uppercase tracking-[0.3em]">(हमारा लक्ष्य)</p>
-                                </div>
-                            </div>
-
-                            {/* Mission Profile Badge */}
-                            <div className="flex items-center gap-4 mb-8 bg-slate-50 p-3 rounded-2xl border border-slate-100 w-fit">
-                                <img src={image36} className="w-12 h-12 rounded-xl object-cover border border-navy-flag/10" />
-                                <div>
-                                    <p className="text-navy-flag font-bold text-sm">ओम प्रकाश यादव</p>
-                                    <p className="text-green-flag text-[10px] font-bold uppercase tracking-wider">राष्ट्रीय उपाध्यक्ष</p>
-                                </div>
-                            </div>
-                            <ul className="space-y-8">
-                                <li className="flex gap-6 items-center">
-                                    <span className="p-3 bg-slate-50 text-green-flag rounded-xl"><HiOutlineAcademicCap size={28} /></span>
-                                    <p className="text-lg md:text-xl font-bold text-slate-700">शिक्षा और रोजगार के क्षेत्र में गुणवत्ता और समानता लाना।</p>
+                            <motion.h3
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl font-bold text-navy-flag mb-6"
+                            >
+                                🔭 Vision (दृष्टि)
+                            </motion.h3>
+                            <motion.ul
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="space-y-4 text-slate-700"
+                            >
+                                <li className="flex items-start gap-3">
+                                    <span className="text-green-flag text-xl mt-1">•</span>
+                                    <span>एक ऐसा भारत जहाँ हर युवा को समान अवसर और न्याय मिले।</span>
                                 </li>
-                                <li className="flex gap-6 items-center">
-                                    <span className="p-3 bg-slate-50 text-green-flag rounded-xl"><HiOutlineUserCircle size={28} /></span>
-                                    <p className="text-lg md:text-xl font-bold text-slate-700">युवाओं को देश के नीति-निर्धारण में सक्रिय भागीदार बनाना।</p>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-green-flag text-xl mt-1">•</span>
+                                    <span>पारदर्शी, जवाबदेह और भ्रष्टाचार-मुक्त शासन व्यवस्था।</span>
                                 </li>
-                                <li className="flex gap-6 items-center">
-                                    <span className="p-3 bg-slate-50 text-green-flag rounded-xl"><HiOutlineShieldCheck size={28} /></span>
-                                    <p className="text-lg md:text-xl font-bold text-slate-700">महिलाओं, किसानों और श्रमिकों के अधिकारों की रक्षा करना।</p>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-green-flag text-xl mt-1">•</span>
+                                    <span>शिक्षा और रोजगार के क्षेत्र में समानता और गुणवत्ता।</span>
                                 </li>
-                            </ul>
+                                <li className="flex items-start gap-3">
+                                    <span className="text-green-flag text-xl mt-1">•</span>
+                                    <span>सामाजिक सद्भाव, समान अधिकार और सुरक्षित समाज का निर्माण।</span>
+                                </li>
+                            </motion.ul>
                         </motion.div>
                     </div>
                 </div>
+            </section>
 
-                {/* 5. THE COMMITMENT (Final Banner with Logo Background) */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative bg-navy-flag p-12 md:p-24 rounded-[40px] md:rounded-[80px] text-center overflow-hidden shadow-[0_50px_100px_-20px_rgba(1,23,59,0.3)]"
-                >
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[100px]" />
-                    <img src={logo} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 opacity-[0.05]  brightness-200 pointer-events-none" />
+            {/* Leader 1 - Om Prakash Yadav */}
+            <section className="py-16 px-6 bg-white">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Left - Content */}
+                    <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6 order-2"
+                        >
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                            >
+                                गगन बाजपेई
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="h-1 w-24 bg-green-flag"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6 }}
+                                className="text-xl text-green-flag font-semibold"
+                            >
+                                राष्ट्रीय उपाध्यक्ष
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8 }}
+                                className="text-slate-700 leading-relaxed"
+                            >
+                                युवा ऊर्जा और नवीन सोच के साथ, गगन बाजपेई जी युवा न्याय दल के राष्ट्रीय उपाध्यक्ष के रूप में युवाओं को सशक्त बनाने और समाज में सकारात्मक बदलाव लाने के लिए कार्यरत हैं।
+                            </motion.p>
+                        </motion.div>
 
-                    <div className="relative z-10 max-w-5xl mx-auto">
-                        <FaQuoteLeft className="text-saffron text-5xl md:text-8xl mx-auto mb-10 opacity-40" />
-                        <h3 className="text-2xl md:text-5xl font-black text-white mb-10 leading-snug drop-shadow-lg">
-                            "हमारा प्रयास है कि समाज के हर वर्ग — विशेषकर युवाओं, छात्रों, किसानों और मजदूरों — की आवाज़ को मजबूत किया जाए और उनकी समस्याओं का समाधान लोकतांत्रिक तरीके से किया जाए।"
-                        </h3>
-                        <div className="h-2 w-32 bg-saffron mx-auto rounded-full mb-12 shadow-lg shadow-saffron/20" />
-                        <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-slate-400 font-bold uppercase tracking-[.3em] text-[10px] md:text-sm">
-                            <span className="flex items-center gap-3"><HiOutlineCheckCircle className="text-saffron" /> निस्वार्थ सेवा</span>
-                            <span className="flex items-center gap-3"><HiOutlineCheckCircle className="text-saffron" /> मजबूत संगठन</span>
-                            <span className="flex items-center gap-3"><HiOutlineCheckCircle className="text-saffron" /> निश्चित न्याय</span>
-                        </div>
+                        {/* Right - Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="order-1 lg:order-2"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/30 to-navy-flag/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                                <img
+                                    src={image37}
+                                    alt="Om Prakash Yadav"
+                                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                />
+                            </motion.div>
+                        </motion.div>
                     </div>
-                </motion.div>
-            </div>
-        </AnimatedPage>
+                </div>
+            </section>
+
+            {/* Leader 2 - Gagan Bajpai */}
+            <section className="py-16 px-6 bg-slate-50">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                      
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-green-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                                <img
+                                    src={image36}
+                                    alt="Gagan Bajpai"
+                                    className="relative w-full h-[500px] object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                />
+                            </motion.div>
+                            
+                        </motion.div>
+  {/* Right - Content */}
+                             <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6 order-2 lg:order-1"
+                        >
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                            >
+                                ओम प्रकाश यादव
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="h-1 w-24 bg-saffron"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6 }}
+                                className="text-xl text-saffron font-semibold"
+                            >
+                                राष्ट्रीय उपाध्यक्ष
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8 }}
+                                className="text-lg text-slate-600"
+                            >
+                                पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 1 }}
+                                className="text-slate-700 leading-relaxed"
+                            >
+                                अनुभवी नेतृत्व और समाज सेवा के प्रति समर्पित, ओम प्रकाश यादव जी युवा न्याय दल के राष्ट्रीय उपाध्यक्ष के रूप में संगठन को नई दिशा प्रदान कर रहे हैं।
+                            </motion.p>
+                        </motion.div>
+                       
+                    </div>
+                </div>
+            </section>
+
+     
+
+            {/* Image Slider Section */}
+            <section className="py-20 px-6 bg-white">
+                <div className="container mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
+                              हमारी गतिविधियाँ
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-40 bg-gradient-to-r from-saffron via-white to-green-flag mx-auto"
+                        />
+                    </motion.div>
+
+                    <Swiper
+                        modules={[Autoplay, Navigation]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        navigation
+                        loop={false}
+                        breakpoints={{
+                            640: { slidesPerView: 2 },
+                            1024: { slidesPerView: 4 }
+                        }}
+                        className="pb-12"
+                    >
+                        {[image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
+                            <SwiperSlide key={idx}>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    className="relative group cursor-pointer"
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-br from-saffron/20 to-navy-flag/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all" />
+                                    <img
+                                        src={img}
+                                        alt={`Activity ${idx + 1}`}
+                                        className="w-full h-80 object-contain bg-white rounded-xl shadow-lg"
+                                    />
+                                </motion.div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+            </section>
+
+            {/* Call to Action */}
+            <section className="py-16 px-6 bg-gradient-to-r from-navy-flag to-saffron">
+                <div className="container mx-auto text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-6"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold text-white">
+                            हमारे साथ जुड़ें और बदलाव का हिस्सा बनें
+                        </h2>
+                        <p className="text-white/90 text-lg max-w-2xl mx-auto">
+                            युवा न्याय दल के साथ मिलकर समाज में सकारात्मक परिवर्तन लाएं
+                        </p>
+                        <motion.a
+                            href="/connect"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-block bg-white text-navy-flag px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
+                        >
+                            अभी जुड़ें
+                        </motion.a>
+                    </motion.div>
+                </div>
+            </section>
+        </div>
     );
 };
-
-const ValueItem = ({ img, icon, title, desc }) => (
-    <motion.div
-        whileHover={{ y: -15 }}
-        className="bg-white rounded-[50px] overflow-hidden border border-slate-100 shadow-xl group transition-all duration-500"
-    >
-        <div className="h-[250px] md:h-[300px] relative overflow-hidden flex items-center justify-center">
-            <img src={img} className="max-h-full max-w-full object-contain  group-hover:-0 transition-all duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0   to-transparent" />
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-saffron/90 backdrop-blur-md p-5 rounded-3xl shadow-2xl border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                {icon}
-            </div>
-        </div>
-        <div className="p-10 text-center">
-            <h4 className="text-2xl font-black text-navy-flag mb-6 group-hover:text-saffron transition-colors">{title}</h4>
-            <div className="h-1 w-12 bg-slate-100 mx-auto mb-6 group-hover:bg-saffron/30 transition-all duration-500" />
-            <p className="text-slate-500 font-medium leading-loose md:leading-relaxed text-justify italic">{desc}</p>
-        </div>
-    </motion.div>
-);
 
 export default AboutUs;

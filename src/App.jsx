@@ -13,8 +13,7 @@ import AboutUs from './pages/AboutUs';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Connect from './pages/Connect';
-import Vision from './pages/Vision';
-import Mission from './pages/Mission';
+ 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 
@@ -62,8 +61,7 @@ function App() {
                                 <Route path="/gallery" element={<Gallery />} />
                                 <Route path="/contact" element={<Contact />} />
                                 <Route path="/connect" element={<Connect />} />
-                                <Route path="/vision" element={<Vision />} />
-                                <Route path="/mission" element={<Mission />} />
+                          
                                 <Route path="/terms" element={<Terms />} />
                                 <Route path="/privacy" element={<Privacy />} />
                             </Routes>

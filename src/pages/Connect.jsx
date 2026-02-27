@@ -1,137 +1,213 @@
 import { motion } from 'framer-motion';
-import {
-    FaFacebookF,
-    FaTwitter,
-    FaInstagram,
-    FaYoutube,
-    FaWhatsapp,
-    FaTelegramPlane,
-    FaArrowRight
-} from 'react-icons/fa';
-import AnimatedPage from '../components/AnimatedPage';
-import LeadershipSection from '../components/LeadershipSection';
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
+import { HiOutlineSpeakerphone, HiOutlineUserGroup, HiOutlineLightBulb } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
-
 
 const Connect = () => {
     const navigate = useNavigate();
+    
     return (
-        <AnimatedPage>
-            {/* Header / Hero */}
-            <div className="relative pt-16 md:pt-24 pb-20 md:pb-32 overflow-hidden bg-navy-flag text-center rounded-b-[40px] md:rounded-b-[60px] shadow-2xl mx-2 md:mx-4 mb-10 md:mb-20 px-4 md:px-6">
-                <div className="absolute inset-x-0 bottom-0 top-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-                <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-16 md:w-24 h-1.5 md:h-2 bg-saffron mx-auto rounded-full mb-8 md:mb-10 shadow-lg shadow-saffron/20"
-                />
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-6 drop-shadow-xl"
-                >
-                    Connect <span className="text-saffron">With Us</span>
-                </motion.h2>
-                <p className="text-base md:text-2xl text-slate-100 max-w-4xl mx-auto italic font-medium leading-relaxed px-2">
-                    "हमसे सोशल मीडिया के माध्यम से जुड़ें और युवा न्याय दल की प्रत्येक गतिविधि और सभा की जानकारी प्राप्त करें।"
-                </p>
-            </div>
-
-            <div className="container mx-auto px-6 max-w-6xl pb-20 md:pb-32">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-                    <SocialBox
-                        icon={<FaFacebookF size={32} md:size={40} />}
-                        name="Facebook"
-                        color="bg-[#1877F2]"
-                        handle="@yuvanyaydal"
-                        delay={0.1}
-                    />
-                    <SocialBox
-                        icon={<FaInstagram size={32} md:size={40} />}
-                        name="Instagram"
-                        color="bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4]"
-                        handle="@yuva_nyay_dal"
-                        delay={0.2}
-                    />
-                    <SocialBox
-                        icon={<FaTwitter size={32} md:size={40} />}
-                        name="Twitter"
-                        color="bg-[#1DA1F2]"
-                        handle="@yuvanyaydal_int"
-                        delay={0.3}
-                    />
-                    <SocialBox
-                        icon={<FaYoutube size={32} md:size={40} />}
-                        name="YouTube"
-                        color="bg-[#FF0000]"
-                        handle="Yuva Nyay Dal Official"
-                        delay={0.4}
-                    />
-                    <SocialBox
-                        icon={<FaWhatsapp size={32} md:size={40} />}
-                        name="WhatsApp"
-                        color="bg-[#25D366]"
-                        handle="Join Updates Group"
-                        delay={0.5}
-                    />
-                    <SocialBox
-                        icon={<FaTelegramPlane size={32} md:size={40} />}
-                        name="Telegram"
-                        color="bg-[#0088CC]"
-                        handle="@yuvanyaydal"
-                        delay={0.6}
-                    />
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+            {/* Page Header */}
+            <section className="pt-32 pb-16 px-6">
+                <div className="container mx-auto text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-5xl md:text-6xl font-bold text-navy-flag mb-4">
+                            हमसे जुड़ें
+                        </h1>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                            className="h-1 w-40 bg-gradient-to-r from-saffron via-white to-green-flag mx-auto mb-6"
+                        />
+                        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                            सोशल मीडिया पर हमसे जुड़ें और हर अपडेट पाएं
+                        </p>
+                    </motion.div>
                 </div>
+            </section>
 
-                {/* Leadership Message Section */}
-                <LeadershipSection />
+            {/* Social Media Cards */}
+            <section className="pb-20 px-6">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <SocialCard
+                            icon={<FaFacebookF size={36} />}
+                            name="Facebook"
+                            handle="@yuvanyaydal"
+                            color="bg-[#1877F2]"
+                            link="https://www.facebook.com/yuvanyaydal"
+                            delay={0.1}
+                        />
+                        <SocialCard
+                            icon={<FaInstagram size={36} />}
+                            name="Instagram"
+                            handle="@yuva_nyay_dal"
+                            color="bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4]"
+                            link="https://www.instagram.com/yuva_nyay_dal"
+                            delay={0.2}
+                        />
+                        <SocialCard
+                            icon={<FaTwitter size={36} />}
+                            name="Twitter"
+                            handle="@yuvanyaydal_int"
+                            color="bg-[#1DA1F2]"
+                            link="https://twitter.com/yuvanyaydal_int"
+                            delay={0.3}
+                        />
+                        <SocialCard
+                            icon={<FaYoutube size={36} />}
+                            name="YouTube"
+                            handle="Yuva Nyay Dal Official"
+                            color="bg-[#FF0000]"
+                            link="https://www.youtube.com/@yuvanyaydal"
+                            delay={0.4}
+                        />
+                        <SocialCard
+                            icon={<FaWhatsapp size={36} />}
+                            name="WhatsApp"
+                            handle="Join Updates Group"
+                            color="bg-[#25D366]"
+                            link="https://wa.me/917800250000"
+                            delay={0.5}
+                        />
+                        <SocialCard
+                            icon={<FaTelegramPlane size={36} />}
+                            name="Telegram"
+                            handle="@yuvanyaydal"
+                            color="bg-[#0088CC]"
+                            link="https://t.me/yuvanyaydal"
+                            delay={0.6}
+                        />
+                    </div>
+                </div>
+            </section>
 
-                {/* Membership CTA */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-8 md:p-12 rounded-[40px] md:rounded-[50px] shadow-2xl border-2 border-dashed border-navy-flag/20 mt-20 md:mt-32 text-center relative overflow-hidden group"
-                >
-                    <div className="absolute top-0 left-0 w-2 h-full bg-saffron group-hover:w-full transition-all duration-700 opacity-5" />
-                    <h3 className="text-2xl md:text-4xl font-extrabold text-navy-flag mb-4 md:mb-6 leading-tight">राष्ट्र निर्माण में अपनी भूमिका सुनिश्चित करें</h3>
-                    <p className="text-base md:text-xl text-slate-500 mb-8 md:mb-10 max-w-3xl mx-auto font-medium">
-                        युवा न्याय दल (अराजनैतिक) का हिस्सा बनें और समाज में सकारात्मक परिवर्तन लाएं।
-                        आज ही सदस्य बनें!
-                    </p>
-                    <button
-                        onClick={() => navigate('/contact')}
-                        className="bg-navy-flag group-hover:translate-x-4 transition-transform cursor-pointer hover:bg-saffron text-white px-8 md:px-12 py-4 md:py-5 rounded-2xl md:rounded-[22px] font-black text-lg md:text-xl shadow-xl hover:shadow-saffron/20 transition-all flex items-center justify-center gap-4 md:gap-6 mx-auto group">
-                        Be a Member <FaArrowRight className="group-hover:translate-x-4 transition-transform" />
-                    </button>
-                    <p className="text-[10px] md:text-sm text-slate-400 font-bold tracking-widest uppercase mt-8 md:mt-12 italic">Join the Justice Movement Today</p>
-                </motion.div>
-            </div>
-        </AnimatedPage>
+            {/* Why Connect Section */}
+            <section className="py-20 px-6 bg-white">
+                <div className="container mx-auto max-w-5xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
+                            हमसे जुड़ने के फायदे
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-40 bg-gradient-to-r from-saffron via-white to-green-flag mx-auto"
+                        />
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <BenefitCard
+                            icon={<HiOutlineSpeakerphone size={48} />}
+                            title="नवीनतम अपडेट"
+                            desc="सभी कार्यक्रमों और गतिविधियों की तुरंत जानकारी"
+                            color="text-saffron"
+                            delay={0.1}
+                        />
+                        <BenefitCard
+                            icon={<HiOutlineUserGroup size={48} />}
+                            title="सीधा संवाद"
+                            desc="नेतृत्व के साथ सीधा संपर्क और सुझाव"
+                            color="text-navy-flag"
+                            delay={0.2}
+                        />
+                        <BenefitCard
+                            icon={<HiOutlineLightBulb size={48} />}
+                            title="सक्रिय भागीदारी"
+                            desc="सामाजिक कार्यों में सक्रिय योगदान का मौका"
+                            color="text-green-flag"
+                            delay={0.3}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-20 px-6">
+                <div className="container mx-auto max-w-4xl">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="bg-gradient-to-br from-navy-flag to-saffron rounded-3xl shadow-2xl p-12 text-center text-white relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
+                        <div className="relative z-10">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                                युवा न्याय दल का सदस्य बनें
+                            </h3>
+                            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+                                समाज में सकारात्मक बदलाव लाने के लिए आज ही हमसे जुड़ें
+                            </p>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => navigate('/contact')}
+                                className="bg-white text-navy-flag px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
+                            >
+                                अभी सदस्य बनें
+                            </motion.button>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+        </div>
     );
 };
 
-const SocialBox = ({ icon, name, color, handle, delay }) => (
+const SocialCard = ({ icon, name, handle, color, link, delay }) => (
     <motion.a
-        href="#"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay }}
-        whileHover={{ y: -10, scale: 1.05 }}
-        className="bg-white p-8 md:p-10 rounded-[40px] md:rounded-[50px] shadow-xl border border-slate-100 flex flex-col items-center gap-4 md:gap-6 text-center group cursor-pointer"
+        transition={{ delay, duration: 0.6 }}
+        whileHover={{ y: -10, scale: 1.03 }}
+        className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center gap-6 border border-slate-100 hover:shadow-2xl transition-all group"
     >
-        <span className={`${color} text-white w-20 md:w-24 h-20 md:h-24 rounded-[30px] md:rounded-[35px] flex items-center justify-center shadow-xl md:shadow-2xl transition-transform group-hover:rotate-12`}>
+        <div className={`${color} text-white w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform`}>
             {icon}
-        </span>
-        <div className="flex flex-col gap-1">
-            <h4 className="text-xl md:text-2xl font-black text-navy-flag">{name}</h4>
-            <p className="text-sm md:text-base text-slate-500 font-bold">{handle}</p>
         </div>
-        <div className="mt-2 md:mt-4 px-4 md:px-6 py-1.5 md:py-2 bg-slate-50 rounded-full text-navy-flag font-bold text-[10px] md:text-sm tracking-widest transition-colors group-hover:bg-saffron group-hover:text-white">
-            FOLLOW NOW
+        <div className="text-center">
+            <h3 className="text-2xl font-bold text-navy-flag mb-2">{name}</h3>
+            <p className="text-slate-500 font-medium">{handle}</p>
+        </div>
+        <div className="mt-2 px-6 py-2 bg-slate-50 rounded-full text-navy-flag font-bold text-sm group-hover:bg-saffron group-hover:text-white transition-all">
+            फॉलो करें
         </div>
     </motion.a>
+);
+
+const BenefitCard = ({ icon, title, desc, color, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay, duration: 0.6 }}
+        whileHover={{ y: -5 }}
+        className="bg-slate-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all"
+    >
+        <div className={`${color} mb-4 flex justify-center`}>{icon}</div>
+        <h4 className="text-xl font-bold text-navy-flag mb-3">{title}</h4>
+        <p className="text-slate-600">{desc}</p>
+    </motion.div>
 );
 
 export default Connect;

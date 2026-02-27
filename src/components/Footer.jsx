@@ -12,12 +12,16 @@ import {
     FaYoutube
 } from 'react-icons/fa';
 import { logo } from '../utils/images';
+import FloatingContact from './FloatingContact';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className="relative bg-white pt-24 pb-12 overflow-hidden border-t border-slate-100">
+            {/* Floating Contact Icons */}
+            <FloatingContact />
+            
             {/* Top decorative line */}
             <div className="gov-gradient w-full absolute top-0 left-0" />
 
@@ -58,8 +62,8 @@ const Footer = () => {
                 <div>
                     <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-green-flag pl-4">Important Info</h4>
                     <ul className="flex flex-col gap-4 text-slate-600 font-medium">
-                        <li><Link to="/vision" className="hover:text-saffron transition-colors">Our Vision</Link></li>
-                        <li><Link to="/mission" className="hover:text-saffron transition-colors">Our Mission</Link></li>
+                        {/* <li><Link to="/vision" className="hover:text-saffron transition-colors">Our Vision</Link></li>
+                        <li><Link to="/mission" className="hover:text-saffron transition-colors">Our Mission</Link></li> */}
                         <li><Link to="/contact" className="hover:text-saffron transition-colors">Join as Volunteer</Link></li>
                         <li><Link to="/terms" className="hover:text-saffron transition-colors">Terms & Conditions</Link></li>
                         <li><Link to="/privacy" className="hover:text-saffron transition-colors">Privacy Policy</Link></li>
@@ -72,15 +76,15 @@ const Footer = () => {
                     <ul className="flex flex-col gap-6 text-slate-600 text-sm">
                         <li className="flex items-start gap-4">
                             <span className="p-2 bg-saffron/10 text-saffron rounded-lg mt-1"><HiOutlineLocationMarker size={20} /></span>
-                            <span>युवा न्याय दल मुख्यालय, <br /> उत्तर प्रदेश, भारत</span>
+                            <span>69/2 Deen Dayal Nagar, Khadra, <br /> Nirala Nagar, Lucknow</span>
                         </li>
                         <li className="flex items-center gap-4">
                             <span className="p-2 bg-navy-flag/10 text-navy-flag rounded-lg"><HiOutlinePhone size={20} /></span>
-                            <span>+91 91234 56789</span>
+                            <a href="tel:+917800250000" className="hover:text-saffron transition-colors">+91 78002 50000</a>
                         </li>
                         <li className="flex items-center gap-4">
                             <span className="p-2 bg-green-flag/10 text-green-flag rounded-lg"><HiOutlineMail size={20} /></span>
-                            <span>info@yuvanyaydal.com</span>
+                            <a href="mailto:yuvanyaydal2026@gmail.com" className="hover:text-saffron transition-colors">yuvanyaydal2026@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -90,8 +94,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 mt-20 pt-8 border-t border-slate-100 text-center">
                 <p className="text-slate-500 text-sm">
                     © {currentYear} <span className="text-navy-flag font-bold">Yuva Nyay Dal</span>. All rights reserved.
-                    <br /> Developed for Progress & Justice.
-                </p>
+                    <br /> <a href="https://digicoders.in/" className="text-saffron hover:underline">Team DigiCoders</a></p>
             </div>
         </footer>
     );
