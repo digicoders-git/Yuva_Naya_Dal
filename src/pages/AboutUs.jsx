@@ -133,11 +133,20 @@ const AboutUs = () => {
                             >
                                 🎯 Mission (मिशन)
                             </motion.h3>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-saffron pl-4 italic leading-relaxed"
+                            >
+                                युवाओं के एकजुटता, सम्मान, स्वाभिमान, शिक्षा, रोजगार, व्यवस्थाओं के लिए प्रतिबद्ध दल।
+                            </motion.p>
                             <motion.ul
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: 0.4 }}
+                                transition={{ delay: 0.5 }}
                                 className="space-y-4 text-slate-700"
                             >
                                 <li className="flex items-start gap-3">

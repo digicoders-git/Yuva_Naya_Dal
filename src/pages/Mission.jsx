@@ -56,8 +56,8 @@ const Mission = () => {
                         <h3 className="text-3xl md:text-5xl font-black text-navy-flag mb-8 leading-tight">
                             सशक्ति और <span className="text-green-flag">परिवर्तन</span> का संकल्प
                         </h3>
-                        <p className="text-lg text-slate-600 mb-8 leading-relaxed text-left font-medium">
-                            युवा न्याय दल (अराजनैतिक) का मुख्य लक्ष्य युवाओं को एक ऐसा मंच प्रदान करना है जहाँ वे बिना किसी राजनीतिक दबाव के अपनी समस्याओं को उठा सकें और उनका समाधान पा सकें।
+                        <p className="text-lg text-slate-600 mb-8 leading-relaxed text-left font-medium italic border-l-4 border-green-flag pl-4">
+                            युवाओं के एकजुटता, सम्मान, स्वाभिमान, शिक्षा, रोजगार, व्यवस्थाओं के लिए प्रतिबद्ध दल।
                         </p>
                         <div className="grid sm:grid-cols-1 gap-6">
                             <MissionCard
