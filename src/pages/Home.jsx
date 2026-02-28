@@ -205,7 +205,7 @@ const Home = () => {
                             title="राष्ट्रीय महासचिव"
                             subtitle="संगठन की प्रशासनिक रीढ़"
                             delay={0.2}
-                            position="object-top object-contain bg-white"
+                            position="object-top object-contain "
                         />
                     </div>
 
@@ -367,7 +367,7 @@ const LeaderCard = ({ image, name, title, subtitle, delay, position = "object-co
         <div className="relative">
             <motion.div
                 whileHover={{ scale: 1.03 }}
-                className="relative overflow-hidden rounded-3xl shadow-2xl bg-white"
+                className="relative overflow-hidden rounded-3xl "
             >
                 <img
                     src={image}
