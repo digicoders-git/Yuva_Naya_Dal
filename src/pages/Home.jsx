@@ -193,19 +193,18 @@ const Home = () => {
                     <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16">
                         <LeaderCard
                             image={image8}
-                            name="विजय शंकर शुक्ला"
+                            name="माननीय विजय शंकर शुक्ला (अभिवक्ता)"
                             title="राष्ट्रीय अध्यक्ष"
                             subtitle="संगठन का कुशल नेतृत्व"
                             delay={0.1}
                             position="object-contain bg-white"
                         />
                         <LeaderCard
-                            image={image38}
-                            name="शुभम गुप्ता"
-                            title="राष्ट्रीय महासचिव"
-                            subtitle="संगठन की प्रशासनिक रीढ़"
+                            image={image36}
+                            name="माननीय ओम प्रकाश यादव"
+                            title="राष्ट्रीय उपाध्यक्ष"
+                            subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
                             delay={0.2}
-                            position="object-top object-contain "
                         />
                     </div>
 
@@ -219,11 +218,12 @@ const Home = () => {
                             delay={0.3}
                         />
                         <LeaderCard
-                            image={image36}
-                            name="ओम प्रकाश यादव"
-                            title="राष्ट्रीय उपाध्यक्ष"
-                            subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
+                            image={image38}
+                            name="शुभम गुप्ता"
+                            title="राष्ट्रीय महासचिव"
+                            subtitle="संगठन की प्रशासनिक रीढ़"
                             delay={0.4}
+                            position="object-top object-contain "
                         />
                     </div>
                 </div>
