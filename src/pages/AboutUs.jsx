@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { image36, image37, logo, image1, image2, image3, image4, image5,  image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+import { image36, image37, image38, logo, image1, image2, image3, image4, image5, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -73,7 +73,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
-                   {/* About Us Section */}
+            {/* About Us Section */}
             <section className="py-20 px-6 bg-white">
                 <div className="container mx-auto max-w-5xl">
                     <motion.div
@@ -84,7 +84,7 @@ const AboutUs = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
-                             हमारे बारे में
+                            हमारे बारे में
                         </h2>
                         <motion.div
                             initial={{ scaleX: 0 }}
@@ -180,6 +180,15 @@ const AboutUs = () => {
                             >
                                 🔭 Vision (दृष्टि)
                             </motion.h3>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="text-slate-700 mb-6 font-medium leading-relaxed italic"
+                            >
+                                युवा न्याय दल अराजनैतिक किसी भी राजनैतिक दल का सपोर्ट नहीं करता बल्कि किसी भी राजनैतिक दल का व्यक्ति या पदाधिकारी युवा न्याय दल अराजनैतिक का सदस्य या पदाधिकारी भी रह सकता है। हमारी नीति युवाओं की उपलब्धियां देना है वह चाहे राजनैतिक दिशा की ओर हो या व्यावसायिक, संगीत हो या खेलकूद, शिक्षा हो या समाजसेवा। युवाओं को रोजगार और व्यवस्थाओं से मजबूत करना हमारा उद्देश्य है।
+                            </motion.p>
                             <motion.ul
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
@@ -209,12 +218,84 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* Leader 1 - Om Prakash Yadav */}
+            {/* National President - Vijay Shanker Shukla */}
+            <section className="py-20 px-6 bg-slate-50">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/30 to-green-flag/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                                <img
+                                    src={image8}
+                                    alt="Vijay Shanker Shukla"
+                                    className="relative w-[500px] h-[400px] md:h-[500px] object-contain bg-white rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                                />
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6 order-2"
+                        >
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl md:text-5xl font-bold text-navy-flag"
+                            >
+                                विजय शंकर शुक्ला
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="h-1.5 w-32 bg-gradient-to-r from-saffron to-green-flag"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6 }}
+                                className="text-2xl text-saffron font-bold"
+                            >
+                                राष्ट्रीय अध्यक्ष
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8 }}
+                                className="text-slate-700 leading-relaxed text-lg"
+                            >
+                                युवाओं के प्रेरणास्रोत और अनुभवी नेतृत्व, विजय शंकर शुक्ला जी युवा न्याय दल के राष्ट्रीय अध्यक्ष के रूप में संगठन का कुशल नेतृत्व कर रहे हैं। उनका लक्ष्य युवाओं को न्याय और सशक्तिकरण के मार्ग पर अग्रसर करना है।
+                            </motion.p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Leader 1 - Gagan Bajpai */}
             <section className="py-16 px-6 bg-white">
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left - Content */}
-                    <motion.div
+                        <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -281,14 +362,15 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* Leader 2 - Gagan Bajpai */}
-            <section className="py-16 px-6 bg-slate-50">
+            {/* National General Secretary - Shubham Gupta */}
+            <section className="py-16 px-6 bg-white">
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                      
+
+                        {/* Image */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                             className="order-1"
@@ -297,17 +379,69 @@ const AboutUs = () => {
                                 whileHover={{ scale: 1.03 }}
                                 className="relative group"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-green-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-navy-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                                 <img
-                                    src={image36}
-                                    alt="Gagan Bajpai"
-                                    className="relative  w-[500px] h-[400px] md:h-[465px]  object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                    src={image38}
+                                    alt="Shubham Gupta"
+                                    className="relative w-[450px] h-[400px] md:h-[460px] object-fit rounded-2xl shadow-2xl border-4 border-white mx-auto"
                                 />
                             </motion.div>
-                            
                         </motion.div>
-  {/* Right - Content */}
-                             <motion.div
+
+                        {/* Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6 order-2"
+                        >
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                            >
+                                शुभम गुप्ता
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="h-1 w-24 bg-navy-flag"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6 }}
+                                className="text-xl text-navy-flag font-semibold"
+                            >
+                                राष्ट्रीय महासचिव
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8 }}
+                                className="text-slate-700 leading-relaxed"
+                            >
+                                संगठन की मजबूती और प्रशासनिक कुशलता के साथ, शुभम गुप्ता जी राष्ट्रीय महासचिव के रूप में युवा न्याय दल के मिशन को धरातल पर उतारने के लिए समर्पित हैं।
+                            </motion.p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Leader 2 - Om Prakash Yadav */}
+            <section className="py-16 px-6 bg-slate-50">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                        {/* Content */}
+                        <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -358,12 +492,33 @@ const AboutUs = () => {
                                 अनुभवी नेतृत्व और समाज सेवा के प्रति समर्पित, ओम प्रकाश यादव जी युवा न्याय दल के राष्ट्रीय उपाध्यक्ष के रूप में संगठन को नई दिशा प्रदान कर रहे हैं।
                             </motion.p>
                         </motion.div>
-                       
+
+                        {/* Image */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1 lg:order-2"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-green-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                                <img
+                                    src={image36}
+                                    alt="Om Prakash Yadav"
+                                    className="relative w-[500px] h-[400px] md:h-[465px] object-cover rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                                />
+                            </motion.div>
+                        </motion.div>
+
                     </div>
                 </div>
             </section>
 
-     
+
 
             {/* Image Slider Section */}
             <section className="py-20 px-6 bg-white">
@@ -376,7 +531,7 @@ const AboutUs = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
-                              हमारी गतिविधियाँ
+                            हमारी गतिविधियाँ
                         </h2>
                         <motion.div
                             initial={{ scaleX: 0 }}
@@ -400,7 +555,7 @@ const AboutUs = () => {
                         }}
                         className="pb-12"
                     >
-                        {[image1, image2, image3, image4, image5,  image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
+                        {[image1, image2, image3, image4, image5, image7, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
                             <SwiperSlide key={idx}>
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}

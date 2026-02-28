@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image1, image2, image3, image4, image5,   image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+import { logo, image36, image37, image38, image1, image2, image3, image4, image5, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +16,7 @@ const Home = () => {
             <section className="pt-32 pb-20 px-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-saffron/10 rounded-full blur-3xl" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-flag/10 rounded-full blur-3xl" />
-                
+
                 <div className="container mx-auto relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left Content */}
@@ -189,21 +189,41 @@ const Home = () => {
                         />
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    {/* Top Leaders Row */}
+                    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16">
+                        <LeaderCard
+                            image={image8}
+                            name="विजय शंकर शुक्ला"
+                            title="राष्ट्रीय अध्यक्ष"
+                            subtitle="संगठन का कुशल नेतृत्व"
+                            delay={0.1}
+                            position="object-contain bg-white"
+                        />
+                        <LeaderCard
+                            image={image38}
+                            name="शुभम गुप्ता"
+                            title="राष्ट्रीय महासचिव"
+                            subtitle="संगठन की प्रशासनिक रीढ़"
+                            delay={0.2}
+                            position="object-top object-contain bg-white"
+                        />
+                    </div>
+
+                    {/* Vice Presidents Row */}
+                    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mt-16 border-t pt-16 border-slate-100">
                         <LeaderCard
                             image={image37}
-                             name="गगन बाजपेई"
+                            name="गगन बाजपेई"
                             title="राष्ट्रीय उपाध्यक्ष"
                             subtitle="संगठन के प्रेरणा स्रोत"
-                            
-                            delay={0.1}
+                            delay={0.3}
                         />
                         <LeaderCard
                             image={image36}
-                           name="ओम प्रकाश यादव"
+                            name="ओम प्रकाश यादव"
                             title="राष्ट्रीय उपाध्यक्ष"
                             subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
-                            delay={0.2}
+                            delay={0.4}
                         />
                     </div>
                 </div>
@@ -243,7 +263,7 @@ const Home = () => {
                         }}
                         className="pb-12"
                     >
-                        {[image1, image2, image3, image4, image5, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
+                        {[image1, image2, image3, image4, image5, image7, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
                             <SwiperSlide key={idx}>
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
@@ -335,7 +355,7 @@ const CommitmentCard = ({ icon, title, desc, color, delay }) => (
     </motion.div>
 );
 
-const LeaderCard = ({ image, name, title, subtitle, delay }) => (
+const LeaderCard = ({ image, name, title, subtitle, delay, position = "object-cover" }) => (
     <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -347,16 +367,16 @@ const LeaderCard = ({ image, name, title, subtitle, delay }) => (
         <div className="relative">
             <motion.div
                 whileHover={{ scale: 1.03 }}
-                className="relative overflow-hidden rounded-3xl shadow-2xl"
+                className="relative overflow-hidden rounded-3xl shadow-2xl bg-white"
             >
-                <img 
-                    src={image} 
-                    alt={name} 
-                    className="w-full h-[500px] object-cover"
+                <img
+                    src={image}
+                    alt={name}
+                    className={`w-full h-[500px] ${position}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t to-transparent   transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t to-transparent opacity-0 group-hover:opacity-20 transition-all duration-500" />
             </motion.div>
-            <motion.div 
+            <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ delay: delay + 0.3 }}
