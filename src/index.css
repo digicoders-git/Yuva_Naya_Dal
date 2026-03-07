@@ -1,9 +1,13 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Mukta:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
     --color-saffron: #ff9933;
     --color-green-flag: #138808;
     --color-navy-flag: #000080;
+    --font-heading: 'Outfit', sans-serif;
+    --font-hindi: 'Mukta', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 :root {
@@ -13,7 +17,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body), var(--font-hindi), sans-serif;
     @apply bg-slate-50 text-slate-900;
 }
 

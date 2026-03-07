@@ -21,7 +21,7 @@ const Footer = () => {
         <footer className="relative bg-white pt-24 pb-12 overflow-hidden border-t border-slate-100">
             {/* Floating Contact Icons */}
             <FloatingContact />
-            
+
             {/* Top decorative line */}
             <div className="gov-gradient w-full absolute top-0 left-0" />
 
@@ -31,8 +31,8 @@ const Footer = () => {
                     <div className="flex items-center gap-4">
                         <img src={logo} alt="Yuva Nyay Dal" className="h-16 w-16 rounded-full shadow-lg" />
                         <div>
-                            <h3 className="text-2xl font-bold text-navy-flag">युवा न्याय दल</h3>
-                            <p className="text-xs text-saffron uppercase tracking-widest font-semibold italic">समाज में न्याय, समानता और पारदर्शिता</p>
+                            <h3 className="text-2xl font-bold text-navy-flag font-hindi">युवा न्याय दल</h3>
+                            <p className="text-[10px] text-saffron uppercase tracking-widest font-bold italic font-body">समाज में न्याय, समानता और पारदर्शिता</p>
                         </div>
                     </div>
                     <p className="text-slate-600 leading-relaxed text-sm italic">
@@ -46,9 +46,8 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Quick Links */}
                 <div>
-                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-saffron pl-4">Quick Links</h4>
+                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-saffron pl-4 font-heading uppercase tracking-widest">Quick Links</h4>
                     <ul className="flex flex-col gap-4 text-slate-600 font-medium">
                         <FooterLink name="Home" path="/" />
                         <FooterLink name="About Us" path="/about" />
@@ -58,9 +57,8 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Information */}
                 <div>
-                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-green-flag pl-4">Important Info</h4>
+                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-green-flag pl-4 font-heading uppercase tracking-widest">Important Info</h4>
                     <ul className="flex flex-col gap-4 text-slate-600 font-medium">
                         {/* <li><Link to="/vision" className="hover:text-saffron transition-colors">Our Vision</Link></li>
                         <li><Link to="/mission" className="hover:text-saffron transition-colors">Our Mission</Link></li> */}
@@ -70,9 +68,8 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Contact Section */}
                 <div>
-                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-navy-flag pl-4">Contact Details</h4>
+                    <h4 className="text-lg font-bold text-navy-flag mb-8 border-l-4 border-navy-flag pl-4 font-heading uppercase tracking-widest">Contact Details</h4>
                     <ul className="flex flex-col gap-6 text-slate-600 text-sm">
                         <li className="flex items-start gap-4">
                             <span className="p-2 bg-saffron/10 text-saffron rounded-lg mt-1"><HiOutlineLocationMarker size={20} /></span>

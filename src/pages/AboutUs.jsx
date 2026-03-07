@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { image36, image37, image38, logo, image1, image2, image3, image4, image5, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+import { image39, image36, image37, image38, logo, image1, image2, image3, image4, image5, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -9,8 +10,8 @@ const AboutUs = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6">
-                <div className="container mx-auto">
+            <section className="pt-40 pb-24 px-6">
+                <div className="container mx-auto max-w-7xl">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left - Description */}
                         <motion.div
@@ -23,7 +24,7 @@ const AboutUs = () => {
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-5xl font-bold text-navy-flag leading-tight"
+                                className="text-5xl md:text-7xl font-extrabold text-navy-flag leading-tight font-heading uppercase tracking-tight"
                             >
                                 युवा न्याय दल
                             </motion.h1>
@@ -62,11 +63,10 @@ const AboutUs = () => {
                                 whileHover={{ scale: 1.05, rotate: 2 }}
                                 className="relative"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/20 to-green-flag/20 rounded-  blur-3xl" />
                                 <img
                                     src={logo}
                                     alt="Yuva Nyay Dal Logo"
-                                    className="relative w-80 h-80 object-cover rounded-[100px] shadow-2xl border-8 border-white"
+                                    className="relative w-80 h-80 object-contain rounded-[100px] shadow-2xl border-8 border-white"
                                 />
                             </motion.div>
                         </motion.div>
@@ -74,8 +74,8 @@ const AboutUs = () => {
                 </div>
             </section>
             {/* About Us Section */}
-            <section className="py-20 px-6 bg-white">
-                <div className="container mx-auto max-w-5xl">
+            <section className="py-24 px-6 bg-white border-y border-slate-100">
+                <div className="container mx-auto max-w-4xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -113,8 +113,8 @@ const AboutUs = () => {
             </section>
 
             {/* Mission & Vision Section */}
-            <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-white">
-                <div className="container mx-auto">
+            <section className="py-24 px-6 bg-gradient-to-br from-slate-50 to-white">
+                <div className="container mx-auto max-w-6xl">
                     <div className="grid lg:grid-cols-2 gap-12">
                         {/* Mission */}
                         <motion.div
@@ -131,7 +131,7 @@ const AboutUs = () => {
                                 transition={{ delay: 0.2 }}
                                 className="text-3xl font-bold text-navy-flag mb-6"
                             >
-                                 Mission (मिशन)
+                                Mission (मिशन)
                             </motion.h3>
                             <motion.p
                                 initial={{ opacity: 0 }}
@@ -187,7 +187,7 @@ const AboutUs = () => {
                                 transition={{ delay: 0.2 }}
                                 className="text-3xl font-bold text-navy-flag mb-6"
                             >
-                                 Vision (दृष्टि)
+                                Vision (दृष्टि)
                             </motion.h3>
                             <motion.p
                                 initial={{ opacity: 0 }}
@@ -228,8 +228,8 @@ const AboutUs = () => {
             </section>
 
             {/* National President - Vijay Shanker Shukla */}
-            <section className="py-20 px-6 bg-slate-50">
-                <div className="container mx-auto">
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-6xl">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Image */}
                         <motion.div
@@ -243,11 +243,10 @@ const AboutUs = () => {
                                 whileHover={{ scale: 1.03 }}
                                 className="relative group"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/30 to-green-flag/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                                 <img
                                     src={image8}
                                     alt="Vijay Shanker Shukla"
-                                    className="relative w-[500px] h-[400px] md:h-[500px] object-contain bg-white rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                                    className="relative w-full max-w-[600px] h-auto max-h-[600px] object-contain bg-white rounded-2xl shadow-2xl border-4 border-white mx-auto"
                                 />
                             </motion.div>
                         </motion.div>
@@ -265,9 +264,9 @@ const AboutUs = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-3xl font-bold text-navy-flag"
+                                className="text-4xl md:text-5xl font-bold text-navy-flag font-heading uppercase tracking-tight"
                             >
-                            माननीय विजय शंकर शुक्ला (अभिवक्ता)
+                                माननीय विजय शंकर शुक्ला (अभिवक्ता)
                             </motion.h2>
                             <motion.div
                                 initial={{ scaleX: 0 }}
@@ -300,7 +299,7 @@ const AboutUs = () => {
             </section>
 
             {/* Leader 2 - Om Prakash Yadav */}
-            <section className="py-16 px-6 bg-white">
+            <section className="py-16 px-6">
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
 
@@ -317,9 +316,9 @@ const AboutUs = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                                className="text-4xl md:text-5xl font-bold text-navy-flag font-heading uppercase tracking-tight"
                             >
-                               माननीय  ओम प्रकाश यादव
+                                माननीय ओम प्रकाश यादव
                             </motion.h2>
                             <motion.div
                                 initial={{ scaleX: 0 }}
@@ -369,11 +368,10 @@ const AboutUs = () => {
                                 whileHover={{ scale: 1.03 }}
                                 className="relative group"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-green-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                                 <img
                                     src={image36}
                                     alt="Om Prakash Yadav"
-                                    className="relative w-[500px] h-[400px] md:h-[465px] object-cover rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                                    className="relative w-full max-w-[600px] h-auto max-h-[600px] object-contain rounded-2xl shadow-2xl border-4 border-white mx-auto"
                                 />
                             </motion.div>
                         </motion.div>
@@ -383,10 +381,30 @@ const AboutUs = () => {
             </section>
 
             {/* Leader 1 - Gagan Bajpai */}
-            <section className="py-16 px-6 bg-slate-50">
+            <section className="py-16 px-6">
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Left - Content */}
+                        {/* Image */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <img
+                                    src={image37}
+                                    alt="Gagan Bajpai"
+                                    className="relative w-full max-w-[600px] h-auto max-h-[600px] object-contain rounded-2xl shadow-2xl border-4 border-white mx-auto"
+                                />
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Content */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -399,7 +417,7 @@ const AboutUs = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                                className="text-4xl md:text-5xl font-bold text-navy-flag font-heading uppercase tracking-tight"
                             >
                                 गगन बाजपेई
                             </motion.h2>
@@ -424,76 +442,34 @@ const AboutUs = () => {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.8 }}
-                                className="text-slate-700 leading-relaxed"
+                                className="text-slate-700 leading-relaxed text-lg"
                             >
                                 युवा ऊर्जा और नवीन सोच के साथ, गगन बाजपेई जी युवा न्याय दल के राष्ट्रीय उपाध्यक्ष के रूप में युवाओं को सशक्त बनाने और समाज में सकारात्मक बदलाव लाने के लिए कार्यरत हैं।
                             </motion.p>
-                        </motion.div>
-
-                        {/* Right - Image */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            className="order-1 lg:order-2"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.03 }}
-                                className="relative group"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-br from-saffron/30 to-navy-flag/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                                <img
-                                    src={image37}
-                                    alt="Gagan Bajpai"
-                                    className="relative w-[500px] h-[400px] md:h-[465px] object-cover rounded-2xl shadow-2xl border-4 border-white"
-                                />
-                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
             {/* National General Secretary - Shubham Gupta */}
-            <section className="py-16 px-6 bg-white">
+            <section className="py-16 px-6">
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                        {/* Image */}
+                        {/* Content */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="order-1"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.03 }}
-                                className="relative group"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-br from-navy-flag/30 to-saffron/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                                <img
-                                    src={image38}
-                                    alt="Shubham Gupta"
-                                    className="relative w-[450px] h-[400px] md:h-[460px] object-fit rounded-2xl shadow-2xl border-4 border-white mx-auto"
-                                />
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Content */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="space-y-6 order-2"
+                            className="space-y-6 order-2 lg:order-1"
                         >
                             <motion.h2
                                 initial={{ opacity: 0, y: -20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-3xl md:text-4xl font-bold text-navy-flag"
+                                className="text-4xl md:text-5xl font-bold text-navy-flag font-heading uppercase tracking-tight"
                             >
                                 शुभम गुप्ता
                             </motion.h2>
@@ -518,18 +494,111 @@ const AboutUs = () => {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.8 }}
-                                className="text-slate-700 leading-relaxed"
+                                className="text-slate-700 leading-relaxed text-lg"
                             >
                                 संगठन की मजबूती और प्रशासनिक कुशलता के साथ, शुभम गुप्ता जी राष्ट्रीय महासचिव के रूप में युवा न्याय दल के मिशन को धरातल पर उतारने के लिए समर्पित हैं।
+                            </motion.p>
+                        </motion.div>
+
+                        {/* Image */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1 lg:order-2"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <img
+                                    src={image38}
+                                    alt="Shubham Gupta"
+                                    className="relative w-full max-w-[600px] h-auto max-h-[600px] object-contain  mx-auto"
+                                />
+                            </motion.div>
+                        </motion.div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* National General Secretary - Raju Prasad Tiwari */}
+            <section className="py-16 px-6">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Image */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="order-1"
+                        >
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative group"
+                            >
+                                <img
+                                    src={image39}
+                                    alt="राजू प्रसाद तिवारी"
+                                    className="relative w-full max-w-[600px] h-auto max-h-[600px] object-contain md:w-[460px] md:h-[460px] mx-auto"
+                                />
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-6 order-2"
+                        >
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl md:text-5xl font-bold text-navy-flag font-heading uppercase tracking-tight"
+                            >
+                                राजू प्रसाद तिवारी
+                            </motion.h2>
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 }}
+                                className="h-1 w-24 bg-saffron"
+                            />
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6 }}
+                                className="text-xl text-saffron font-semibold"
+                            >
+                                राष्ट्रीय महासचिव
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8 }}
+                                className="text-slate-700 leading-relaxed text-lg"
+                            >
+                                अनुभवी नेतृत्व और संगठन के प्रति अटूट निष्ठा के साथ, राजू प्रसाद तिवारी जी राष्ट्रीय महासचिव के रूप में युवा न्याय दल के मिशन को सफल बनाने के लिए संकल्पित हैं।
                             </motion.p>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
+
             {/* Image Slider Section */}
-            <section className="py-20 px-6 bg-white">
-                <div className="container mx-auto">
+            <section className="py-24 px-6 bg-white">
+                <div className="container mx-auto max-w-7xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}

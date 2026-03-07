@@ -13,11 +13,11 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+            <section className="pt-40 pb-24 px-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-saffron/10 rounded-full blur-3xl" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-flag/10 rounded-full blur-3xl" />
 
-                <div className="container mx-auto relative z-10">
+                <div className="container mx-auto max-w-7xl relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left Content */}
                         <motion.div
@@ -31,7 +31,7 @@ const Home = () => {
                                 transition={{ delay: 0.3 }}
                                 className="h-1 w-24 bg-saffron rounded-full mb-6"
                             />
-                            <h1 className="text-5xl md:text-6xl font-bold text-navy-flag mb-6 leading-tight">
+                            <h1 className="text-6xl md:text-7xl font-extrabold text-navy-flag mb-8 leading-[1.1] font-heading uppercase tracking-tight">
                                 युवा न्याय दल<br />
                                 <span className="text-saffron">राष्ट्र का संकल्प</span>
                             </h1>
@@ -78,8 +78,8 @@ const Home = () => {
             </section>
 
             {/* Stats Section */}
-            <section className="py-16 px-6 bg-white">
-                <div className="container mx-auto">
+            <section className="py-24 px-6 bg-white border-y border-slate-100">
+                <div className="container mx-auto max-w-6xl">
                     <div className="grid md:grid-cols-4 gap-8">
                         <StatCard number="10K+" label="सक्रिय सदस्य" delay={0.1} />
                         <StatCard number="50+" label="सफल अभियान" delay={0.2} />
@@ -90,8 +90,8 @@ const Home = () => {
             </section>
 
             {/* Commitments Section */}
-            <section className="py-20 px-6">
-                <div className="container mx-auto">
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-7xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -169,15 +169,15 @@ const Home = () => {
             </section>
 
             {/* Leaders Section */}
-            <section className="py-20 px-6 bg-white">
-                <div className="container mx-auto">
+            <section className="py-24 px-6 bg-white">
+                <div className="container mx-auto max-w-5xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-navy-flag mb-6 font-heading uppercase tracking-wide">
                             हमारा नेतृत्व
                         </h2>
                         <motion.div
@@ -230,8 +230,8 @@ const Home = () => {
             </section>
 
             {/* Gallery Slider */}
-            <section className="py-20 px-6">
-                <div className="container mx-auto">
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-7xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -382,9 +382,9 @@ const LeaderCard = ({ image, name, title, subtitle, delay, position = "object-co
                 transition={{ delay: delay + 0.3 }}
                 className="mt-6 text-center"
             >
-                <h4 className="text-2xl font-bold text-navy-flag mb-2">{name}</h4>
-                <p className="text-saffron font-semibold text-lg mb-1">{title}</p>
-                <p className="text-slate-600">{subtitle}</p>
+                <h4 className="text-3xl font-bold text-navy-flag mb-2 font-heading uppercase tracking-wide">{name}</h4>
+                <p className="text-saffron font-bold text-xl mb-1 font-hindi">{title}</p>
+                <p className="text-slate-600 font-medium">{subtitle}</p>
             </motion.div>
         </div>
     </motion.div>

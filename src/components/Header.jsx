@@ -26,7 +26,7 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Our Gallery', path: '/gallery' },
-   
+
         { name: 'Contact Us', path: '/contact' },
         // { name: 'Terms', path: '/terms' },
         // { name: 'Privacy', path: '/privacy' },
@@ -37,19 +37,19 @@ const Header = () => {
             {/* Top decorative line */}
             <div className="gov-gradient w-full" />
 
-            <nav className="container mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            <nav className="container mx-auto px-4 md:px-8 py-3 flex items-center justify-between min-h-[72px]">
                 {/* Logo & Brand Name */}
                 <NavLink to="/" className="flex items-center gap-3 group">
                     <motion.img
                         src={logo}
                         alt="Yuva Nyay Dal"
-                        className="h-13 w-13 rounded- object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
+                        className="h-13 w-13 rounded-full object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                     />
-                    <div className="flex flex-col gap-1">
-                        <span className="text-navy-flag font-bold text-lg md:text-xl leading-none">युवा न्याय दल</span>
-                        <span className="text-saffron text-xs font-medium tracking-widest">(अराजनैतिक)</span>
+                    <div className="flex flex-col gap-0">
+                        <span className="text-navy-flag font-bold text-xl md:text-2xl leading-none font-hindi">युवा न्याय दल</span>
+                        <span className="text-saffron text-[10px] font-bold tracking-[0.2em] font-body uppercase">(अराजनैतिक)</span>
                     </div>
                 </NavLink>
 

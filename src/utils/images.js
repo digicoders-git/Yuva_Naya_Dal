@@ -8,7 +8,7 @@ import flag from '../assets/flag.png';
    GALLERY & ACTIVITY IMAGES
    ========================================================================= */
 
-/* Import all Activity Highlights (1-37) */
+/* Import all Activity Highlights (1-39) */
 import image1 from '../assets/image-1.jpeg';
 import image2 from '../assets/image-2.jpeg';
 import image3 from '../assets/image-3.jpeg';
@@ -47,6 +47,8 @@ import image35 from '../assets/image-35.jpeg';
 import image36 from '../assets/image-36.jpeg';
 import image37 from '../assets/image-37.jpeg';
 import image38 from '../assets/image-38.jpeg';
+import image39 from '../assets/image-39.jpeg';
+
 
 /* =========================================================================
    EXPORT ALL ASSETS
@@ -54,22 +56,22 @@ import image38 from '../assets/image-38.jpeg';
 
 // Collection of images for dynamic mapping (e.g. Gallery, Slider)
 export const galleryImages = {
-   1: image1, 2: image2, 3: image3, 4: image4, 5: image5,
-   7: image7, 8: image8, 9: image9, 10: image10,
-   11: image11, 12: image12, 13: image13, 14: image14, 15: image15,
-   16: image16, 17: image17, 18: image18, 19: image19, 20: image20,
-   21: image21, 22: image22, 23: image23, 24: image24, 25: image25,
-   26: image26, 27: image27, 28: image28, 29: image29, 30: image30,
-   31: image31, 32: image32, 33: image33, 34: image34, 35: image35,
-   36: image36, 37: image37, 38: image38
+    1: image1, 2: image2, 3: image3, 4: image4, 5: image5,
+    7: image7, 8: image8, 9: image9, 10: image10,
+    11: image11, 12: image12, 13: image13, 14: image14, 15: image15,
+    16: image16, 17: image17, 18: image18, 19: image19, 20: image20,
+    21: image21, 22: image22, 23: image23, 24: image24, 25: image25,
+    26: image26, 27: image27, 28: image28, 29: image29, 30: image30,
+    31: image31, 32: image32, 33: image33, 34: image34, 35: image35,
+    36: image36, 37: image37, 38: image38, 39: image39
 };
 
 // Export individual assets
 export {
-   logo,
-   flag,
-   image1, image2, image3, image4, image5, image7, image8, image9, image10,
-   image11, image12, image13, image14, image15, image16, image17, image18, image19, image20,
-   image21, image22, image23, image24, image25, image26, image27, image28, image29, image30,
-   image31, image32, image33, image34, image35, image36, image37, image38
+    logo,
+    flag,
+    image1, image2, image3, image4, image5, image7, image8, image9, image10,
+    image11, image12, image13, image14, image15, image16, image17, image18, image19, image20,
+    image21, image22, image23, image24, image25, image26, image27, image28, image29, image30,
+    image31, image32, image33, image34, image35, image36, image37, image38, image39
 };

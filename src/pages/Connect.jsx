@@ -5,18 +5,18 @@ import { useNavigate } from 'react-router-dom';
 
 const Connect = () => {
     const navigate = useNavigate();
-    
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Page Header */}
-            <section className="pt-32 pb-16 px-6">
-                <div className="container mx-auto text-center">
+            <section className="pt-40 pb-24 px-6 border-b border-slate-100 bg-white">
+                <div className="container mx-auto max-w-7xl text-center">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h1 className="text-5xl md:text-6xl font-bold text-navy-flag mb-4">
+                        <h1 className="text-5xl md:text-7xl font-extrabold text-navy-flag mb-6 font-heading uppercase tracking-tight">
                             हमसे जुड़ें
                         </h1>
                         <motion.div
@@ -33,8 +33,8 @@ const Connect = () => {
             </section>
 
             {/* Social Media Cards */}
-            <section className="pb-20 px-6">
-                <div className="container mx-auto max-w-6xl">
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-7xl">
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <SocialCard
                             icon={<FaFacebookF size={36} />}
@@ -89,7 +89,7 @@ const Connect = () => {
             </section>
 
             {/* Why Connect Section */}
-            <section className="py-20 px-6 bg-white">
+            <section className="py-24 px-6 bg-white border-y border-slate-100">
                 <div className="container mx-auto max-w-5xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,7 @@ const Connect = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-4">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-navy-flag mb-6 font-heading uppercase tracking-wide">
                             हमसे जुड़ने के फायदे
                         </h2>
                         <motion.div
