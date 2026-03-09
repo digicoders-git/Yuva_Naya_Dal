@@ -33,11 +33,12 @@ const Header = () => {
     ];
 
     return (
-        <header className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-white/80 shadow-lg backdrop-blur-md' : 'bg-transparent'}`}>
+        <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-lg">
             {/* Top decorative line */}
             <div className="gov-gradient w-full" />
 
-            <nav className="container mx-auto px-4 md:px-8 py-3 flex items-center justify-between min-h-[72px]">
+            <nav className="w-full bg-white">
+                <div className="container mx-auto px-4 md:px-8 py-3 flex items-center justify-between min-h-[72px]">
                 {/* Logo & Brand Name */}
                 <NavLink to="/" className="flex items-center gap-3 group">
                     <motion.img
@@ -86,6 +87,7 @@ const Header = () => {
                 >
                     {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt3 />}
                 </button>
+                </div>
             </nav>
 
             {/* Mobile Menu Drawer (Switch at XL) */}
@@ -94,8 +96,7 @@ const Header = () => {
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="xl:hidden bg-white/95 border-b border-gray-100 overflow-hidden shadow-xl"
+                        exit={{ opacity: 0, height: 0 }}                        className="xl:hidden bg-white border-b border-gray-100 overflow-hidden shadow-xl relative z-10"
                     >
                         <ul className="container mx-auto px-6 py-8 flex flex-col gap-6 font-medium">
                             {navLinks.map((link) => (

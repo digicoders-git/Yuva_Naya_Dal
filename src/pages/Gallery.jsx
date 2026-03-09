@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { galleryImages } from '../utils/images';
-import { HiX } from 'react-icons/hi';
+import { galleryImages, logo } from '../utils/images';
+import { HiX, HiOutlineArrowRight } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -9,33 +10,157 @@ const Gallery = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
-            {/* Page Header */}
-            <section className="pt-32 pb-16 px-6">
-                <div className="container mx-auto text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h1 className="text-5xl md:text-6xl font-bold text-navy-flag mb-4">
-                            हमारी गैलरी
-                        </h1>
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            transition={{ delay: 0.3, duration: 0.6 }}
-                            className="h-1 w-40 bg-gradient-to-r from-saffron via-white to-green-flag mx-auto mb-6"
-                        />
-                        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                            युवा न्याय दल की गतिविधियों और सामाजिक कार्यों की झलकियां
-                        </p>
-                    </motion.div>
+            {/* Hero Section - Modern Design */}
+            <section className="relative pt-40 pb-32 px-6 overflow-hidden bg-gradient-to-br from-navy-flag via-slate-900 to-navy-flag min-h-[85vh] flex items-center">
+                {/* Animated Background Elements */}
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-saffron rounded-full blur-3xl animate-pulse" />
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-flag rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
                 </div>
+
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Left - Content */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="space-y-8"
+                        >
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-block bg-saffron/20 backdrop-blur-sm border border-saffron/30 px-6 py-2 rounded-full"
+                            >
+                                <span className="text-saffron font-bold text-sm uppercase tracking-wider">फोटो गैलरी</span>
+                            </motion.div>
+
+                            <motion.h1
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-4xl md:text-6xl font-black text-white leading-[1.1]"
+                            >
+                                हमारी गैलरी
+                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-saffron via-white to-green-flag mt-2">
+                                    यादों का संग्रह
+                                </span>
+                            </motion.h1>
+
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="text-lg text-slate-300 leading-relaxed"
+                            >
+                                युवा न्याय दल की गतिविधियों, सामाजिक कार्यों और महत्वपूर्ण आयोजनों की झलकियां
+                            </motion.p>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.7 }}
+                                className="flex flex-wrap gap-4 pt-4"
+                            >
+                                <NavLink
+                                    to="/connect"
+                                    className="group bg-gradient-to-r from-saffron to-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-saffron/50 transition-all flex items-center gap-2"
+                                >
+                                    हमसे जुड़ें
+                                    <HiOutlineArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                                </NavLink>
+                                <NavLink
+                                    to="/about"
+                                    className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
+                                >
+                                    हमारे बारे में
+                                </NavLink>
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Right - Logo with Modern Design */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="flex justify-center lg:justify-end"
+                        >
+                            <motion.div
+                                className="relative w-80 h-80"
+                                whileHover={{ scale: 1.05 }}
+                            >
+                                {/* Rotating Rings */}
+                                <motion.div
+                                    className="absolute inset-0 rounded-full border-4 border-transparent border-t-saffron border-r-white"
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                                />
+                                <motion.div
+                                    className="absolute inset-2 rounded-full border-4 border-transparent border-b-green-flag border-l-saffron"
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                />
+
+                                {/* Logo */}
+                                <div className="absolute inset-4 bg-white rounded-full shadow-2xl flex items-center justify-center">
+                                    <img
+                                        src={logo}
+                                        alt="Yuva Nyay Dal Logo"
+                                        className="w-full h-full object-cover rounded-full p-2"
+                                    />
+                                </div>
+
+                                {/* Floating Badges */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 1, duration: 0.5 }}
+                                    className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
+                                >
+                                    100+ फोटो
+                                </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 1.2, duration: 0.5 }}
+                                    className="absolute -bottom-4 -left-4 bg-green-flag text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
+                                >
+                                    50+ इवेंट्स
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                </div>
+
+
             </section>
 
             {/* Gallery Grid */}
-            <section className="pb-20 px-6">
+            <section className="pt-20 pb-20 px-6">
                 <div className="container mx-auto max-w-7xl">
+                    {/* Gallery Description */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy-flag mb-4">
+                            हमारी गतिविधियों की झलकियां
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-saffron mx-auto rounded-full mb-6"
+                        />
+                        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                            युवा न्याय दल द्वारा आयोजित विभिन्न सामाजिक कार्यक्रमों, जागरूकता अभियानों, और सामुदायिक गतिविधियों की तस्वीरें। हर तस्वीर समाज में सकारात्मक बदलाव लाने की हमारी प्रतिबद्धता को दर्शाती है।
+                        </p>
+                    </motion.div>
+
                     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
                         {images.map((num, idx) => (
                             <motion.div
