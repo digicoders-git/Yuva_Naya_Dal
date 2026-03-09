@@ -125,7 +125,7 @@ const AboutUs = () => {
                                     transition={{ delay: 1.2, duration: 0.5 }}
                                     className="absolute -bottom-4 -left-4 bg-green-flag text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    25+ राज्य
+                                    5+ राज्य
                                 </motion.div>
                             </motion.div>
                         </motion.div>
@@ -474,7 +474,7 @@ const AboutUs = () => {
                                     <div className="text-xs md:text-sm text-slate-600 mt-1">अभियान</div>
                                 </div>
                                 <div className="bg-white rounded-xl p-4 text-center shadow-md border border-slate-100">
-                                    <div className="text-2xl md:text-3xl font-bold text-green-flag">25+</div>
+                                    <div className="text-2xl md:text-3xl font-bold text-green-flag">5+</div>
                                     <div className="text-xs md:text-sm text-slate-600 mt-1">राज्य</div>
                                 </div>
                             </motion.div>

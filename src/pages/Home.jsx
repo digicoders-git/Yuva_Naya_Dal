@@ -114,7 +114,7 @@ const Home = () => {
                                     transition={{ delay: 1.2, duration: 0.5 }}
                                     className="absolute -bottom-4 -left-4 bg-green-flag text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    25+ राज्य
+                                    5+ राज्य
                                 </motion.div>
                             </motion.div>
                         </motion.div>
@@ -133,7 +133,7 @@ const Home = () => {
                         <StatCard number="10K+" label="सक्रिय सदस्य" delay={0.1} />
                         <StatCard number="50+" label="सफल अभियान" delay={0.2} />
                         <StatCard number="100+" label="जिला इकाइयाँ" delay={0.3} />
-                        <StatCard number="25+" label="राज्य स्तर" delay={0.4} />
+                        <StatCard number="5+" label="राज्य स्तर" delay={0.4} />
                     </div>
                 </div>
             </section>
@@ -884,7 +884,7 @@ const Home = () => {
                         >
                             <h3 className="text-xl font-bold text-green-flag mb-3">हमारी पहुंच</h3>
                             <p className="text-white/90 text-sm leading-relaxed">
-                                25+ राज्यों में 100+ जिला इकाइयां और 10,000+ सक्रिय सदस्यों के साथ हम पूरे भारत में कार्यरत हैं।
+                                5+ राज्यों में 100+ जिला इकाइयां और 10,000+ सक्रिय सदस्यों के साथ हम पूरे भारत में कार्यरत हैं।
                             </p>
                         </motion.div>
 
@@ -994,7 +994,7 @@ const StatCard = ({ number, label, delay }) => (
     >
         {/* Decorative corner accent */}
         <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-saffron/10 to-transparent rounded-bl-full" />
-        
+
         <motion.h3
             className="text-3xl md:text-4xl font-black text-navy-flag mb-1 group-hover:text-saffron transition-colors relative z-10"
             initial={{ scale: 0 }}
@@ -1004,7 +1004,7 @@ const StatCard = ({ number, label, delay }) => (
             {number}
         </motion.h3>
         <p className="text-slate-600 font-semibold text-xs md:text-sm relative z-10">{label}</p>
-        
+
         {/* Bottom accent line */}
         <div className="mt-3 h-1 w-8 bg-saffron/30 mx-auto rounded-full group-hover:w-full group-hover:bg-saffron transition-all duration-500" />
     </motion.div>

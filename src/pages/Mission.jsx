@@ -14,7 +14,7 @@ const Mission = () => {
                     <div className="absolute top-10 left-10 w-32 h-32 md:w-64 md:h-64 bg-white rounded-full blur-3xl" />
                     <div className="absolute bottom-10 right-10 w-40 h-40 md:w-80 md:h-80 bg-green-flag rounded-full blur-3xl" />
                 </div>
-                
+
                 <div className="container mx-auto max-w-5xl relative z-10 text-center">
                     <motion.div
                         initial={{ scale: 0 }}
@@ -24,7 +24,7 @@ const Mission = () => {
                     >
                         <span className="text-white font-bold text-xs md:text-sm uppercase tracking-widest">हमारा मिशन</span>
                     </motion.div>
-                    
+
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ const Mission = () => {
                     >
                         समाज में <span className="text-green-flag">न्याय</span> और<br className="hidden md:block" /> युवाओं का <span className="text-saffron">सशक्तिकरण</span>
                     </motion.h1>
-                    
+
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -42,7 +42,7 @@ const Mission = () => {
                     >
                         युवाओं के एकजुटता, सम्मान, स्वाभिमान, शिक्षा, रोजगार, व्यवस्थाओं के लिए प्रतिबद्ध। हमारा मिशन समाज के अंतिम व्यक्ति तक न्याय पहुँचाना और युवाओं को सही दिशा, अवसर और मंच प्रदान करना है।
                     </motion.p>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -147,9 +147,9 @@ const Mission = () => {
                     >
                         <div className="grid md:grid-cols-2 gap-0">
                             <div className="relative h-64 md:h-auto">
-                                <img 
-                                    src={image36} 
-                                    alt="ओम प्रकाश यादव" 
+                                <img
+                                    src={image36}
+                                    alt="ओम प्रकाश यादव"
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/80 to-transparent" />
@@ -166,7 +166,7 @@ const Mission = () => {
                                 <div className="flex flex-wrap gap-3">
                                     <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200">
                                         <p className="text-xs text-slate-500">अनुभव</p>
-                                        <p className="text-navy-flag font-bold text-sm md:text-base">25+ वर्ष</p>
+                                        <p className="text-navy-flag font-bold text-sm md:text-base">5+ वर्ष</p>
                                     </div>
                                     <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200">
                                         <p className="text-xs text-slate-500">योगदान</p>
@@ -213,7 +213,7 @@ const MissionCard = ({ icon, title, desc, color, delay }) => (
         className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 shadow-lg hover:shadow-2xl transition-all group relative overflow-hidden"
     >
         <div className="absolute top-0 right-0 w-20 h-20 md:w-32 md:h-32 bg-gradient-to-br from-saffron/10 to-transparent rounded-bl-full" />
-        
+
         <div className="relative z-10">
             <div className={`${color} text-white w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-lg group-hover:scale-110 transition-transform text-xl md:text-2xl`}>
                 {icon}
@@ -221,7 +221,7 @@ const MissionCard = ({ icon, title, desc, color, delay }) => (
             <h3 className="text-lg md:text-xl font-bold text-navy-flag mb-2 md:mb-3">{title}</h3>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed">{desc}</p>
         </div>
-        
+
         <div className="absolute bottom-0 left-0 h-1 w-0 bg-saffron group-hover:w-full transition-all duration-500" />
     </motion.div>
 );
