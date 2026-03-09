@@ -117,7 +117,7 @@ const AboutUs = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10K+ सदस्य
+                                    10000+ सदस्य
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}
@@ -466,7 +466,7 @@ const AboutUs = () => {
                                 className="grid grid-cols-3 gap-4"
                             >
                                 <div className="bg-white rounded-xl p-4 text-center shadow-md border border-slate-100">
-                                    <div className="text-2xl md:text-3xl font-bold text-saffron">10K+</div>
+                                    <div className="text-2xl md:text-3xl font-bold text-saffron">10000+</div>
                                     <div className="text-xs md:text-sm text-slate-600 mt-1">सदस्य</div>
                                 </div>
                                 <div className="bg-white rounded-xl p-4 text-center shadow-md border border-slate-100">

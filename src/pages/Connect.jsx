@@ -118,7 +118,7 @@ const Connect = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10K+ फॉलोवर्स
+                                    10000+ फॉलोवर्स
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}

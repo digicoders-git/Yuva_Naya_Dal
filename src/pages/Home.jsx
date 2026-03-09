@@ -106,7 +106,7 @@ const Home = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10K+ सदस्य
+                                    10000+ सदस्य
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}
@@ -130,7 +130,7 @@ const Home = () => {
 
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        <StatCard number="10K+" label="सक्रिय सदस्य" delay={0.1} />
+                        <StatCard number="10000+" label="सक्रिय सदस्य" delay={0.1} />
                         <StatCard number="50+" label="सफल अभियान" delay={0.2} />
                         <StatCard number="100+" label="जिला इकाइयाँ" delay={0.3} />
                         <StatCard number="5+" label="राज्य स्तर" delay={0.4} />
