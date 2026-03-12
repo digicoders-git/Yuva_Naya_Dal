@@ -420,7 +420,7 @@ const AboutUs = () => {
                                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy-flag mb-3 font-heading">
                                     माननीय विजय शंकर शुक्ला
                                 </h3>
-                                <p className="text-lg md:text-xl text-slate-600 font-semibold">(अभिवक्ता)</p>
+                                <p className="text-lg md:text-xl text-slate-600 font-semibold">(अधिवक्ता)</p>
                             </motion.div>
 
                             <motion.div
