@@ -207,7 +207,7 @@ const Connect = () => {
                             name="WhatsApp"
                             handle="Join Updates Group"
                             color="bg-[#25D366]"
-                            link="https://wa.me/917800250000"
+                            link="https://wa.me/917800392026"
                             delay={0.5}
                         />
                         <SocialCard

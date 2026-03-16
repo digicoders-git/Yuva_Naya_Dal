@@ -418,7 +418,7 @@ const AboutUs = () => {
                                 transition={{ delay: 0.2 }}
                             >
                                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy-flag mb-3 font-heading">
-                                    माननीय विजय शंकर शुक्ला
+                                    मा. विजय शंकर शुक्ला
                                 </h3>
                                 <p className="text-lg md:text-xl text-slate-600 font-semibold">(अधिवक्ता)</p>
                             </motion.div>
@@ -486,7 +486,7 @@ const AboutUs = () => {
             {/* Leader 2 - Om Prakash Yadav */}
             <LeaderCard
                 image={image36}
-                name="माननीय ओम प्रकाश यादव"
+                name="मा. ओम प्रकाश यादव"
                 title="राष्ट्रीय उपाध्यक्ष"
                 subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
                 message="अनुभवी नेतृत्व और समाज सेवा के प्रति समर्पित, ओम प्रकाश यादव जी युवा न्याय दल के राष्ट्रीय उपाध्यक्ष के रूप में संगठन को नई दिशा प्रदान कर रहे हैं। उनका मानना है कि युवाओं को सही मार्गदर्शन और अवसर मिलने पर वे समाज और राष्ट्र के विकास में महत्वपूर्ण योगदान दे सकते हैं।"
@@ -568,7 +568,7 @@ const AboutUs = () => {
                         <SocialLink icon={<FaInstagram />} name="Instagram" link="https://www.instagram.com/yuva_nyay_dal" color="bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#515BD4]" delay={0.2} />
                         <SocialLink icon={<FaTwitter />} name="Twitter" link="https://twitter.com/yuvanyaydal_int" color="bg-[#1DA1F2]" delay={0.3} />
                         <SocialLink icon={<FaYoutube />} name="YouTube" link="https://www.youtube.com/@yuvanyaydal" color="bg-[#FF0000]" delay={0.4} />
-                        <SocialLink icon={<FaWhatsapp />} name="WhatsApp" link="https://wa.me/917800250000" color="bg-[#25D366]" delay={0.5} />
+                        <SocialLink icon={<FaWhatsapp />} name="WhatsApp" link="https://wa.me/917800392026" color="bg-[#25D366]" delay={0.5} />
                         <SocialLink icon={<FaTelegramPlane />} name="Telegram" link="https://t.me/yuvanyaydal" color="bg-[#0088CC]" delay={0.6} />
                     </div>
                 </div>

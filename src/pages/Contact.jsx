@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineClock, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { logo } from '../utils/images';
@@ -60,15 +59,26 @@ const Contact = () => {
                                 transition={{ delay: 0.7 }}
                                 className="flex flex-wrap gap-4 pt-4"
                             >
-                                <motion.a
-                                    href="tel:+917800250000"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="group bg-gradient-to-r from-saffron to-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-saffron/50 transition-all flex items-center gap-2"
-                                >
-                                    <HiOutlinePhone size={20} />
-                                    अभी कॉल करें
-                                </motion.a>
+                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                    <motion.a
+                                        href="tel:+917800250000"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="group bg-gradient-to-r from-saffron to-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-saffron/50 transition-all flex items-center gap-2"
+                                    >
+                                        <HiOutlinePhone size={20} />
+                                        कॉल करें (1)
+                                    </motion.a>
+                                    <motion.a
+                                        href="tel:+919236968527"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="group bg-gradient-to-r from-navy-flag to-slate-800 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-navy-flag/50 transition-all flex items-center gap-2"
+                                    >
+                                        <HiOutlinePhone size={20} />
+                                        कॉल करें (2)
+                                    </motion.a>
+                                </div>
                                 <NavLink
                                     to="/about"
                                     className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
@@ -188,13 +198,25 @@ const Contact = () => {
                                 delay={0.1}
                             />
 
-                            <ContactCard
-                                icon={<HiOutlinePhone size={28} />}
-                                title="फोन नंबर"
-                                desc="+91 78003 92026"
-                                color="bg-navy-flag"
-                                delay={0.2}
-                            />
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2, duration: 0.6 }}
+                                whileHover={{ y: -5 }}
+                                className="bg-white rounded-2xl shadow-lg p-6 flex items-start gap-4 border border-slate-100 hover:shadow-xl transition-all"
+                            >
+                                <div className="bg-navy-flag text-white p-4 rounded-xl shadow-md flex-shrink-0">
+                                    <HiOutlinePhone size={28} />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <h4 className="text-lg font-bold text-navy-flag mb-1">फोन नंबर</h4>
+                                    <div className="flex flex-col gap-1">
+                                        <a href="tel:+917800250000" className="text-slate-600 hover:text-saffron transition-colors">+91 78002 50000</a>
+                                        <a href="tel:+919236968527" className="text-slate-600 hover:text-saffron transition-colors">+91 92369 68527</a>
+                                    </div>
+                                </div>
+                            </motion.div>
 
                             <ContactCard
                                 icon={<HiOutlineMail size={28} />}
@@ -221,7 +243,7 @@ const Contact = () => {
                                 className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4"
                             >
                                 <motion.a
-                                    href="https://wa.me/917800250000"
+                                    href="https://wa.me/917800392026"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
@@ -230,14 +252,24 @@ const Contact = () => {
                                 >
                                     <FaWhatsapp size={20} className="md:w-6 md:h-6" /> <span className="hidden sm:inline">WhatsApp</span><span className="sm:hidden">WhatsApp</span>
                                 </motion.a>
-                                <motion.a
-                                    href="tel:+917800250000"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="flex-1 flex items-center justify-center gap-2 md:gap-3 bg-navy-flag text-white py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold shadow-xl text-sm md:text-base"
-                                >
-                                    <HiOutlinePhone size={20} className="md:w-6 md:h-6" /> Call Now
-                                </motion.a>
+                                <div className="flex flex-col gap-3 flex-1">
+                                    <motion.a
+                                        href="tel:+917800250000"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-full flex items-center justify-center gap-2 md:gap-3 bg-navy-flag text-white py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold shadow-xl text-sm md:text-base transition-all"
+                                    >
+                                        <HiOutlinePhone size={20} className="md:w-6 md:h-6" /> <span className="hidden sm:inline">कॉल करें (1)</span><span className="sm:hidden">Call 1</span>
+                                    </motion.a>
+                                    <motion.a
+                                        href="tel:+919236968527"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-full flex items-center justify-center gap-2 md:gap-3 bg-slate-700 text-white py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-bold shadow-xl text-sm md:text-base transition-all"
+                                    >
+                                        <HiOutlinePhone size={20} className="md:w-6 md:h-6" /> <span className="hidden sm:inline">कॉल करें (2)</span><span className="sm:hidden">Call 2</span>
+                                    </motion.a>
+                                </div>
                             </motion.div>
                         </div>
 

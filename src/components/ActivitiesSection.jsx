@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import { image1, image2, image3, image4, image5, image7, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20 } from '../utils/images';
+import { galleryImages } from '../utils/images';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -48,7 +48,7 @@ const ActivitiesSection = () => {
                         }}
                         className="pb-12"
                     >
-                        {[image1, image2, image3, image4, image5, image7, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20].map((img, idx) => (
+                        {Object.values(galleryImages).map((img, idx) => (
                             <SwiperSlide key={idx}>
                                 <NavLink to="/gallery">
                                     <motion.div

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const images = Array.from({ length: 37 }, (_, i) => i + 1);
+    const images = Object.keys(galleryImages).map(Number);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -181,14 +181,29 @@ const Gallery = () => {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/80 via-navy-flag/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                                     <div className="absolute bottom-4 left-4 right-4 text-white">
+                                        {num === 16 && (
+                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
+                                                मा. अध्यक्ष (युवा न्याय दल (अराजनैतिक)) जनपद फ़तेहपुर के एक कार्यक्रम में डीएम, एसपी, एडीएम, सीडीओ, एसडीएम सहित जिला प्रशासन के साथ बातचीत करते हुए।
+                                            </p>
+                                        )}
+                                        {num === 28 && (
+                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
+                                                भारतीय जनता पार्टी के कार्यक्रम के मंच में राष्ट्रीय नेत्रित्व टीम और केन्द्रीय और कैबिनेट और राज्य मंत्री और श्रेडी जनपदीय नेताओ के साथ युवा सम्मान शामिल
+                                            </p>
+                                        )}
+                                        {num === 30 && (
+                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
+                                              किसान सम्मान समारोह में मा. अध्यक्ष (जिला पंचायत) और मा. विधायकगढ़ और मा. ब्लॉक प्रमुख सहित नेताओ के साथ युवा किसानो के सम्मान में शामिल
+                                            </p>
+                                        )}
                                         {num === 36 && (
                                             <p className="font-bold text-sm">
-                                                गगन बाजपेई<br />राष्ट्रीय उपाध्यक्ष
+                                               ओम प्रकाश यादव<br />राष्ट्रीय उपाध्यक्ष
                                             </p>
                                         )}
                                         {num === 37 && (
                                             <p className="font-bold text-sm">
-                                                ओम प्रकाश यादव<br />राष्ट्रीय उपाध्यक्ष, पूर्व राज्य मंत्री
+                                                  गगन बाजपेई<br />राष्ट्रीय उपाध्यक्ष, पूर्व राज्य मंत्री
                                             </p>
                                         )}
                                     </div>

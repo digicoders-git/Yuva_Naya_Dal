@@ -75,9 +75,13 @@ const Footer = () => {
                             <span className="p-2 bg-saffron/10 text-saffron rounded-lg mt-1"><HiOutlineLocationMarker size={20} /></span>
                             <span>69/2 Deen Dayal Nagar, Khadra, <br /> Nirala Nagar, Lucknow</span>
                         </li>
-                        <li className="flex items-center gap-4">
-                            <span className="p-2 bg-navy-flag/10 text-navy-flag rounded-lg"><HiOutlinePhone size={20} /></span>
-                            <a href="tel:+917800250000" className="hover:text-saffron transition-colors">+91 78002 50000</a>
+                        <li className="flex items-start gap-4">
+                            <span className="p-2 bg-navy-flag/10 text-navy-flag rounded-lg mt-1"><HiOutlinePhone size={20} /></span>
+                            <div className="flex flex-col gap-1">
+                                <a href="tel:+917800250000" className="hover:text-saffron transition-colors">+91 78002 50000</a>
+                                <a href="tel:+919236968527" className="hover:text-saffron transition-colors">+91 92369 68527</a>
+                                <a href="tel:+917800392026" className="hover:text-saffron transition-colors">+91 7800 39 2026</a>
+                            </div>
                         </li>
                         <li className="flex items-center gap-4">
                             <span className="p-2 bg-green-flag/10 text-green-flag rounded-lg"><HiOutlineMail size={20} /></span>

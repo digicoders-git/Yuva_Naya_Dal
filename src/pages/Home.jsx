@@ -9,6 +9,7 @@ import ActivitiesSection from '../components/ActivitiesSection';
 
 const Home = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -35,8 +36,14 @@ const Home = () => {
                                 className="h-1 w-24 bg-saffron rounded-full mb-6"
                             />
                             <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-8 leading-[1.1] font-heading uppercase tracking-tight">
+                            <div className="flex flex-col gap-2">
+                               
                                 युवा न्याय दल<br />
+                                 {/* <span className="text-saffron text-[15px] font-bold tracking-[0.2em] font-body uppercase">(अराजनैतिक)</span> */}
+                            </div>
+                                
                                 <span className="text-saffron">राष्ट्र का संकल्प</span>
+                           
                             </h1>
                             <p className="text-xl text-slate-300 mb-4 leading-relaxed">
                                 युवा न्याय दल - एक अराजनैतिक संगठन जो युवाओं के सशक्तिकरण, सामाजिक न्याय और राष्ट्र निर्माण के लिए प्रतिबद्ध है।
@@ -252,7 +259,7 @@ const Home = () => {
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-navy-flag mb-6">हमारे लक्ष्य और उद्देश्य</h2>
                         <div className="h-1 w-32 bg-saffron mx-auto rounded-full mb-6" />
-                        <p className="text-slate-600 text-xl max-w-3xl mx-auto">युवा न्याय दल का मुख्य उद्देश्य समाज में सकारात्मक बदलाव लाना और युवाओं को सशक्त बनाना है</p>
+                        <p className="text-slate-600 text-xl max-w-3xl mx-auto">मुख्‍य उद्देश्‍य युवाओ को उज्‍जवल भविष्‍य के लिए रुचि क्षेत्र। जैसे व्यवस्था, शिक्षा, संगीत, खेलकुद, राजनीति, जैसे क्षेत्र में उनको अग्रशर करने के लिए संघर्ष समर्पण करना।</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -599,56 +606,70 @@ const Home = () => {
 
                     {/* Steps Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
-                        <motion.div
+                        <motion.a
+                            href="https://wa.me/917800392026"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -5, scale: 1.02 }}
-                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all"
+                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all block"
                         >
                             <div className="text-5xl md:text-6xl mb-4 group-hover:scale-110 transition-transform">1️⃣</div>
                             <h3 className="text-xl md:text-2xl font-bold mb-3 text-saffron">संपर्क करें</h3>
                             <p className="text-white/90 text-sm md:text-base">हमें फोन, WhatsApp या ईमेल के माध्यम से संपर्क करें</p>
-                        </motion.div>
+                        </motion.a>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all"
+                        <div
+                            onClick={() => setIsFormOpen(true)}
+                            className="block cursor-pointer"
                         >
-                            <div className="text-5xl md:text-6xl mb-4 group-hover:scale-110 transition-transform">2️⃣</div>
-                            <h3 className="text-xl md:text-2xl font-bold mb-3 text-green-flag">फॉर्म भरें</h3>
-                            <p className="text-white/90 text-sm md:text-base">सदस्यता फॉर्म भरें और अपनी जानकारी दें</p>
-                        </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                                whileHover={{ y: -5, scale: 1.02 }}
+                                className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all h-full"
+                            >
+                                <div className="text-5xl md:text-6xl mb-4 group-hover:scale-110 transition-transform">2️⃣</div>
+                                <h3 className="text-xl md:text-2xl font-bold mb-3 text-green-flag">फॉर्म भरें</h3>
+                                <p className="text-white/90 text-sm md:text-base">सदस्यता फॉर्म भरें और अपनी जानकारी दें</p>
+                            </motion.div>
+                        </div>
 
-                        <motion.div
+                        <motion.a
+                            href="https://wa.me/917800392026"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                             whileHover={{ y: -5, scale: 1.02 }}
-                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all"
+                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all block"
                         >
                             <div className="text-5xl md:text-6xl mb-4 group-hover:scale-110 transition-transform">3️⃣</div>
                             <h3 className="text-xl md:text-2xl font-bold mb-3 text-saffron">सत्यापन</h3>
                             <p className="text-white/90 text-sm md:text-base">हमारी टीम आपकी जानकारी का सत्यापन करेगी</p>
-                        </motion.div>
+                        </motion.a>
 
-                        <motion.div
+                        <motion.a
+                            href="https://wa.me/917800392026"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
                             whileHover={{ y: -5, scale: 1.02 }}
-                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all"
+                            className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-center group hover:bg-white/20 transition-all block"
                         >
                             <div className="text-5xl md:text-6xl mb-4 group-hover:scale-110 transition-transform">4️⃣</div>
                             <h3 className="text-xl md:text-2xl font-bold mb-3 text-green-flag">स्वागत है!</h3>
                             <p className="text-white/90 text-sm md:text-base">बधाई हो! अब आप युवा न्याय दल के सदस्य हैं</p>
-                        </motion.div>
+                        </motion.a>
                     </div>
 
                     {/* Contact Info Card */}
@@ -660,14 +681,16 @@ const Home = () => {
                     >
                         <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center text-white">📞 तुरंत संपर्क करें</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                            <motion.a
-                                href="tel:+917800250000"
+                            <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-all group"
                             >
                                 <p className="text-white/70 mb-2 text-sm">फोन नंबर</p>
-                                <p className="text-xl md:text-2xl font-bold text-saffron group-hover:text-white transition-colors">+91 78002 50000</p>
-                            </motion.a>
+                                <div className="flex flex-col gap-1">
+                                    <a href="tel:+917800250000" className="text-xl font-bold text-saffron hover:text-white transition-colors">+91 78002 50000</a>
+                                    <a href="tel:+919236968527" className="text-xl font-bold text-saffron hover:text-white transition-colors">+91 92369 68527</a>
+                                </div>
+                            </motion.div>
                             <motion.a
                                 href="mailto:yuvanyaydal2026@gmail.com"
                                 whileHover={{ scale: 1.05 }}
@@ -677,13 +700,13 @@ const Home = () => {
                                 <p className="text-lg md:text-xl font-bold text-green-flag group-hover:text-white transition-colors break-all">yuvanyaydal2026@gmail.com</p>
                             </motion.a>
                             <motion.a
-                                href="https://wa.me/917800250000"
+                                href="https://wa.me/917800392026"
                                 target="_blank"
                                 whileHover={{ scale: 1.05 }}
                                 className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition-all group"
                             >
                                 <p className="text-white/70 mb-2 text-sm">WhatsApp</p>
-                                <p className="text-xl md:text-2xl font-bold text-saffron group-hover:text-white transition-colors">+91 78002 50000</p>
+                                <p className="text-xl md:text-2xl font-bold text-saffron group-hover:text-white transition-colors">+91 7800 39 2026</p>
                             </motion.a>
                         </div>
                     </motion.div>
@@ -761,12 +784,12 @@ const Home = () => {
                                 <h4 className="text-2xl font-bold mb-4">क्या आप तैयार हैं?</h4>
                                 <p className="text-white/90 mb-6">परिवर्तन की शुरुआत स्वयं से करें</p>
                             </div>
-                            <NavLink
-                                to="/connect"
-                                className="bg-white text-navy-flag px-6 py-3 rounded-xl font-bold text-center hover:scale-105 transition-all"
+                            <button
+                                onClick={() => setIsFormOpen(true)}
+                                className="bg-white text-navy-flag px-6 py-3 rounded-xl font-bold text-center hover:scale-105 transition-all cursor-pointer"
                             >
                                 अभी सदस्य बनें
-                            </NavLink>
+                            </button>
                         </motion.div>
                     </div>
                 </div>
@@ -800,20 +823,20 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
                         <LeaderCard
                             image={image8}
-                            name="माननीय विजय शंकर शुक्ला (अधिवक्ता)"
+                            name="मा. विजय शंकर शुक्ला (अधिवक्ता)"
                             title="राष्ट्रीय अध्यक्ष"
                             subtitle="संगठन का कुशल नेतृत्व"
                             delay={0.1}
                             position="object-contain bg-white"
-                            onClick={() => setSelectedImage({ img: image8, name: "माननीय विजय शंकर शुक्ला (अधिवक्ता)" })}
+                            onClick={() => setSelectedImage({ img: image8, name: "मा. विजय शंकर शुक्ला (अधिवक्ता)" })}
                         />
                         <LeaderCard
                             image={image36}
-                            name="माननीय ओम प्रकाश यादव"
+                            name="मा. ओम प्रकाश यादव"
                             title="राष्ट्रीय उपाध्यक्ष"
                             subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
                             delay={0.2}
-                            onClick={() => setSelectedImage({ img: image36, name: "माननीय ओम प्रकाश यादव" })}
+                            onClick={() => setSelectedImage({ img: image36, name: "मा. ओम प्रकाश यादव" })}
                         />
                     </div>
 
@@ -979,6 +1002,116 @@ const Home = () => {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Membership Form Modal */}
+            <AnimatePresence>
+                {isFormOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        onClick={() => setIsFormOpen(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setIsFormOpen(false)}
+                                className="absolute top-4 right-4 text-slate-400 hover:text-navy-flag transition-colors z-10"
+                            >
+                                <HiX size={32} />
+                            </button>
+
+                            <div className="flex flex-col md:flex-row">
+                                {/* Left Side - Info */}
+                                <div className="md:w-1/3 bg-gradient-to-br from-navy-flag to-slate-800 p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                                     <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/10 rounded-full blur-3xl" />
+                                     <div className="relative z-10">
+                                        <img src={logo} alt="Logo" className="w-16 h-16 rounded-full mb-6 border-2 border-white/20" />
+                                        <h3 className="text-2xl font-bold mb-4 font-hindi">जुड़ें हमारे साथ</h3>
+                                        <p className="text-sm text-slate-300">युवा न्याय दल का हिस्सा बनकर समाज में सकारात्मक बदलाव लाएं।</p>
+                                     </div>
+                                     <div className="mt-8 space-y-4 relative z-10">
+                                        <div className="flex items-center gap-3 text-sm">
+                                            <div className="w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron">✓</div>
+                                            <span>24/7 सहायता</span>
+                                        </div>
+                                        <div className="flex items-center gap-3 text-sm">
+                                            <div className="w-6 h-6 bg-green-flag/20 rounded-full flex items-center justify-center text-green-flag">✓</div>
+                                            <span>तुरंत जवाब</span>
+                                        </div>
+                                     </div>
+                                </div>
+
+                                {/* Right Side - Form */}
+                                <div className="md:w-2/3 p-8 lg:p-10">
+                                    <div className="mb-6">
+                                        <h4 className="text-2xl font-bold text-navy-flag mb-1">सदस्यता फॉर्म</h4>
+                                        <p className="text-sm text-slate-500 font-medium">अपनी जानकारी साझा करें</p>
+                                    </div>
+
+                                    <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsFormOpen(false); }}>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div className="space-y-1.5">
+                                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पूरा नाम</label>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    placeholder="आपका नाम"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                />
+                                            </div>
+                                            <div className="space-y-1.5">
+                                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">मोबाइल नंबर</label>
+                                                <input
+                                                    required
+                                                    type="tel"
+                                                    placeholder="91XXXXXXXX"
+                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">ईमेल (वैकल्पिक)</label>
+                                            <input
+                                                type="email"
+                                                placeholder="email@example.com"
+                                                className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                            />
+                                        </div>
+
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पता / जिला</label>
+                                            <input
+                                                required
+                                                type="text"
+                                                placeholder="अपना पता लिखें"
+                                                className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                            />
+                                        </div>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            type="submit"
+                                            className="w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-saffron/20 transition-all mt-4"
+                                        >
+                                            अभी आवेदन करें
+                                        </motion.button>
+                                    </form>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

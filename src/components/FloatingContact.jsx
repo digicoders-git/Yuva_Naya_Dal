@@ -6,7 +6,7 @@ const FloatingContact = () => {
         <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
             {/* WhatsApp */}
             <motion.a
-                href="https://wa.me/919236968527"
+                href="https://wa.me/917800392026"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group"
@@ -19,7 +19,7 @@ const FloatingContact = () => {
                 </div>
             </motion.a>
 
-            {/* Call */}
+            {/* Call 1 */}
             <motion.a
                 href="tel:+917800250000"
                 className="relative group"
@@ -28,6 +28,19 @@ const FloatingContact = () => {
             >
                 <div className="absolute inset-0 bg-blue-600 rounded-full animate-ping opacity-75" />
                 <div className="relative bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-2xl transition-all">
+                    <FaPhone size={24} />
+                </div>
+            </motion.a>
+
+             {/* Call 2 */}
+             <motion.a
+                href="tel:+919236968527"
+                className="relative group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <div className="absolute inset-0 bg-orange-500 rounded-full animate-ping opacity-75" />
+                <div className="relative bg-orange-500 hover:bg-orange-600 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-2xl transition-all">
                     <FaPhone size={24} />
                 </div>
             </motion.a>
