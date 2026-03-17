@@ -92,10 +92,11 @@ const Footer = () => {
             </div>
 
             {/* Copyright Section */}
-            <div className="container mx-auto px-6 mt-20 pt-8 border-t border-slate-100 text-center">
+            <div className="container flex justify-between mx-auto px-6 mt-20 pt-8 border-t border-slate-100 text-center">
                 <p className="text-slate-500 text-sm">
-                    © {currentYear} <span className="text-navy-flag font-bold">Yuva Nyay Dal</span>. All rights reserved.
-                    <br /> <a href="https://digicoders.in/" className="text-saffron hover:underline">Team DigiCoders</a></p>
+                    © {currentYear} <span className="text-navy-flag font-bold">Yuva Nyay Dal</span>. All rights reserved.</p>
+                <p className="text-slate-500 text-sm">
+                    Crafter with ❤️ by <a href="https://digicoders.in/" className="text-saffron hover:underline">#TeamDigiCoders</a></p>
             </div>
         </footer>
     );
