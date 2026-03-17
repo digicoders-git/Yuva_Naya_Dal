@@ -2,6 +2,7 @@ import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineClock,
 import { FaWhatsapp } from 'react-icons/fa';
 import { logo } from '../utils/images';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
     return (
