@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,6 +9,30 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const ActivitiesSection = () => {
+    const [apiImages, setApiImages] = useState([]);
+    const staticImages = Object.values(galleryImages);
+
+    useEffect(() => {
+        const fetchGallery = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/media`);
+                const data = await response.json();
+                if (data.success) {
+                    setApiImages(data.data);
+                }
+            } catch (error) {
+                console.error('Error fetching gallery:', error);
+            }
+        };
+        fetchGallery();
+    }, []);
+
+    const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+
+    const allImages = [
+        ...staticImages.map(img => ({ type: 'static', url: img })),
+        ...apiImages.map(img => ({ type: 'api', url: `${baseUrl}${img.imageUrl}` }))
+    ];
     return (
         <section className="pt-10 md:pt-12 pb-8 md:pb-12 bg-gradient-to-br from-white to-slate-50">
             <div className="w-full">
@@ -48,8 +73,8 @@ const ActivitiesSection = () => {
                         }}
                         className="pb-12"
                     >
-                        {Object.values(galleryImages).map((img, idx) => (
-                            <SwiperSlide key={idx}>
+                        {allImages.map((img, idx) => (
+                            <SwiperSlide key={`${img.type}-${idx}`}>
                                 <NavLink to="/gallery">
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
@@ -61,7 +86,7 @@ const ActivitiesSection = () => {
                                     >
                                         <div className="relative overflow-hidden">
                                             <img
-                                                src={img}
+                                                src={img.url}
                                                 alt={`Activity ${idx + 1}`}
                                                 className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
                                             />

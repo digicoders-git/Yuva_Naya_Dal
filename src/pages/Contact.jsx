@@ -1,10 +1,65 @@
-import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineClock, HiOutlineArrowRight } from 'react-icons/hi';
+import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineClock, HiOutlineArrowRight, HiOutlineShieldCheck } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { logo } from '../utils/images';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { useState } from 'react';
+
 const Contact = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState('idle');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setSubmitStatus('idle');
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/enquiries`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setSubmitStatus('success');
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                setSubmitStatus('error');
+                setErrorMessage(data.error || 'कुछ गलत हुआ। कृपया पुनः प्रयास करें।');
+            }
+        } catch (error) {
+            console.error('Error submitting enquiry:', error);
+            setSubmitStatus('error');
+            setErrorMessage('सर्वर से संपर्क करने में असमर्थ। कृपया बाद में प्रयास करें।');
+        } finally {
+            setIsLoading(false);
+        }
+    };
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section - Modern Design */}
@@ -82,7 +137,7 @@ const Contact = () => {
                                 </div>
                                 <NavLink
                                     to="/about"
-                                    className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
+                                    className="group bg-gradient-to-r from-green-flag to-green-800 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-navy-flag/50 transition-all flex items-center gap-2"
                                 >
                                     हमारे बारे में
                                 </NavLink>
@@ -205,15 +260,16 @@ const Contact = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2, duration: 0.6 }}
                                 whileHover={{ y: -5 }}
-                                className="bg-white rounded-2xl shadow-lg p-6 flex items-start gap-4 border border-slate-100 hover:shadow-xl transition-all"
+                                className="bg-white rounded-2xl shadow-lg p-6 flex items-center gap-4 border border-slate-100 hover:shadow-xl transition-all"
                             >
-                                <div className="bg-navy-flag text-white p-4 rounded-xl shadow-md flex-shrink-0">
+                                <div className="bg-navy-flag  text-white p-4 rounded-xl shadow-md flex-shrink-0">
                                     <HiOutlinePhone size={28} />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <h4 className="text-lg font-bold text-navy-flag mb-1">फोन नंबर</h4>
                                     <div className="flex flex-col gap-1">
                                         <a href="tel:+917800250000" className="text-slate-600 hover:text-saffron transition-colors">+91 78002 50000</a>
+                                        <a href="tel:+917800250000" className="text-slate-600 hover:text-saffron transition-colors">+91 7800 39 2026</a>
                                         <a href="tel:+919236968527" className="text-slate-600 hover:text-saffron transition-colors">+91 92369 68527</a>
                                     </div>
                                 </div>
@@ -282,14 +338,65 @@ const Contact = () => {
                             transition={{ duration: 0.6 }}
                             className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-8 lg:p-12 border border-slate-100"
                         >
+                            {submitStatus === 'success' ? (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="flex flex-col items-center justify-center text-center space-y-6 py-10"
+                                >
+                                    <div className="w-20 h-20 bg-green-flag/10 rounded-full flex items-center justify-center text-green-flag relative">
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            transition={{ delay: 0.2, type: 'spring' }}
+                                        >
+                                            <HiOutlineShieldCheck size={48} />
+                                        </motion.div>
+                                        <motion.div
+                                            className="absolute inset-0 rounded-full border-4 border-green-flag/30"
+                                            animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
+                                            transition={{ duration: 2, repeat: Infinity }}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="text-3xl font-bold text-navy-flag">धन्यवाद!</h4>
+                                        <p className="text-slate-600 font-medium">आपका संदेश सफलतापूर्वक भेज दिया गया है।</p>
+                                    </div>
+                                    <p className="text-sm text-slate-500 max-w-xs mx-auto">
+                                        हमारी टीम जल्द ही आपसे संपर्क करेगी। युवा न्याय दल से जुड़ने के लिए धन्यवाद।
+                                    </p>
+                                    <button
+                                        onClick={() => setSubmitStatus('idle')}
+                                        className="bg-navy-flag text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg"
+                                    >
+                                        नया संदेश भेजें
+                                    </button>
+                                </motion.div>
+                            ) : (
+                                <>
                             <h3 className="text-2xl md:text-3xl font-bold text-navy-flag mb-2">संदेश भेजें</h3>
                             <p className="text-sm md:text-base text-slate-500 mb-6 md:mb-8">अपनी समस्या या सुझाव हमें बताएं</p>
 
-                            <form className="space-y-4 md:space-y-6">
+                            {submitStatus === 'error' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm font-medium rounded-r-xl flex items-center gap-3"
+                                >
+                                    <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-500 shrink-0">!</div>
+                                    <p>{errorMessage}</p>
+                                </motion.div>
+                            )}
+
+                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     <div>
                                         <label className="block text-navy-flag font-semibold mb-2 text-sm md:text-base">आपका नाम</label>
                                         <input
+                                            required
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
                                             type="text"
                                             placeholder="नाम दर्ज करें"
                                             className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-50 rounded-lg md:rounded-xl border-2 border-transparent focus:border-saffron focus:bg-white transition-all outline-none"
@@ -298,6 +405,10 @@ const Contact = () => {
                                     <div>
                                         <label className="block text-navy-flag font-semibold mb-2 text-sm md:text-base">मोबाइल नंबर</label>
                                         <input
+                                            required
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
                                             type="tel"
                                             placeholder="+91 XXXXX XXXXX"
                                             className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-50 rounded-lg md:rounded-xl border-2 border-transparent focus:border-saffron focus:bg-white transition-all outline-none"
@@ -308,6 +419,10 @@ const Contact = () => {
                                 <div>
                                     <label className="block text-navy-flag font-semibold mb-2 text-sm md:text-base">ईमेल</label>
                                     <input
+                                        required
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                         type="email"
                                         placeholder="yourname@gmail.com"
                                         className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-50 rounded-lg md:rounded-xl border-2 border-transparent focus:border-saffron focus:bg-white transition-all outline-none"
@@ -317,6 +432,10 @@ const Contact = () => {
                                 <div>
                                     <label className="block text-navy-flag font-semibold mb-2 text-sm md:text-base">विषय</label>
                                     <input
+                                        required
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleInputChange}
                                         type="text"
                                         placeholder="विषय दर्ज करें"
                                         className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-50 rounded-lg md:rounded-xl border-2 border-transparent focus:border-saffron focus:bg-white transition-all outline-none"
@@ -326,6 +445,10 @@ const Contact = () => {
                                 <div>
                                     <label className="block text-navy-flag font-semibold mb-2 text-sm md:text-base">संदेश</label>
                                     <textarea
+                                        required
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
                                         rows="4"
                                         placeholder="अपना संदेश यहाँ लिखें..."
                                         className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-50 rounded-lg md:rounded-xl border-2 border-transparent focus:border-saffron focus:bg-white transition-all outline-none resize-none"
@@ -336,11 +459,19 @@ const Contact = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-3 md:py-4 rounded-lg md:rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all"
+                                    disabled={isLoading}
+                                    className={`w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-3 md:py-4 rounded-lg md:rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
-                                    संदेश भेजें
+                                    {isLoading ? (
+                                        <div className="flex items-center justify-center gap-2">
+                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            <span>भेजा जा रहा है...</span>
+                                        </div>
+                                    ) : 'संदेश भेजें'}
                                 </motion.button>
                             </form>
+                                </>
+                            )}
                         </motion.div>
                     </div>
                 </div>

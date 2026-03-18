@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { image39, image36, image37, image38, logo, image8 } from '../utils/images';
+import { image39, image36, image37, image38,image40, logo, image8 } from '../utils/images';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import LeaderCard from '../components/LeaderCard';
@@ -533,6 +533,17 @@ const AboutUs = () => {
                 badgeColor="from-saffron to-orange-600"
                 borderColor="border-saffron"
                 imageOrder="left"
+            />
+             <LeaderCard
+                image={image40}
+                name="शिव कुमार सिंह"
+                title="राष्ट्रीय प्रवक्ता"
+                subtitle=""
+                message="अनुभवी नेतृत्व और संगठन के प्रति अटूट निष्ठा के साथ, शिव कुमार सिंह जी राष्ट्रीय प्रवक्ता के रूप में युवा न्याय दल के मिशन को सफल बनाने के लिए संकल्पित हैं। उनका विश्वास है कि समर्पण और ईमानदारी से हर लक्ष्य हासिल किया जा सकता है।"
+                quote="समर्पण और निष्ठा से ही संगठन के उद्देश्यों को पूरा किया जा सकता है।"
+                badgeColor="from-green-flag to-green-600"
+                borderColor="border-saffron"
+                imageOrder="right"
             />
 
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { galleryImages, logo } from '../utils/images';
 import { HiX, HiOutlineArrowRight } from 'react-icons/hi';
@@ -6,7 +6,25 @@ import { NavLink } from 'react-router-dom';
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [apiImages, setApiImages] = useState([]);
     const images = Object.keys(galleryImages).map(Number);
+
+    useEffect(() => {
+        const fetchGallery = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/media`);
+                const data = await response.json();
+                if (data.success) {
+                    setApiImages(data.data);
+                }
+            } catch (error) {
+                console.error('Error fetching gallery:', error);
+            }
+        };
+        fetchGallery();
+    }, []);
+
+    const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -162,15 +180,16 @@ const Gallery = () => {
                     </motion.div>
 
                     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+                        {/* Static Images */}
                         {images.map((num, idx) => (
                             <motion.div
-                                key={num}
+                                key={`static-${num}`}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.05, duration: 0.5 }}
                                 whileHover={{ scale: 1.03 }}
-                                onClick={() => setSelectedImage(num)}
+                                onClick={() => setSelectedImage({ type: 'static', value: num })}
                                 className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer bg-white break-inside-avoid"
                             >
                                 <img
@@ -180,34 +199,67 @@ const Gallery = () => {
                                     className="w-full h-auto object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/80 via-navy-flag/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                                    <div className="absolute bottom-4 left-4 right-4 text-white text-xs md:text-sm">
                                         {num === 16 && (
-                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
-                                                मा. अध्यक्ष (युवा न्याय दल (अराजनैतिक)) जनपद फ़तेहपुर के एक कार्यक्रम में डीएम, एसपी, एडीएम, सीडीओ, एसडीएम सहित जिला प्रशासन के साथ बातचीत करते हुए।
+                                            <p className="font-bold leading-tight">
+                                                मा. अध्यक्ष (युवा न्याय दल (अराजनैतिक)) जनपद फ़तेहपुर के एक कार्यक्रम में जिलाधिकारी सहित जिला प्रशासन के साथ।
                                             </p>
                                         )}
                                         {num === 28 && (
-                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
-                                                भारतीय जनता पार्टी के कार्यक्रम के मंच में राष्ट्रीय नेत्रित्व टीम और केन्द्रीय और कैबिनेट और राज्य मंत्री और श्रेडी जनपदीय नेताओ के साथ युवा सम्मान शामिल
+                                            <p className="font-bold leading-tight">
+                                                भाजपा कार्यक्रम में राष्ट्रीय नेत्रित्व टीम के साथ युवा सम्मान शामिल।
                                             </p>
                                         )}
                                         {num === 30 && (
-                                            <p className="font-bold text-[10px] md:text-sm leading-tight">
-                                              किसान सम्मान समारोह में मा. अध्यक्ष (जिला पंचायत) और मा. विधायकगढ़ और मा. ब्लॉक प्रमुख सहित नेताओ के साथ युवा किसानो के सम्मान में शामिल
+                                            <p className="font-bold leading-tight">
+                                               किसान सम्मान समारोह में युवा किसानो के सम्मान में शामिल।
                                             </p>
                                         )}
                                         {num === 36 && (
-                                            <p className="font-bold text-sm">
-                                               ओम प्रकाश यादव<br />राष्ट्रीय उपाध्यक्ष
+                                            <p className="font-bold">
+                                               ओम प्रकाश यादव - राष्ट्रीय उपाध्यक्ष
                                             </p>
                                         )}
                                         {num === 37 && (
-                                            <p className="font-bold text-sm">
-                                                  गगन बाजपेई<br />राष्ट्रीय उपाध्यक्ष, पूर्व राज्य मंत्री
+                                            <p className="font-bold">
+                                                  गगन बाजपेई - राष्ट्रीय उपाध्यक्ष
+                                            </p>
+                                        )}
+                                         {num === 40 && (
+                                            <p className="font-bold">
+                                                  शिव कुमार सिंह - राष्ट्रीय प्रवक्ता
                                             </p>
                                         )}
                                     </div>
                                 </div>
+                            </motion.div>
+                        ))}
+
+                        {/* API Images */}
+                        {apiImages.map((img, idx) => (
+                            <motion.div
+                                key={img._id}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: (images.length + idx) * 0.05, duration: 0.5 }}
+                                whileHover={{ scale: 1.03 }}
+                                onClick={() => setSelectedImage({ type: 'api', value: `${baseUrl}${img.image}` })}
+                                className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer bg-white break-inside-avoid"
+                            >
+                                <img
+                                    src={`${baseUrl}${img.image}`}
+                                    alt={img.title}
+                                    loading="lazy"
+                                    className="w-full h-auto object-cover"
+                                />
+                                {img.description && (
+                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-flag/80 via-navy-flag/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                        <div className="absolute bottom-4 left-4 right-4 text-white">
+                                            <p className="font-bold text-xs md:text-sm leading-tight">{img.description}</p>
+                                        </div>
+                                    </div>
+                                )}
                             </motion.div>
                         ))}
                     </div>
@@ -237,8 +289,8 @@ const Gallery = () => {
                             initial={{ scale: 0.8 }}
                             animate={{ scale: 1 }}
                             exit={{ scale: 0.8 }}
-                            src={galleryImages[selectedImage]}
-                            alt={`Activity ${selectedImage}`}
+                            src={selectedImage.type === 'static' ? galleryImages[selectedImage.value] : selectedImage.value}
+                            alt="Activity Detail"
                             className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         />
