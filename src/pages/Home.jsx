@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -873,7 +873,7 @@ const Home = () => {
                         <LeaderCard
                             image={image37}
                             name="गगन बाजपेई"
-                            title="राष्ट्रीय उपाध्यक्ष"
+                            title="राष्ट्रीय उपाध्यक्ष , लखनऊ उत्तर प्रदेश"
                             subtitle="संगठन के प्रेरणा स्रोत"
                             delay={0.3}
                             onClick={() => setSelectedImage({ img: image37, name: "गगन बाजपेई" })}
@@ -881,7 +881,7 @@ const Home = () => {
                         <LeaderCard
                             image={image38}
                             name="शुभम गुप्ता"
-                            title="राष्ट्रीय महासचिव"
+                            title="राष्ट्रीय महासचिव , लखनऊ उत्तर प्रदेश"
                             subtitle="संगठन की प्रशासनिक रीढ़"
                             delay={0.4}
                             position="object-top object-contain"
@@ -890,11 +890,20 @@ const Home = () => {
                          <LeaderCard
                             image={image40}
                             name="शिव कुमार सिंह"
-                            title="राष्ट्रीय प्रवक्ता"
+                            title="राष्ट्रीय प्रवक्ता , अमेठी, उत्तर प्रदेश" 
                             subtitle="संगठन की प्रशासनिक रीढ़"
                             delay={0.4}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
+                        />
+                         <LeaderCard
+                            image={image41}
+                            name="राजेंद्र सिंह"
+                            title="राष्ट्रीय सचिव , रायबरेली, उत्तर प्रदेश"
+                            subtitle="संगठन की प्रशासनिक रीढ़"
+                            delay={0.4}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
                         />
                     </div>
                 </div>
@@ -1009,14 +1018,14 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        className="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-10"
                         onClick={() => setIsFormOpen(false)}
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative"
+                            className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative my-auto"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Close Button */}
