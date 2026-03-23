@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -904,6 +904,24 @@ const Home = () => {
                             delay={0.4}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
+                        />
+                          <LeaderCard
+                            image={image42}
+                            name="नागेन्द्र द्विवेदी"
+                            title="राष्ट्रीय उपाध्यक्ष ,फतेहपुर , उत्तर प्रदेश"
+                            subtitle="संगठन की प्रशासनिक रीढ़"
+                            delay={0.4}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
+                        />
+                         <LeaderCard
+                            image={image43}
+                            name="निहाल कुमार"
+                            title=" राष्ट्रीय उपाध्यक्ष, प्रयागराज ,उत्तर प्रदेश"
+                            subtitle="संगठन की प्रशासनिक रीढ़"
+                            delay={0.4}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image43, name: "निहाल कुमार" })}
                         />
                     </div>
                 </div>
