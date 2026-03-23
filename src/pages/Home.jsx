@@ -879,6 +879,10 @@ const Home = () => {
                             delay={0.3}
                             onClick={() => setSelectedImage({ img: image37, name: "गगन बाजपेई" })}
                         />
+
+
+
+
                             <LeaderCard
                             image={image38}
                             name="शुभम गुप्ता"
@@ -888,6 +892,9 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
                         />
+
+
+
                         <LeaderCard
                             image={image41}
                             name="राजेंद्र सिंह"
@@ -897,6 +904,10 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
                         />
+
+
+
+
                          <LeaderCard
                             image={image40}
                             name="शिव कुमार सिंह"
@@ -906,16 +917,20 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
                         />
+
+
+
+                        ̥
                         <LeaderCard
                             image={image42}
                             name="नागेन्द्र द्विवेदी"
-                            title="कोषाध्यक्ष,फतेहपुर , उत्तर प्रदेश"
+                            title="राष्ट्रीय कोषाध्यक्ष,फतेहपुर , उत्तर प्रदेश"
                             subtitle="संगठन की प्रशासनिक रीढ़"
                             delay={0.4}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
                         />
-                         <LeaderCard
+                         {/* <LeaderCard
                             image={image43}
                             name="निहाल कुमार"
                             title="कोषाध्यक्ष, प्रयागराज ,उत्तर प्रदेश"
@@ -923,7 +938,7 @@ const Home = () => {
                             delay={0.4}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image43, name: "निहाल कुमार" })}
-                        />
+                        /> */}
                     
                         
                          
