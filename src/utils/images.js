@@ -52,6 +52,7 @@ import image40 from '../assets/image-40.jpeg';
 import image41 from '../assets/image-41.png';
 import image42 from '../assets/image-42.jpeg';
 import image43 from '../assets/image-43.png';
+import image44 from '../assets/image-44.png';
 
 
 
@@ -68,7 +69,7 @@ export const galleryImages = {
    21: image21, 22: image22, 23: image23, 24: image24, 25: image25,
    26: image26, 27: image27, 28: image28, 30: image30,
    31: image31, 32: image32, 34: image34, 35: image35,
-   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43
+   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43, 44: image44
 
 };
 
@@ -79,5 +80,5 @@ export {
    image1, image2, image3, image4, image5, image7, image8, 
    image12, image13, image14, image15, image16, image17, image18, image19, image20,
    image21, image22, image23, image24, image25, image26, image27, image28, image30,
-   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43
+   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43 ,image44
 };

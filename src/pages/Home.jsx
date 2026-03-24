@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -897,6 +897,24 @@ const Home = () => {
                                     delay={0.3}
                                     onClick={() => setSelectedImage({ img: image37, name: "गगन बाजपेई" })}
                                 />
+                                <LeaderCard
+                                    image={image43}
+                                    name="निहार कुमार"
+                                    title="राष्ट्रीय उपाध्यक्ष"
+                                    subtitle="प्रयागराज, उत्तर प्रदेश"
+                                    delay={0.5}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image43, name: "निहार कुमार" })}
+                                />
+                                <LeaderCard
+                                    image={image44}
+                                    name="राम सिंह यादव"
+                                    title="राष्ट्रीय उपाध्यक्ष"
+                                    subtitle="आजमगढ़, उत्तर प्रदेश"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image44, name: "राम सिंह यादव" })}
+                                />
                             </div>
                         </motion.div>
 
@@ -930,12 +948,12 @@ const Home = () => {
                             <div className="w-3 h-3 rounded-full bg-green-flag/60"/>
                         </div>
 
-                        {/* Level 4 — राष्ट्रीय सचिव + राष्ट्रीय प्रवक्ता */}
+                        {/* Level 4 — राष्ट्रीय सचिव */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="w-full flex flex-col items-center">
                             <div className="inline-flex items-center gap-2 bg-saffron/10 border border-saffron/30 text-saffron text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-                                स्तर - ४
+                                स्तर - ४ &nbsp;|&nbsp; राष्ट्रीय सचिव
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                            <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image41}
                                     name="राजेंद्र सिंह"
@@ -945,6 +963,21 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
                                 />
+                            </div>
+                        </motion.div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-slate-500 opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-slate-400"/>
+                        </div>
+
+                        {/* Level 5 — राष्ट्रीय प्रवक्ता */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय प्रवक्ता
+                            </div>
+                            <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image40}
                                     name="शिव कुमार सिंह"
@@ -959,16 +992,16 @@ const Home = () => {
 
                         {/* Connector */}
                         <div className="flex flex-col items-center my-1">
-                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
-                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-slate-500 to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
                         </div>
 
-                        {/* Level 5 — राष्ट्रीय कोषाध्यक्ष */}
+                        {/* Level 6 — राष्ट्रीय कोषाध्यक्ष */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="w-full flex flex-col items-center">
                             <div className="inline-flex items-center gap-2 bg-navy-flag/10 border border-navy-flag/30 text-navy-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-                                स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय कोषाध्यक्ष
+                                स्तर - ६ &nbsp;|&nbsp; राष्ट्रीय कोषाध्यक्ष
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                            <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image42}
                                     name="नागेन्द्र द्विवेदी"
@@ -977,15 +1010,6 @@ const Home = () => {
                                     delay={0.5}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
-                                />
-                                <LeaderCard
-                                    image={image43}
-                                    name="निहार कुमार"
-                                    title="राष्ट्रीय कोषाध्यक्ष"
-                                    subtitle="प्रयागराज, उत्तर प्रदेश"
-                                    delay={0.6}
-                                    position="object-top object-contain"
-                                    onClick={() => setSelectedImage({ img: image43, name: "निहार कुमार" })}
                                 />
                             </div>
                         </motion.div>
