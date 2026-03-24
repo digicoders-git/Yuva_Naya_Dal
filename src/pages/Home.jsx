@@ -968,7 +968,7 @@ const Home = () => {
                             <div className="inline-flex items-center gap-2 bg-navy-flag/10 border border-navy-flag/30 text-navy-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                                 स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय कोषाध्यक्ष
                             </div>
-                            <div className="max-w-xs w-full">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
                                 <LeaderCard
                                     image={image42}
                                     name="नागेन्द्र द्विवेदी"
@@ -977,6 +977,15 @@ const Home = () => {
                                     delay={0.5}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
+                                />
+                                <LeaderCard
+                                    image={image43}
+                                    name="निहार कुमार"
+                                    title="राष्ट्रीय कोषाध्यक्ष"
+                                    subtitle="प्रयागराज, उत्तर प्रदेश"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image43, name: "निहार कुमार" })}
                                 />
                             </div>
                         </motion.div>
