@@ -847,103 +847,143 @@ const Home = () => {
                         </p>
                     </motion.div>
 
-                    {/* Top Leaders Row */}
-                    <div className=" mb-8 md:mb-12">
-                        <center><LeaderCard
-                            image={image8}
-                            name="मा. विजय शंकर शुक्ला (अधिवक्ता)"
-                            title="राष्ट्रीय अध्यक्ष"
-                            subtitle="संगठन का कुशल नेतृत्व"
-                            delay={0.1}
-                            position="object-contain bg-white"
-                            onClick={() => setSelectedImage({ img: image8, name: "मा. विजय शंकर शुक्ला (अधिवक्ता)" })}
-                        /></center>
-                        
+
+                    {/* === ORG-CHART CHAIN LAYOUT === */}
+                    <div className="flex flex-col items-center gap-0">
+
+                        {/* Level 1 — राष्ट्रीय अध्यक्ष */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-saffron/10 border border-saffron/30 text-saffron text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - १
+                            </div>
+                            <div className="max-w-xs w-full">
+                                <LeaderCard
+                                    image={image8}
+                                    name="मा. विजय शंकर शुक्ला"
+                                    title="राष्ट्रीय अध्यक्ष"
+                                    subtitle="संगठन का कुशल नेतृत्व"
+                                    delay={0.1}
+                                    position="object-contain bg-white"
+                                    onClick={() => setSelectedImage({ img: image8, name: "मा. विजय शंकर शुक्ला (अधिवक्ता)" })}
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                        {/* Level 2 — राष्ट्रीय उपाध्यक्ष */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-navy-flag/10 border border-navy-flag/30 text-navy-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - २ &nbsp;|&nbsp; राष्ट्रीय उपाध्यक्ष
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                                <LeaderCard
+                                    image={image36}
+                                    name="मा. ओम प्रकाश यादव"
+                                    title="राष्ट्रीय उपाध्यक्ष"
+                                    subtitle="पूर्व राज्य मंत्री, उ.प्र. सरकार"
+                                    delay={0.2}
+                                    onClick={() => setSelectedImage({ img: image36, name: "मा. ओम प्रकाश यादव" })}
+                                />
+                                <LeaderCard
+                                    image={image37}
+                                    name="गगन बाजपेई"
+                                    title="राष्ट्रीय उपाध्यक्ष"
+                                    subtitle="लखनऊ, उत्तर प्रदेश"
+                                    delay={0.3}
+                                    onClick={() => setSelectedImage({ img: image37, name: "गगन बाजपेई" })}
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                        </div>
+
+                        {/* Level 3 — राष्ट्रीय महासचिव */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-green-flag/10 border border-green-flag/30 text-green-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - ३ &nbsp;|&nbsp; राष्ट्रीय महासचिव
+                            </div>
+                            <div className="max-w-xs w-full">
+                                <LeaderCard
+                                    image={image38}
+                                    name="शुभम गुप्ता"
+                                    title="राष्ट्रीय महासचिव"
+                                    subtitle="लखनऊ, उत्तर प्रदेश"
+                                    delay={0.4}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-green-flag to-saffron opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-green-flag/60"/>
+                        </div>
+
+                        {/* Level 4 — राष्ट्रीय सचिव + राष्ट्रीय प्रवक्ता */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-saffron/10 border border-saffron/30 text-saffron text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - ४
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                                <LeaderCard
+                                    image={image41}
+                                    name="राजेंद्र सिंह"
+                                    title="राष्ट्रीय सचिव"
+                                    subtitle="रायबरेली, उत्तर प्रदेश"
+                                    delay={0.4}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
+                                />
+                                <LeaderCard
+                                    image={image40}
+                                    name="शिव कुमार सिंह"
+                                    title="राष्ट्रीय प्रवक्ता"
+                                    subtitle="अमेठी, उत्तर प्रदेश"
+                                    delay={0.5}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
+                                />
+                            </div>
+                        </motion.div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                        {/* Level 5 — राष्ट्रीय कोषाध्यक्ष */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="w-full flex flex-col items-center">
+                            <div className="inline-flex items-center gap-2 bg-navy-flag/10 border border-navy-flag/30 text-navy-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                                स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय कोषाध्यक्ष
+                            </div>
+                            <div className="max-w-xs w-full">
+                                <LeaderCard
+                                    image={image42}
+                                    name="नागेन्द्र द्विवेदी"
+                                    title="राष्ट्रीय कोषाध्यक्ष"
+                                    subtitle="फतेहपुर, उत्तर प्रदेश"
+                                    delay={0.5}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
+                                />
+                            </div>
+                        </motion.div>
+
                     </div>
+                    {/* === END ORG-CHART === */}
 
-                    {/* Vice Presidents Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-8 md:pt-12 border-t border-slate-200">
-                    <LeaderCard
-                            image={image36}
-                            name="मा. ओम प्रकाश यादव"
-                            title="राष्ट्रीय उपाध्यक्ष"
-                            subtitle="पूर्व राज्य मंत्री, उत्तर प्रदेश सरकार"
-                            delay={0.2}
-                            onClick={() => setSelectedImage({ img: image36, name: "मा. ओम प्रकाश यादव" })}
-                        />
-                        <LeaderCard
-                            image={image37}
-                            name="गगन बाजपेई"
-                            title="राष्ट्रीय उपाध्यक्ष , लखनऊ उत्तर प्रदेश"
-                            subtitle="संगठन के प्रेरणा स्रोत"
-                            delay={0.3}
-                            onClick={() => setSelectedImage({ img: image37, name: "गगन बाजपेई" })}
-                        />
-
-
-
-
-                            <LeaderCard
-                            image={image38}
-                            name="शुभम गुप्ता"
-                            title="राष्ट्रीय महासचिव , लखनऊ उत्तर प्रदेश"
-                            subtitle="संगठन की प्रशासनिक रीढ़"
-                            delay={0.4}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
-                        />
-
-
-
-                        <LeaderCard
-                            image={image41}
-                            name="राजेंद्र सिंह"
-                            title="राष्ट्रीय सचिव , रायबरेली, उत्तर प्रदेश"
-                            subtitle="संगठन की प्रशासनिक रीढ़"
-                            delay={0.4}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
-                        />
-
-
-
-
-                         <LeaderCard
-                            image={image40}
-                            name="शिव कुमार सिंह"
-                            title="राष्ट्रीय प्रवक्ता , अमेठी, उत्तर प्रदेश" 
-                            subtitle="संगठन की प्रशासनिक रीढ़"
-                            delay={0.4}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
-                        />
-
-
-
-                        ̥
-                        <LeaderCard
-                            image={image42}
-                            name="नागेन्द्र द्विवेदी"
-                            title="राष्ट्रीय कोषाध्यक्ष,फतेहपुर , उत्तर प्रदेश"
-                            subtitle="संगठन की प्रशासनिक रीढ़"
-                            delay={0.4}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
-                        />
-                         {/* <LeaderCard
-                            image={image43}
-                            name="निहाल कुमार"
-                            title="कोषाध्यक्ष, प्रयागराज ,उत्तर प्रदेश"
-                            subtitle="संगठन की प्रशासनिक रीढ़"
-                            delay={0.4}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image43, name: "निहाल कुमार" })}
-                        /> */}
-                    
-                        
-                         
-                          
-                    </div>
                 </div>
             </section>
 
