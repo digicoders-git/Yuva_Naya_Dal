@@ -7,6 +7,13 @@ import ActivitiesSection from '../components/ActivitiesSection';
 import { NavLink } from 'react-router-dom';
 
 const AboutUs = () => {
+    // Dynamic Member Count Logic 
+    // Starts at 14000 on March 25, 2026, and increases by 3000 every 6 days
+    const baseDate = new Date('2026-03-25T00:00:00Z').getTime();
+    const currentDate = new Date().getTime();
+    const diffDays = Math.max(0, Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24)));
+    const dynamicMemberCount = 14000 + (Math.floor(diffDays / 6) * 3000);
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Hero Section - Modern Design */}
@@ -117,7 +124,7 @@ const AboutUs = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10000+ सदस्य
+                                    {dynamicMemberCount}+ सदस्य
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}
@@ -466,7 +473,7 @@ const AboutUs = () => {
                                 className="grid grid-cols-3 gap-4"
                             >
                                 <div className="bg-white rounded-xl p-4 text-center shadow-md border border-slate-100">
-                                    <div className="text-2xl md:text-3xl font-bold text-saffron">10000+</div>
+                                    <div className="text-2xl md:text-3xl font-bold text-saffron">{dynamicMemberCount}+</div>
                                     <div className="text-xs md:text-sm text-slate-600 mt-1">सदस्य</div>
                                 </div>
                                 <div className="bg-white rounded-xl p-4 text-center shadow-md border border-slate-100">

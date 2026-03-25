@@ -204,7 +204,7 @@ const Home = () => {
 
                 <div className="container mx-auto max-w-6xl relative z-10">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        <StatCard number="10000+" label="सक्रिय सदस्य" delay={0.1} />
+                        <StatCard number={`${dynamicMemberCount}+`} label="सक्रिय सदस्य" delay={0.1} />
                         <StatCard number="50+" label="सफल अभियान" delay={0.2} />
                         <StatCard number="100+" label="जिला इकाइयाँ" delay={0.3} />
                         <StatCard number="5+" label="राज्य स्तर" delay={0.4} />
@@ -1068,7 +1068,7 @@ const Home = () => {
                         >
                             <h3 className="text-xl font-bold text-green-flag mb-3">हमारी पहुंच</h3>
                             <p className="text-white/90 text-sm leading-relaxed">
-                                5+ राज्यों में 100+ जिला इकाइयां और 10,000+ सक्रिय सदस्यों के साथ हम पूरे भारत में कार्यरत हैं।
+                                5+ राज्यों में 100+ जिला इकाइयां और {dynamicMemberCount.toLocaleString('en-IN')}+ सक्रिय सदस्यों के साथ हम पूरे भारत में कार्यरत हैं।
                             </p>
                         </motion.div>
                         <motion.div

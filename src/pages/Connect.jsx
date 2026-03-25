@@ -20,6 +20,13 @@ const Connect = () => {
         address: ''
     });
 
+    // Dynamic Member Count Logic 
+    // Starts at 14000 on March 25, 2026, and increases by 3000 every 6 days
+    const baseDate = new Date('2026-03-25T00:00:00Z').getTime();
+    const currentDate = new Date().getTime();
+    const diffDays = Math.max(0, Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24)));
+    const dynamicMemberCount = 14000 + (Math.floor(diffDays / 6) * 3000);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -173,7 +180,7 @@ const Connect = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10000+ फॉलोवर्स
+                                    {dynamicMemberCount}+ फॉलोवर्स
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}
