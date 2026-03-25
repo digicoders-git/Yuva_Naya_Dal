@@ -906,12 +906,12 @@ const Home = () => {
                                 />
                                 <LeaderCard
                                     image={image43}
-                                    name="निहार कुमार"
+                                    name="निहाल कुमार"
                                     title="राष्ट्रीय उपाध्यक्ष"
                                     subtitle="प्रयागराज, उत्तर प्रदेश"
                                     delay={0.5}
                                     position="object-top object-contain"
-                                    onClick={() => setSelectedImage({ img: image43, name: "निहार कुमार" })}
+                                    onClick={() => setSelectedImage({ img: image43, name: "निहाल कुमार" })}
                                 />
                                 <LeaderCard
                                     image={image44}
