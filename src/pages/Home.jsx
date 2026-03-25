@@ -173,7 +173,7 @@ const Home = () => {
                                     transition={{ delay: 1, duration: 0.5 }}
                                     className="absolute -top-4 -right-4 bg-saffron text-white px-6 py-3 rounded-full font-bold shadow-xl text-sm"
                                 >
-                                    10000+ सदस्य
+                                    14000+ सदस्य
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0 }}
