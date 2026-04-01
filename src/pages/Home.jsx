@@ -1081,7 +1081,7 @@ const Home = () => {
                                 image={image54}
                                 name="महताब आलम"
                                 title="प्रदेश अध्यक्ष"
-                                subtitle="(टीम अल्पसंख्यक)"
+                                subtitle="उत्तर प्रदेश,(टीम अल्पसंख्यक)"
                                 delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image54, name: "महताब आलम" })}
