@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1033,6 +1033,125 @@ const Home = () => {
                     </div>
                     {/* === END ORG-CHART === */}
 
+                </div>
+            </section>
+
+            {/* Pradesh Adhyaksh Section */}
+            <section className="pt-12 pb-6 px-4 md:px-6 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 md:mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-flag mb-4">
+                            हमारे प्रदेश अध्यक्ष
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-saffron mx-auto rounded-full mb-6"
+                        />
+                    </motion.div>
+
+                    {/* Centered Grid for State Presidents */}
+                    <div className="flex justify-center w-full">
+                        <div className="max-w-xs w-full">
+                            <LeaderCard
+                                image={image52}
+                                name="प्रवीण कुमार झा"
+                                title="प्रदेश अध्यक्ष"
+                                subtitle="बिहार राज्य"
+                                delay={0.1}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image52, name: "प्रवीण कुमार झा" })}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Zila Adhyaksh Section */}
+            <section className="pt-6 pb-12 px-4 md:px-6 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 md:mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-flag mb-4">
+                            उत्तर प्रदेश के पुनः निर्वाचित जिला अध्यक्षों की सूची
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-saffron mx-auto rounded-full mb-6"
+                        />
+                    </motion.div>
+
+                    {/* Grid for District Presidents */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+                        <LeaderCard
+                            image={image47}
+                            name="अरविन्द सिंह पटेल"
+                            title="जिला अध्यक्ष"
+                            subtitle="प्रयागराज, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image47, name: "अरविन्द सिंह पटेल" })}
+                        />
+                        <LeaderCard
+                            image={image53}
+                            name="युवराज पाण्डेय"
+                            title="जिला अध्यक्ष"
+                            subtitle="मिर्जापुर, उत्तर प्रदेश"
+                            delay={0.2}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image53, name: "युवराज पाण्डेय" })}
+                        />
+                        <LeaderCard
+                            image={image48}
+                            name="मनीष कुमार पाण्डेय"
+                            title="जिला अध्यक्ष"
+                            subtitle="उन्नाव, उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image48, name: "मनीष कुमार पाण्डेय" })}
+                        />
+                        <LeaderCard
+                            image={image49}
+                            name="अनिल वर्मा"
+                            title="जिला अध्यक्ष"
+                            subtitle="जालौन, उत्तर प्रदेश"
+                            delay={0.4}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image49, name: "अनिल वर्मा" })}
+                        />
+                        <LeaderCard
+                            image={image50}
+                            name="धीरेंद्र सिंह"
+                            title="जिला अध्यक्ष"
+                            subtitle="रायबरेली, उत्तर प्रदेश"
+                            delay={0.5}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image50, name: "धीरेंद्र सिंह" })}
+                        />
+                        <LeaderCard
+                            image={image51}
+                            name="सुभाष चंद्र"
+                            title="जिला अध्यक्ष"
+                            subtitle="चित्रकूट, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image51, name: "सुभाष चंद्र" })}
+                        />
+                    </div>
                 </div>
             </section>
 
