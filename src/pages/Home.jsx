@@ -1174,7 +1174,7 @@ const Home = () => {
                             title="जिला अध्यक्ष"
                             subtitle="रायबरेली, उत्तर प्रदेश"
                             delay={0.6}
-                            position="object-top object-contain"
+                            position="object-top object-contain scale-[1.35]"
                             onClick={() => setSelectedImage({ img: image46, name: "धीरेंद्र सिंह" })}
                         />
                     </div>
