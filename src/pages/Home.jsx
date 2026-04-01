@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -984,7 +984,7 @@ const Home = () => {
                             <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                                 स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय प्रवक्ता
                             </div>
-                            <div className="max-w-xs w-full">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
                                 <LeaderCard
                                     image={image40}
                                     name="शिव कुमार सिंह"
@@ -993,6 +993,15 @@ const Home = () => {
                                     delay={0.5}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
+                                />
+                                <LeaderCard
+                                    image={image45}
+                                    name="विवेक श्रीवास्तव"
+                                    title="राष्ट्रीय प्रवक्ता"
+                                    subtitle="फतेहपुर, उत्तर प्रदेश"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image45, name: "विवेक श्रीवास्तव" })}
                                 />
                             </div>
                         </motion.div>
