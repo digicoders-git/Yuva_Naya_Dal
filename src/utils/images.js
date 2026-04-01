@@ -62,6 +62,7 @@ import image50 from '../assets/image-50.png';
 import image51 from '../assets/image-51.png';
 import image52 from '../assets/image-52.png';
 import image53 from '../assets/image-53.png';
+import image54 from '../assets/image-54.png';
 
 
 
@@ -79,7 +80,7 @@ export const galleryImages = {
    21: image21, 22: image22, 23: image23, 24: image24, 25: image25,
    26: image26, 27: image27, 28: image28, 30: image30,
    31: image31, 32: image32, 34: image34, 35: image35,
-   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43, 44: image44, 45: image45, 46: image46, 47: image47, 48: image48, 49: image49, 50: image50, 51: image51, 52: image52, 53: image53
+   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43, 44: image44, 45: image45, 46: image46, 47: image47, 48: image48, 49: image49, 50: image50, 51: image51, 52: image52, 53: image53, 54: image54
 
 };
 
@@ -90,5 +91,5 @@ export {
    image1, image2, image3, image4, image5, image7, image8, 
    image12, image13, image14, image15, image16, image17, image18, image19, image20,
    image21, image22, image23, image24, image25, image26, image27, image28, image30,
-   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43 ,image44, image45, image46, image47, image48, image49, image50, image51, image52, image53
+   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43 ,image44, image45, image46, image47, image48, image49, image50, image51, image52, image53, image54
 };

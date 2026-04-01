@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1057,8 +1057,7 @@ const Home = () => {
                         />
                     </motion.div>
 
-                    {/* Centered Grid for State Presidents */}
-                    <div className="flex justify-center w-full">
+                    <div className="flex flex-col items-center gap-0">
                         <div className="max-w-xs w-full">
                             <LeaderCard
                                 image={image52}
@@ -1068,6 +1067,24 @@ const Home = () => {
                                 delay={0.1}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image52, name: "प्रवीण कुमार झा" })}
+                            />
+                        </div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                        <div className="max-w-xs w-full">
+                            <LeaderCard
+                                image={image54}
+                                name="महताब आलम"
+                                title="प्रदेश अध्यक्ष"
+                                subtitle="(टीम अल्पसंख्यक)"
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image54, name: "महताब आलम" })}
                             />
                         </div>
                     </div>
@@ -1135,21 +1152,30 @@ const Home = () => {
                         />
                         <LeaderCard
                             image={image50}
-                            name="धीरेंद्र सिंह"
-                            title="जिला अध्यक्ष"
-                            subtitle="रायबरेली, उत्तर प्रदेश"
-                            delay={0.5}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image50, name: "धीरेंद्र सिंह" })}
-                        />
-                        <LeaderCard
-                            image={image51}
                             name="सुभाष चंद्र"
                             title="जिला अध्यक्ष"
                             subtitle="चित्रकूट, उत्तर प्रदेश"
+                            delay={0.5}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image50, name: "सुभाष चंद्र" })}
+                        />
+                        <LeaderCard
+                            image={image51}
+                            name="हिमांशु सेन"
+                            title="जिला अध्यक्ष"
+                            subtitle="कौशाम्बी, उत्तर प्रदेश"
                             delay={0.6}
                             position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image51, name: "सुभाष चंद्र" })}
+                            onClick={() => setSelectedImage({ img: image51, name: "हिमांशु सेन" })}
+                        />
+                        <LeaderCard
+                            image={image46}
+                            name="धीरेंद्र सिंह"
+                            title="जिला अध्यक्ष"
+                            subtitle="रायबरेली, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image46, name: "धीरेंद्र सिंह" })}
                         />
                     </div>
                 </div>
