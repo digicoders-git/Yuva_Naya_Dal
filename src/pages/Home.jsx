@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1176,6 +1176,15 @@ const Home = () => {
                             delay={0.6}
                             position="object-top object-contain scale-[1.35]"
                             onClick={() => setSelectedImage({ img: image46, name: "धीरेंद्र सिंह" })}
+                        />
+                         <LeaderCard
+                            image={image55}
+                            name="हार्दिक अग्रहरि"
+                            title="जिला अध्यक्ष"
+                            subtitle="फतेहपुर, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image55, name: "हार्दिक अग्रहरि" })}
                         />
                     </div>
                 </div>
