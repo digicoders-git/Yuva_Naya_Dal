@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -936,7 +936,7 @@ const Home = () => {
                             <div className="inline-flex items-center gap-2 bg-green-flag/10 border border-green-flag/30 text-green-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                                 स्तर - ३ &nbsp;|&nbsp; राष्ट्रीय महासचिव
                             </div>
-                            <div className="max-w-xs w-full">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
                                 <LeaderCard
                                     image={image38}
                                     name="शुभम गुप्ता"
@@ -945,6 +945,15 @@ const Home = () => {
                                     delay={0.4}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
+                                />
+                                <LeaderCard
+                                    image={image58}
+                                    name="प्रेम शंकर शुक्ला"
+                                    title="अध्यक्ष"
+                                    subtitle="(संरक्षक कमेटी / राष्ट्रीय महासचिव)"
+                                    delay={0.5}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image58, name: "प्रेम शंकर शुक्ला" })}
                                 />
                             </div>
                         </motion.div>
