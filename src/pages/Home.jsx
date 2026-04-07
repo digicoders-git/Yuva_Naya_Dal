@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1033,6 +1033,44 @@ const Home = () => {
                     </div>
                     {/* === END ORG-CHART === */}
 
+                </div>
+            </section>
+
+            {/* Rashtriya Ikai Netritva Section */}
+            <section className="pt-12 pb-6 px-4 md:px-6 bg-slate-50 relative overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 md:mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-flag mb-4">
+                            राष्ट्रीय इकाई नेतृत्व
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-saffron mx-auto rounded-full mb-6"
+                        />
+                    </motion.div>
+
+                    {/* Centered Grid for Rashtriya Ikai Netritva */}
+                    <div className="flex justify-center w-full">
+                        <div className="max-w-xs w-full">
+                            <LeaderCard
+                                image={image59}
+                                name="माननीय श्रीमती अर्चना गौहर"
+                                title="राष्ट्रीय अध्यक्ष"
+                                subtitle="(टीम महिला) नई दिल्ली"
+                                delay={0.1}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image59, name: "माननीय श्रीमती अर्चना गौहर" })}
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
 
