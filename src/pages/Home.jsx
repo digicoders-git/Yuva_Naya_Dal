@@ -1080,12 +1080,12 @@ const Home = () => {
                         <div className="max-w-xs w-full">
                             <LeaderCard
                                 image={image59}
-                                name="माननीय श्रीमती अर्चना गौहर"
+                                name="माननीय सुश्री अर्चना गौहर"
                                 title="राष्ट्रीय अध्यक्ष"
                                 subtitle="(टीम महिला) नई दिल्ली"
                                 delay={0.2}
                                 position="object-top object-contain"
-                                onClick={() => setSelectedImage({ img: image59, name: "माननीय श्रीमती अर्चना गौहर" })}
+                                onClick={() => setSelectedImage({ img: image59, name: "माननीय सुश्री अर्चना गौहर" })}
                             />
                         </div>
                     </div>
