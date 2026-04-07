@@ -936,7 +936,7 @@ const Home = () => {
                             <div className="inline-flex items-center gap-2 bg-green-flag/10 border border-green-flag/30 text-green-flag text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                                 स्तर - ३ &nbsp;|&nbsp; राष्ट्रीय महासचिव
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                            <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image38}
                                     name="शुभम गुप्ता"
@@ -945,15 +945,6 @@ const Home = () => {
                                     delay={0.4}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
-                                />
-                                <LeaderCard
-                                    image={image58}
-                                    name="प्रेम शंकर शुक्ला"
-                                    title="अध्यक्ष"
-                                    subtitle="(संरक्षक कमेटी / राष्ट्रीय महासचिव)"
-                                    delay={0.5}
-                                    position="object-top object-contain"
-                                    onClick={() => setSelectedImage({ img: image58, name: "प्रेम शंकर शुक्ला" })}
                                 />
                             </div>
                         </motion.div>
@@ -1069,11 +1060,29 @@ const Home = () => {
                     <div className="flex flex-col items-center gap-0">
                         <div className="max-w-xs w-full">
                             <LeaderCard
+                                image={image58}
+                                name="प्रेम शंकर शुक्ला"
+                                title="अध्यक्ष"
+                                subtitle=" (संरक्षक कमेटी / राष्ट्रीय महासचिव , दिल्ली )"
+                                delay={0.1}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image58, name: "प्रेम शंकर शुक्ला" })}
+                            />
+                        </div>
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                        <div className="max-w-xs w-full">
+                            <LeaderCard
                                 image={image52}
                                 name="प्रवीण कुमार झा"
                                 title="प्रदेश अध्यक्ष"
                                 subtitle="बिहार राज्य"
-                                delay={0.1}
+                                delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image52, name: "प्रवीण कुमार झा" })}
                             />
@@ -1091,7 +1100,7 @@ const Home = () => {
                                 name="महताब आलम"
                                 title="प्रदेश अध्यक्ष"
                                 subtitle="उत्तर प्रदेश,(टीम अल्पसंख्यक)"
-                                delay={0.2}
+                                delay={0.3}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image54, name: "महताब आलम" })}
                             />
