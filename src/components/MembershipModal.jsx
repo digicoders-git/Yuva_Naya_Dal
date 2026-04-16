@@ -99,37 +99,69 @@ const MembershipModal = ({ isOpen, onClose }) => {
     const handleDownload = async () => {
         if (cardRef.current) {
             try {
-                // Determine dimensions for the PDF
+                // Determine dimensions
                 const width = cardRef.current.offsetWidth;
                 const height = cardRef.current.offsetHeight;
 
-                const canvas = await html2canvas(cardRef.current, { 
-                    scale: 2, // Slightly lower scale for better stability
-                    useCORS: true, 
-                    logging: false,
-                    backgroundColor: '#ffffff',
-                    onclone: (clonedDoc) => {
-                        // Instead of removing or replacing (which crashes), 
-                        // we just disable the stylesheet parsing if possible
-                        // or provide a dummy stylesheet
-                        try {
-                            const styles = clonedDoc.getElementsByTagName('style');
-                            for (let i = 0; i < styles.length; i++) {
-                                // If the style contains oklch, we try to clear it safely
-                                if (styles[i].innerHTML.includes('oklch')) {
-                                    styles[i].innerHTML = ''; 
-                                }
-                            }
-                        } catch (e) {
-                            console.warn("Style cleanup failed", e);
-                        }
-                    }
+                // Create a temporary hidden iframe to isolate the card from global CSS errors (oklch)
+                const iframe = document.createElement('iframe');
+                iframe.style.position = 'fixed';
+                iframe.style.top = '-10000px'; 
+                iframe.style.left = '-10000px';
+                iframe.style.width = `${width}px`;
+                iframe.style.height = `${height}px`;
+                document.body.appendChild(iframe);
+
+                const iframeDoc = iframe.contentWindow.document;
+                iframeDoc.open();
+                
+                // Copy ONLY the necessary HTML and INLINE STYLES into the iframe
+                // We also include the Mukta font from Google Fonts in the iframe head for Hindi
+                iframeDoc.write(`
+                    <html>
+                        <head>
+                            <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+                            <style>
+                                * { margin: 0; padding: 0; box-sizing: border-box; }
+                                body { background: white; }
+                            </style>
+                        </head>
+                        <body>
+                            ${cardRef.current.outerHTML}
+                        </body>
+                    </html>
+                `);
+                iframeDoc.close();
+
+                // Wait for fonts and images in the iframe to load
+                await new Promise(resolve => {
+                    const checkImages = () => {
+                        const images = iframeDoc.getElementsByTagName('img');
+                        const allLoaded = Array.from(images).every(img => img.complete);
+                        if (allLoaded) resolve();
+                        else setTimeout(checkImages, 100);
+                    };
+                    iframe.onload = checkImages;
+                    // Fallback timeout
+                    setTimeout(resolve, 1000);
                 });
+
+                // Capture the content INSIDE the iframe
+                const iframeBody = iframeDoc.body;
+                const canvas = await html2canvas(iframeBody, { 
+                    scale: 2, 
+                    useCORS: true, 
+                    backgroundColor: '#ffffff',
+                    logging: false
+                });
+                
+                document.body.removeChild(iframe);
                 
                 const imgData = canvas.toDataURL('image/png');
                 
-                // Create PDF with EXACT dimensions of the card
-                // Using 'px' units and passing the array [width, height] 
+                // Create PDF
                 const pdf = new jsPDF({
                     orientation: 'portrait',
                     unit: 'px',
@@ -140,7 +172,7 @@ const MembershipModal = ({ isOpen, onClose }) => {
                 pdf.save(`YND_ID_${memberDetails?.memberId || 'Card'}.pdf`);
             } catch (err) {
                 console.error("Failed to generate ID card PDF", err);
-                alert("कुछ तकनीकी समस्या आई है। कृपया दोबारा प्रयास करें।");
+                alert("ID कार्ड बनाने में समस्या आई। कृपया दोबारा प्रयास करें या स्क्रीनशॉट लें।");
             }
         }
     };
