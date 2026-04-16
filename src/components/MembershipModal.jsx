@@ -17,7 +17,31 @@ const MembershipModal = ({ isOpen, onClose }) => {
         address: ''
     });
     const [memberDetails, setMemberDetails] = useState(null);
+    const [logoBase64, setLogoBase64] = useState('');
     const cardRef = useRef(null);
+
+    // Convert logo to Base64 to bypass CORS issues on live servers
+    useEffect(() => {
+        const convertToBase64 = async () => {
+            try {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.src = logo;
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    setLogoBase64(canvas.toDataURL('image/png'));
+                };
+            } catch (err) {
+                console.error("Logo conversion failed", err);
+                setLogoBase64(logo); // Fallback
+            }
+        };
+        convertToBase64();
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -251,7 +275,7 @@ const MembershipModal = ({ isOpen, onClose }) => {
                                                             border: '2px solid #ff9933', 
                                                             zIndex: 10, position: 'relative' 
                                                         }}>
-                                                            <img src={logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+                                                            <img src={logoBase64 || logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
                                                         </div>
                                                         <h2 style={{ fontSize: '20px', fontWeight: '900', letterSpacing: '0.05em', margin: 0, fontFamily: 'Mukta, sans-serif' }}>युवा न्याय दल</h2>
                                                         <p style={{ fontSize: '10px', letterSpacing: '0.1em', fontWeight: '600', textTransform: 'uppercase', opacity: 0.9, marginTop: '4px' }}>पहचान पत्र (Identity Card)</p>
@@ -266,7 +290,7 @@ const MembershipModal = ({ isOpen, onClose }) => {
                                                             overflow: 'hidden', pointerEvents: 'none',
                                                             opacity: 0.05
                                                         }}>
-                                                            <img src={logo} alt="Watermark" style={{ width: '180px', height: '180px', filter: 'grayscale(100%)' }} />
+                                                            <img src={logoBase64 || logo} alt="Watermark" style={{ width: '180px', height: '180px', filter: 'grayscale(100%)' }} />
                                                         </div>
 
                                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative', zIndex: 10 }}>
