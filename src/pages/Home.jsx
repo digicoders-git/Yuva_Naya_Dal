@@ -6,20 +6,10 @@ import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, F
 import { HiX } from 'react-icons/hi';
 import { useState, useEffect } from 'react';
 import ActivitiesSection from '../components/ActivitiesSection';
-
+import MembershipModal from '../components/MembershipModal';
 const Home = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [isFormOpen, setIsFormOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle', 'success', 'error'
-    const [errorMessage, setErrorMessage] = useState('');
-    const [formData, setFormData] = useState({
-        name: '',
-        phone: '',
-        fatherName: '',
-        email: '',
-        address: ''
-    });
 
     // Dynamic Member Count Logic 
     // Starts at 14000 on March 25, 2026, and increases by 3000 every 6 days
@@ -28,55 +18,7 @@ const Home = () => {
     const diffDays = Math.max(0, Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24)));
     const dynamicMemberCount = 14000 + (Math.floor(diffDays / 6) * 3000);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setSubmitStatus('idle');
-
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/membership`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                setSubmitStatus('success');
-                setFormData({
-                    name: '',
-                    phone: '',
-                    fatherName: '',
-                    email: '',
-                    address: ''
-                });
-            } else {
-                setSubmitStatus('error');
-                setErrorMessage(data.error || 'कुछ गलत हुआ। कृपया पुनः प्रयास करें।');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            setSubmitStatus('error');
-            setErrorMessage('सर्वर से संपर्क करने में असमर्थ। कृपया बाद में प्रयास करें।');
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        if (!isFormOpen) {
-            setSubmitStatus('idle');
-            setErrorMessage('');
-        }
-    }, [isFormOpen]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -1403,194 +1345,8 @@ const Home = () => {
                 )}
             </AnimatePresence>
 
-            <AnimatePresence>
-                {isFormOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-4 sm:py-10"
-                        onClick={() => setIsFormOpen(false)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="bg-white w-full max-w-2xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative my-auto"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            {/* Close Button */}
-                            <button
-                                onClick={() => setIsFormOpen(false)}
-                                className="absolute top-4 right-4 text-slate-400 hover:text-navy-flag transition-colors z-10"
-                            >
-                                <HiX size={32} />
-                            </button>
-
-                            <div className="flex flex-col md:flex-row">
-                                {/* Left Side - Info */}
-                                <div className="hidden md:flex md:w-1/3 bg-gradient-to-br from-navy-flag to-slate-800 p-8 text-white flex-col justify-between relative overflow-hidden">
-                                     <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/10 rounded-full blur-3xl" />
-                                     <div className="relative z-10">
-                                        <img src={logo} alt="Logo" className="w-16 h-16 rounded-full mb-6 border-2 border-white/20" />
-                                        <h3 className="text-2xl font-bold mb-4 font-hindi">जुड़ें हमारे साथ</h3>
-                                        <p className="text-sm text-slate-300">युवा न्याय दल का हिस्सा बनकर समाज में सकारात्मक बदलाव लाएं।</p>
-                                     </div>
-                                     <div className="mt-8 space-y-4 relative z-10">
-                                        <div className="flex items-center gap-3 text-sm">
-                                            <div className="w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron">✓</div>
-                                            <span>24/7 सहायता</span>
-                                        </div>
-                                        <div className="flex items-center gap-3 text-sm">
-                                            <div className="w-6 h-6 bg-green-flag/20 rounded-full flex items-center justify-center text-green-flag">✓</div>
-                                            <span>तुरंत जवाब</span>
-                                        </div>
-                                     </div>
-                                </div>
-
-                                {/* Right Side - Form or Status */}
-                                <div className="md:w-2/3 p-6 sm:p-8 lg:p-10">
-                                    {submitStatus === 'success' ? (
-                                        <motion.div 
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            className="h-full flex flex-col items-center justify-center text-center space-y-6 py-10"
-                                        >
-                                            <div className="w-20 h-20 bg-green-flag/10 rounded-full flex items-center justify-center text-green-flag relative">
-                                                <motion.div 
-                                                    initial={{ scale: 0 }}
-                                                    animate={{ scale: 1 }}
-                                                    transition={{ delay: 0.2, type: 'spring' }}
-                                                >
-                                                    <HiOutlineShieldCheck size={48} />
-                                                </motion.div>
-                                                <motion.div 
-                                                    className="absolute inset-0 rounded-full border-4 border-green-flag/30"
-                                                    animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
-                                                    transition={{ duration: 2, repeat: Infinity }}
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <h4 className="text-3xl font-bold text-navy-flag font-hindi">बधाई हो!</h4>
-                                                <p className="text-slate-600 font-medium">आपका सदस्यता आवेदन सफलतापूर्वक जमा कर लिया गया है।</p>
-                                            </div>
-                                            <p className="text-sm text-slate-500 max-w-xs mx-auto">
-                                                हमारी टीम जल्द ही आपसे संपर्क करेगी। युवा न्याय दल के साथ जुड़ने के लिए धन्यवाद।
-                                            </p>
-                                            <button
-                                                onClick={() => setIsFormOpen(false)}
-                                                className="bg-navy-flag text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg"
-                                            >
-                                                ठीक है
-                                            </button>
-                                        </motion.div>
-                                    ) : (
-                                        <>
-                                            <div className="mb-4 sm:mb-6">
-                                                <h4 className="text-xl sm:text-2xl font-bold text-navy-flag mb-1">सदस्यता फॉर्म</h4>
-                                                <p className="text-xs sm:text-sm text-slate-500 font-medium">अपनी जानकारी साझा करें</p>
-                                            </div>
-
-                                            {submitStatus === 'error' && (
-                                                <motion.div 
-                                                    initial={{ opacity: 0, y: -10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm font-medium rounded-r-xl flex items-center gap-3"
-                                                >
-                                                    <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-500 shrink-0">!</div>
-                                                    <p>{errorMessage}</p>
-                                                </motion.div>
-                                            )}
-
-                                            <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                                                    <div className="space-y-1 sm:space-y-1.5">
-                                                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पूरा नाम</label>
-                                                        <input
-                                                            required
-                                                            name="name"
-                                                            value={formData.name}
-                                                            onChange={handleInputChange}
-                                                            type="text"
-                                                            placeholder="आपका नाम"
-                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                        />
-                                                    </div>
-                                                    <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
-                                                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">मोबाइल नंबर</label>
-                                                        <input
-                                                            required
-                                                            name="phone"
-                                                            value={formData.phone}
-                                                            onChange={handleInputChange}
-                                                            type="tel"
-                                                            placeholder="91XXXXXXXX"
-                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                        />
-                                                    </div>
-                                                </div>
-
-                                                <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
-                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पिता का नाम</label>
-                                                    <input
-                                                        required
-                                                        name="fatherName"
-                                                        value={formData.fatherName}
-                                                        onChange={handleInputChange}
-                                                        type="text"
-                                                        placeholder="पिता का नाम लिखें"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                    />
-                                                </div>
-
-                                                <div className="space-y-1 sm:space-y-1.5">
-                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">ईमेल (वैकल्पिक)</label>
-                                                    <input
-                                                        name="email"
-                                                        value={formData.email}
-                                                        onChange={handleInputChange}
-                                                        type="email"
-                                                        placeholder="email@example.com"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                    />
-                                                </div>
-
-                                                <div className="space-y-1 sm:space-y-1.5">
-                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पता / जिला</label>
-                                                    <input
-                                                        required
-                                                        name="address"
-                                                        value={formData.address}
-                                                        onChange={handleInputChange}
-                                                        type="text"
-                                                        placeholder="अपना पता लिखें"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                    />
-                                                </div>
-
-                                                <motion.button
-                                                    whileHover={{ scale: 1.02 }}
-                                                    whileTap={{ scale: 0.98 }}
-                                                    type="submit"
-                                                    disabled={isLoading}
-                                                    className={`w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-saffron/20 transition-all mt-2 sm:mt-4 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                                                >
-                                                    {isLoading ? (
-                                                        <div className="flex items-center justify-center gap-2">
-                                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                                            <span>जमा हो रहा है...</span>
-                                                        </div>
-                                                    ) : 'अभी आवेदन करें'}
-                                                </motion.button>
-                                            </form>
-                                        </>
-                                    )}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* Membership Form Modal */}
+            <MembershipModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
         </div>
     );
 };
