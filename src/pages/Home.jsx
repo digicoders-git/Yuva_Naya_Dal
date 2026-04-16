@@ -1409,14 +1409,14 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-10"
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-4 sm:py-10"
                         onClick={() => setIsFormOpen(false)}
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative my-auto"
+                            className="bg-white w-full max-w-2xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative my-auto"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Close Button */}
@@ -1429,7 +1429,7 @@ const Home = () => {
 
                             <div className="flex flex-col md:flex-row">
                                 {/* Left Side - Info */}
-                                <div className="md:w-1/3 bg-gradient-to-br from-navy-flag to-slate-800 p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                                <div className="hidden md:flex md:w-1/3 bg-gradient-to-br from-navy-flag to-slate-800 p-8 text-white flex-col justify-between relative overflow-hidden">
                                      <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/10 rounded-full blur-3xl" />
                                      <div className="relative z-10">
                                         <img src={logo} alt="Logo" className="w-16 h-16 rounded-full mb-6 border-2 border-white/20" />
@@ -1449,7 +1449,7 @@ const Home = () => {
                                 </div>
 
                                 {/* Right Side - Form or Status */}
-                                <div className="md:w-2/3 p-8 lg:p-10">
+                                <div className="md:w-2/3 p-6 sm:p-8 lg:p-10">
                                     {submitStatus === 'success' ? (
                                         <motion.div 
                                             initial={{ opacity: 0, scale: 0.9 }}
@@ -1486,9 +1486,9 @@ const Home = () => {
                                         </motion.div>
                                     ) : (
                                         <>
-                                            <div className="mb-6">
-                                                <h4 className="text-2xl font-bold text-navy-flag mb-1">सदस्यता फॉर्म</h4>
-                                                <p className="text-sm text-slate-500 font-medium">अपनी जानकारी साझा करें</p>
+                                            <div className="mb-4 sm:mb-6">
+                                                <h4 className="text-xl sm:text-2xl font-bold text-navy-flag mb-1">सदस्यता फॉर्म</h4>
+                                                <p className="text-xs sm:text-sm text-slate-500 font-medium">अपनी जानकारी साझा करें</p>
                                             </div>
 
                                             {submitStatus === 'error' && (
@@ -1502,10 +1502,10 @@ const Home = () => {
                                                 </motion.div>
                                             )}
 
-                                            <form className="space-y-4" onSubmit={handleSubmit}>
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पूरा नाम</label>
+                                            <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                                    <div className="space-y-1 sm:space-y-1.5">
+                                                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पूरा नाम</label>
                                                         <input
                                                             required
                                                             name="name"
@@ -1513,11 +1513,11 @@ const Home = () => {
                                                             onChange={handleInputChange}
                                                             type="text"
                                                             placeholder="आपका नाम"
-                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
                                                         />
                                                     </div>
-                                                    <div className="space-y-1.5 flex flex-col items-start w-full">
-                                                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">मोबाइल नंबर</label>
+                                                    <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
+                                                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">मोबाइल नंबर</label>
                                                         <input
                                                             required
                                                             name="phone"
@@ -1525,13 +1525,13 @@ const Home = () => {
                                                             onChange={handleInputChange}
                                                             type="tel"
                                                             placeholder="91XXXXXXXX"
-                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                            className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
                                                         />
                                                     </div>
                                                 </div>
 
-                                                <div className="space-y-1.5 flex flex-col items-start w-full">
-                                                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पिता का नाम</label>
+                                                <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
+                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पिता का नाम</label>
                                                     <input
                                                         required
                                                         name="fatherName"
@@ -1539,24 +1539,24 @@ const Home = () => {
                                                         onChange={handleInputChange}
                                                         type="text"
                                                         placeholder="पिता का नाम लिखें"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
                                                     />
                                                 </div>
 
-                                                <div className="space-y-1.5">
-                                                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">ईमेल (वैकल्पिक)</label>
+                                                <div className="space-y-1 sm:space-y-1.5">
+                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">ईमेल (वैकल्पिक)</label>
                                                     <input
                                                         name="email"
                                                         value={formData.email}
                                                         onChange={handleInputChange}
                                                         type="email"
                                                         placeholder="email@example.com"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
                                                     />
                                                 </div>
 
-                                                <div className="space-y-1.5">
-                                                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पता / जिला</label>
+                                                <div className="space-y-1 sm:space-y-1.5">
+                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पता / जिला</label>
                                                     <input
                                                         required
                                                         name="address"
@@ -1564,7 +1564,7 @@ const Home = () => {
                                                         onChange={handleInputChange}
                                                         type="text"
                                                         placeholder="अपना पता लिखें"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
+                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
                                                     />
                                                 </div>
 
@@ -1573,7 +1573,7 @@ const Home = () => {
                                                     whileTap={{ scale: 0.98 }}
                                                     type="submit"
                                                     disabled={isLoading}
-                                                    className={`w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-saffron/20 transition-all mt-4 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                                    className={`w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-saffron/20 transition-all mt-2 sm:mt-4 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                                                 >
                                                     {isLoading ? (
                                                         <div className="flex items-center justify-center gap-2">
