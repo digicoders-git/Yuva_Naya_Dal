@@ -104,16 +104,24 @@ const MembershipModal = ({ isOpen, onClose }) => {
                 const height = cardRef.current.offsetHeight;
 
                 const canvas = await html2canvas(cardRef.current, { 
-                    scale: 3, 
+                    scale: 2, // Slightly lower scale for better stability
                     useCORS: true, 
+                    logging: false,
                     backgroundColor: '#ffffff',
                     onclone: (clonedDoc) => {
-                        // Safer way to handle oklch error without removing ALL styles
-                        // We target the root variables or any style that might use oklch
-                        const styles = clonedDoc.getElementsByTagName('style');
-                        for (let style of styles) {
-                            // Replace oklch/oklaba patterns with a safe fallback to prevent parser crash
-                            style.innerHTML = style.innerHTML.replace(/oklch\([^)]+\)/g, '#000000');
+                        // Instead of removing or replacing (which crashes), 
+                        // we just disable the stylesheet parsing if possible
+                        // or provide a dummy stylesheet
+                        try {
+                            const styles = clonedDoc.getElementsByTagName('style');
+                            for (let i = 0; i < styles.length; i++) {
+                                // If the style contains oklch, we try to clear it safely
+                                if (styles[i].innerHTML.includes('oklch')) {
+                                    styles[i].innerHTML = ''; 
+                                }
+                            }
+                        } catch (e) {
+                            console.warn("Style cleanup failed", e);
                         }
                     }
                 });

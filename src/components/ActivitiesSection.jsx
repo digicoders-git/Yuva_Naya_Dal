@@ -10,9 +10,11 @@ import 'swiper/css/navigation';
 
 const ActivitiesSection = () => {
     const [apiImages, setApiImages] = useState([]);
+    const [isMounted, setIsMounted] = useState(false);
     const staticImages = Object.values(galleryImages);
 
     useEffect(() => {
+        setIsMounted(true);
         const fetchGallery = async () => {
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/media`);
@@ -33,6 +35,9 @@ const ActivitiesSection = () => {
         ...staticImages.map(img => ({ type: 'static', url: img })),
         ...apiImages.map(img => ({ type: 'api', url: `${baseUrl}${img.imageUrl}` }))
     ];
+
+    if (!isMounted) return null;
+
     return (
         <section className="pt-10 md:pt-12 pb-8 md:pb-12 bg-gradient-to-br from-white to-slate-50">
             <div className="w-full">
@@ -58,51 +63,54 @@ const ActivitiesSection = () => {
                 </motion.div>
 
                 <div className="px-4 md:px-6">
-                    <Swiper
-                        modules={[Autoplay, Navigation]}
-                        spaceBetween={16}
-                        slidesPerView={1}
-                        autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
-                        navigation
-                        loop={false}
-                        breakpoints={{
-                            480: { slidesPerView: 1, spaceBetween: 16 },
-                            640: { slidesPerView: 2, spaceBetween: 16 },
-                            1024: { slidesPerView: 3, spaceBetween: 20 },
-                            1280: { slidesPerView: 4, spaceBetween: 24 }
-                        }}
-                        className="pb-12"
-                    >
-                        {allImages.map((img, idx) => (
-                            <SwiperSlide key={`${img.type}-${idx}`}>
-                                <NavLink to="/gallery">
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.05 }}
-                                        whileHover={{ y: -8, scale: 1.02 }}
-                                        className="relative group cursor-pointer bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all"
-                                    >
-                                        <div className="relative overflow-hidden">
-                                            <img
-                                                src={img.url}
-                                                alt={`Activity ${idx + 1}`}
-                                                className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                                            />
-                                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                                <div className="text-center bg-white/90 px-6 py-4 rounded-xl shadow-xl">
-                                                    <p className="text-navy-flag text-xl font-bold mb-2">पूरी गैलरी देखें</p>
-                                                    <HiOutlineArrowRight className="text-saffron text-2xl mx-auto" />
+                    {allImages.length > 0 && (
+                        <Swiper
+                            key={`swiper-${allImages.length}`}
+                            modules={[Autoplay, Navigation]}
+                            spaceBetween={16}
+                            slidesPerView={1}
+                            autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                            navigation
+                            loop={false}
+                            breakpoints={{
+                                480: { slidesPerView: 1, spaceBetween: 16 },
+                                640: { slidesPerView: 2, spaceBetween: 16 },
+                                1024: { slidesPerView: 3, spaceBetween: 20 },
+                                1280: { slidesPerView: 4, spaceBetween: 24 }
+                            }}
+                            className="pb-12"
+                        >
+                            {allImages.map((img, idx) => (
+                                <SwiperSlide key={`${img.type}-${idx}`}>
+                                    <NavLink to="/gallery">
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: idx * 0.05 }}
+                                            whileHover={{ y: -8, scale: 1.02 }}
+                                            className="relative group cursor-pointer bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all"
+                                        >
+                                            <div className="relative overflow-hidden">
+                                                <img
+                                                    src={img.url}
+                                                    alt={`Activity ${idx + 1}`}
+                                                    className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                    <div className="text-center bg-white/90 px-6 py-4 rounded-xl shadow-xl">
+                                                        <p className="text-navy-flag text-xl font-bold mb-2">पूरी गैलरी देखें</p>
+                                                        <HiOutlineArrowRight className="text-saffron text-2xl mx-auto" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="h-1 w-0 bg-saffron group-hover:w-full transition-all duration-500" />
-                                    </motion.div>
-                                </NavLink>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                                            <div className="h-1 w-0 bg-saffron group-hover:w-full transition-all duration-500" />
+                                        </motion.div>
+                                    </NavLink>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    )}
                 </div>
             </div>
         </section>

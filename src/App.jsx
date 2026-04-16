@@ -41,38 +41,34 @@ function App() {
     }, [location.pathname]);
 
     return (
-        <>
+        <div className="relative min-h-screen flex flex-col selection:bg-saffron selection:text-white">
             {/* Animated Loader Overlay */}
             <AnimatePresence mode="wait">
                 {loading && <PageLoader key="global-loader" />}
             </AnimatePresence>
 
-            {!loading && (
-                <div className="relative min-h-screen flex flex-col selection:bg-saffron selection:text-white">
-                    {/* Main Header */}
-                    <Header />
+            {/* Main Header */}
+            <Header />
 
-                    {/* Main Content Area */}
-                    <main className="flex-grow overflow-x-hidden bg-slate-50/50">
-                        <AnimatePresence mode="wait">
-                            <Routes location={location} key={location.pathname}>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/about" element={<AboutUs />} />
-                                <Route path="/gallery" element={<Gallery />} />
-                                <Route path="/contact" element={<Contact />} />
-                                <Route path="/connect" element={<Connect />} />
-                          
-                                <Route path="/terms" element={<Terms />} />
-                                <Route path="/privacy" element={<Privacy />} />
-                            </Routes>
-                        </AnimatePresence>
-                    </main>
+            {/* Main Content Area */}
+            <main className="flex-grow overflow-x-hidden bg-slate-50/50">
+                <AnimatePresence mode="wait">
+                    <Routes location={location} key={location.pathname}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<AboutUs />} />
+                        <Route path="/gallery" element={<Gallery />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/connect" element={<Connect />} />
+                  
+                        <Route path="/terms" element={<Terms />} />
+                        <Route path="/privacy" element={<Privacy />} />
+                    </Routes>
+                </AnimatePresence>
+            </main>
 
-                    {/* Main Footer */}
-                    <Footer />
-                </div>
-            )}
-        </>
+            {/* Main Footer */}
+            <Footer />
+        </div>
     );
 }
 
