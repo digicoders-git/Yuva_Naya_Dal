@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -808,7 +808,7 @@ const Home = () => {
                             <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image8}
-                                    name="मा. विजय शंकर शुक्ला"
+                                    name="मा. विजय शंकर शुक्ला ( एडवोकेट )"
                                     title="राष्ट्रीय अध्यक्ष"
                                     subtitle="संगठन का कुशल नेतृत्व"
                                     delay={0.1}
@@ -1004,7 +1004,7 @@ const Home = () => {
                         <div className="max-w-xs w-full">
                             <LeaderCard
                                 image={image58}
-                                name="प्रेम शंकर शुक्ला"
+                                name="प्रेम शंकर शुक्ला ( एडवोकेट )"
                                 title="अध्यक्ष"
                                 subtitle=" (संरक्षक कमेटी / राष्ट्रीय महासचिव , दिल्ली )"
                                 delay={0.1}
@@ -1083,6 +1083,21 @@ const Home = () => {
                                 delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image54, name: "महताब आलम" })}
+                            />
+
+                             {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+                             <LeaderCard
+                                image={image68}
+                                name="श्रीमती मीना भारती"
+                                title="अध्यक्ष"
+                                subtitle="मातृ शक्ति, उत्तर प्रदेश"
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image68, name: "श्रीमती मीना भारती" })}
                             />
                         </div>
                     </div>
@@ -1241,6 +1256,75 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Zila Mahasachiv Section */}
+            <section className="pt-6 pb-12 px-4 md:px-6 bg-white relative overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 md:mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-flag mb-4">
+                            उत्तर प्रदेश व अन्य प्रदेशों के जिला कार्यकारिणी की सूची
+                            <span className="block mt-2 text-xl md:text-2xl text-slate-600 font-bold">
+                                जिनको सीधे राष्ट्रीय नेतृत्व द्वारा मनोनीत किया गया
+                            </span>
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-green-flag mx-auto rounded-full mb-6"
+                        />
+                    </motion.div>
+
+                    {/* Grid for District General Secretaries */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+                        <LeaderCard
+                            image={image64}
+                            name="राज गुप्ता"
+                            title="जिला महासचिव"
+                            subtitle="फतेहपुर, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image64, name: "राज गुप्ता" })}
+                        />
+                        <LeaderCard
+                            image={image65}
+                            name="अरुण सिंह"
+                            title="जिला महासचिव"
+                            subtitle="रायबरेली, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image65, name: "अरुण सिंह" })}
+                        />
+                         <LeaderCard
+                            image={image66}
+                            name="आकाश द्विवेदी"
+                            title="जिला महासचिव"
+                            subtitle="कानपुर नगर, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image66, name: "आकाश द्विवेदी" })}
+                        />
+                         <LeaderCard
+                            image={image67}
+                            name="उत्तम यादव"
+                            title="जिला महासचिव"
+                            subtitle="कानपुर देहात, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image67, name: "उत्तम यादव" })}
+                        />
+
+
+                    </div>
+                </div>
+            </section>
+
 
             {/* Organization Info Section */}
             <section className="py-16 px-4 md:px-6 bg-gradient-to-br from-navy-flag via-slate-900 to-navy-flag relative overflow-hidden">
