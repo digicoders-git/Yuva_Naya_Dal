@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -808,7 +808,7 @@ const Home = () => {
                             <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image8}
-                                    name="मा. विजय शंकर शुक्ला ( एडवोकेट )"
+                                    name="मा.आदरणीय श्री विजय शंकर शुक्ला ( एडवोकेट )"
                                     title="राष्ट्रीय अध्यक्ष"
                                     subtitle="संगठन का कुशल नेतृत्व"
                                     delay={0.1}
@@ -1004,12 +1004,12 @@ const Home = () => {
                         <div className="max-w-xs w-full">
                             <LeaderCard
                                 image={image58}
-                                name="प्रेम शंकर शुक्ला ( एडवोकेट )"
+                                name="आदरणीय श्री प्रेम शंकर शुक्ला ( एडवोकेट )"
                                 title="अध्यक्ष"
                                 subtitle=" (संरक्षक कमेटी / राष्ट्रीय महासचिव , दिल्ली )"
                                 delay={0.1}
                                 position="object-top object-contain"
-                                onClick={() => setSelectedImage({ img: image58, name: "प्रेम शंकर शुक्ला" })}
+                                onClick={() => setSelectedImage({ img: image58, name: "आदरणीय श्री प्रेम शंकर शुक्ला" })}
                             />
                         </div>
 
@@ -1024,7 +1024,7 @@ const Home = () => {
                                 image={image59}
                                 name="माननीय सुश्री अर्चना गौहर"
                                 title="राष्ट्रीय अध्यक्ष"
-                                subtitle="(टीम महिला) नई दिल्ली"
+                                subtitle="(नेतृत्व महिला) नई दिल्ली"
                                 delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image59, name: "माननीय सुश्री अर्चना गौहर" })}
@@ -1093,12 +1093,42 @@ const Home = () => {
                              <LeaderCard
                                 image={image68}
                                 name="श्रीमती मीना भारती"
-                                title="अध्यक्ष"
-                                subtitle="मातृ शक्ति, उत्तर प्रदेश"
+                                title="प्रदेश अध्यक्ष"
+                                subtitle="नेतृत्व महिला, उत्तर प्रदेश"
                                 delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image68, name: "श्रीमती मीना भारती" })}
                             />
+                              <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                            <LeaderCard
+                                image={image69}
+                                name="रविंदर नाथ"
+                                title="प्रदेश अध्यक्ष"
+                                subtitle="दिल्ली"
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image69, name: "रविंदर नाथ" })}
+                            />
+
+                             <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+                            
+                             <LeaderCard
+                                image={image70}
+                                name="सुश्री रेखा उतवानी"
+                                title="प्रदेश अध्यक्ष ,महिला नेतृत्व"
+                                subtitle="राजस्थान"
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image70, name: "सुश्री रेखा उतवानी" })}
+                            />
+                            
                         </div>
                     </div>
                 </div>
