@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77  } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79  } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -808,7 +808,7 @@ const Home = () => {
                             <div className="max-w-xs w-full">
                                 <LeaderCard
                                     image={image8}
-                                    name="मा.श्री विजय शंकर शुक्ला ( एडवोकेट )"
+                                    name="मा.विजय शंकर शुक्ला ( एडवोकेट )"
                                     title="राष्ट्रीय अध्यक्ष"
                                     subtitle="संगठन का कुशल नेतृत्व"
                                     delay={0.1}
@@ -888,6 +888,21 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image38, name: "शुभम गुप्ता" })}
                                 />
+
+                                {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                        </div>
+                                 <LeaderCard
+                            image={image75}
+                            name="सुधीर कुमार सिंह"
+                            title="राष्ट्रीय महासचिव"
+                            subtitle="फतेहपुर , उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image75, name: "सुधीर कुमार सिंह" })}
+                        />
                             </div>
                         </motion.div>
 
@@ -912,6 +927,22 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image41, name: "राजेंद्र सिंह" })}
                                 />
+
+                                 {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-green-flag to-saffron opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-green-flag/60"/>
+                        </div>
+
+                                <LeaderCard 
+                            image={image76}
+                            name="संत कुमार राजपूत"
+                            title="राष्ट्रीय सचिव"
+                            subtitle="लखनऊ , उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image76, name: "संत कुमार राजपूत" })}
+                        />
                             </div>
                         </motion.div>
 
@@ -926,7 +957,7 @@ const Home = () => {
                             <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                                 स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय प्रवक्ता
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+                            <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 w-full max-w-2xl">
                                 <LeaderCard
                                     image={image40}
                                     name="शिव कुमार सिंह"
@@ -944,6 +975,15 @@ const Home = () => {
                                     delay={0.6}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image45, name: "विवेक श्रीवास्तव" })}
+                                />
+                                  <LeaderCard
+                                    image={image78}
+                                    name="सूर्य कुमार शुक्ला"
+                                    title="राष्ट्रीय प्रवक्ता"
+                                    // subtitle="फतेहपुर, उत्तर प्रदेश"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image78, name: "सूर्य कुमार शुक्ला" })}
                                 />
                             </div>
                         </motion.div>
@@ -1247,6 +1287,16 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image57, name: "ओमकार सिंह यादव" })}
                         />
+
+                         <LeaderCard 
+                            image={image77}
+                            name="वरुन जी"
+                            title="जिला अध्यक्ष"
+                            subtitle="कन्नौज , उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image77, name: "वरुन जी" })}
+                        />
                          <LeaderCard
                             image={image60}
                             name="गौरव श्रीवास्तव"
@@ -1349,15 +1399,7 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image67, name: "उत्तम यादव" })}
                         />
-                         <LeaderCard
-                            image={image75}
-                            name="सुधीर कुमार सिंह"
-                            title="राष्ट्रीय महासचिव"
-                            // subtitle="कानपुर देहात, उत्तर प्रदेश"
-                            delay={0.1}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image75, name: "सुधीर कुमार सिंह" })}
-                        />
+                        
 
                         <LeaderCard 
                             image={image71}
@@ -1398,26 +1440,19 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image74, name: "आर्यन यादव" })}
                         />
-
-                         <LeaderCard 
-                            image={image76}
-                            name="संत कुमार राजपूत"
-                            title="राष्ट्रीय सचिव"
-                            subtitle="लखनऊ , उत्तर प्रदेश"
+                        <LeaderCard 
+                            image={image79}
+                            name="सैफी रिजवी,"
+                            title="जिला अध्यक्ष (टीम अल्पसंख्यक)"
+                            subtitle="फतेहपुर , उत्तर प्रदेश"
                             delay={0.1}
                             position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image76, name: "संत कुमार राजपूत" })}
+                            onClick={() => setSelectedImage({ img: image79, name: "सैफी रिजवी" })}
                         />
 
-                         <LeaderCard 
-                            image={image77}
-                            name="वरुन जी"
-                            title="जिला अध्यक्ष"
-                            subtitle="कन्नौज , उत्तर प्रदेश"
-                            delay={0.1}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image77, name: "वरुन जी" })}
-                        />
+                         
+
+
 
 
                     </div>
