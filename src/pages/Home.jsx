@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79  } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80  } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1448,6 +1448,16 @@ const Home = () => {
                             delay={0.1}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image79, name: "सैफी रिजवी" })}
+                        />
+
+                         <LeaderCard 
+                            image={image80}
+                            name="मोहम्मद आदिल,"
+                            title="जिला उपाध्यक्ष (टीम अल्पसंख्यक)"
+                            subtitle="फतेहपुर , उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image80, name: "मोहम्मद आदिल" })}
                         />
 
                          
