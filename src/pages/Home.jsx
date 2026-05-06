@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80  } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84  } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1332,6 +1332,46 @@ const Home = () => {
                             delay={0.6}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image63, name: "करुणेंद्र जी" })}
+                        />
+
+                         <LeaderCard
+                            image={image81}
+                            name="चंद्रशेखर यादव"
+                            title="जिला अध्यक्ष"
+                            subtitle="आजमगढ़, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image81, name: "चंद्रशेखर यादव" })}
+                        />
+
+                          <LeaderCard
+                            image={image82}
+                            name="मनीष तिवारी "
+                            title="मंडल अध्यक्ष"
+                            subtitle="लखनऊ जोन(नेतृत्व अधिवक्ता )"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image82, name: "मनीष तिवारी" })}
+                        />
+
+                        <LeaderCard
+                            image={image83}
+                            name="सुरेश चन्द"
+                            title="जिला अध्यक्ष"
+                            subtitle="गोंडा, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image83, name: "सुरेश चन्द" })}
+                        />
+
+                         <LeaderCard
+                            image={image84}
+                            name="प्रसून आरव"
+                            title="जिला अध्यक्ष"
+                            subtitle="महानगर लखनऊ, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image84, name: "प्रसून आरव" })}
                         />
                     </div>
                 </div>
