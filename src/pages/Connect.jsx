@@ -90,7 +90,6 @@ const Connect = () => {
                                 </NavLink>
                             </motion.div>
                         </motion.div>
-
                         {/* Right - Logo with Modern Design */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
