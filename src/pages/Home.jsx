@@ -1101,12 +1101,12 @@ const Home = () => {
                         <div className="max-w-xs w-full">
                             <LeaderCard
                                 image={image86}
-                                name="राजन सिंह"
+                                name="राजन सिंह बुंदेला"
                                 title="प्रदेश अध्यक्ष"
                                 subtitle="उत्तर प्रदेश"
                                 delay={0.1}
                                 position="object-top object-contain"
-                                onClick={() => setSelectedImage({ img: image86, name: "राजन सिंह" })}
+                                onClick={() => setSelectedImage({ img: image86, name: "राजन सिंह बुंदेला" })}
                             />
                         </div>
 
