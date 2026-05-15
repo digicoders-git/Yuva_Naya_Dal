@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86 } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89  } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -943,6 +943,16 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image76, name: "संत कुमार राजपूत" })}
                         />
+
+                              <LeaderCard 
+                            image={image89}
+                            name="मनोज कुमार यादव"
+                            title="राष्ट्रीय सचिव"
+                            subtitle="लखनऊ , उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image89, name: "मनोज कुमार यादव" })}
+                        />
                             </div>
                         </motion.div>
 
@@ -1403,6 +1413,16 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image85, name: "अभिषेक कुमार" })}
                         />
+
+                        <LeaderCard
+                            image={image87}
+                            name="शिव प्रताप सिंह बुंदेला"
+                            title="जिला अध्यक्ष"
+                            subtitle="ललितपुर, उत्तर प्रदेश"
+                            delay={0.6}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image87, name: "शिव प्रताप सिंह बुंदेला" })}
+                        />
                     </div>
                 </div>
             </section>
@@ -1468,6 +1488,16 @@ const Home = () => {
                             delay={0.1}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image67, name: "उत्तम यादव" })}
+                        />
+                        
+                        <LeaderCard
+                            image={image88}
+                            name="विनय द्विवेदी"
+                            title="अध्यक्ष"
+                            subtitle="लोकसभा क्षेत्र जनपद फतेहपुर, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image88, name: "विनय द्विवेदी" })}
                         />
                         
 
