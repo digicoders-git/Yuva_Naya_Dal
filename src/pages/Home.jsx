@@ -944,6 +944,12 @@ const Home = () => {
                             onClick={() => setSelectedImage({ img: image76, name: "संत कुमार राजपूत" })}
                         />
 
+                          {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-green-flag to-saffron opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-green-flag/60"/>
+                        </div>
+
                               <LeaderCard 
                             image={image89}
                             name="मनोज कुमार यादव"
