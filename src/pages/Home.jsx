@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89  } from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 } from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1206,6 +1206,63 @@ const Home = () => {
                             />
                             
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pradesh Padadhikari Section */}
+            <section className="pt-6 pb-6 px-4 md:px-6 bg-white relative overflow-hidden">
+                <div className="container mx-auto max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-10 md:mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-navy-flag mb-4">
+                            प्रदेश पदाधिकारियों की सूची
+                            <span className="block mt-2 text-xl md:text-2xl text-slate-600 font-bold">
+                                जो कि सीधे राष्ट्रीय नेतृत्व द्वारा मनोनीत किए गए
+                            </span>
+                        </h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="h-1 w-24 md:w-40 bg-green-flag mx-auto rounded-full mb-6"
+                        />
+                    </motion.div>
+
+                    {/* Grid for Pradesh Padadhikari */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+                        <LeaderCard
+                            image={image90}
+                            name="सुशील कुमार सिंह"
+                            title="उपाध्यक्ष"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image90, name: "सुशील कुमार सिंह" })}
+                        />
+                        <LeaderCard
+                            image={image91}
+                            name="संजय कुमार"
+                            title="महासचिव"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.2}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image91, name: "संजय कुमार" })}
+                        />
+                        <LeaderCard
+                            image={image92}
+                            name="आशीष श्रीवास्तव"
+                            title="महासचिव"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image92, name: "आशीष श्रीवास्तव" })}
+                        />
                     </div>
                 </div>
             </section>
