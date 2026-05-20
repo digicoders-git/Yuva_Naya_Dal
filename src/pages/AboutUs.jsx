@@ -8,11 +8,11 @@ import { NavLink } from 'react-router-dom';
 
 const AboutUs = () => {
     // Dynamic Member Count Logic 
-    // Starts at 14000 on March 25, 2026, and increases by 10000 every 7 days
-    const baseDate = new Date('2026-03-25T00:00:00Z').getTime();
+    // Starts at 45000 on May 19, 2026, and increases by 9000 every 7 days
+    const baseDate = new Date('2026-05-19T00:00:00Z').getTime();
     const currentDate = new Date().getTime();
     const diffDays = Math.max(0, Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24)));
-    const dynamicMemberCount = 14000 + (Math.floor(diffDays / 7) * 10000);
+    const dynamicMemberCount = 45000 + (Math.floor(diffDays / 7) * 9000);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
