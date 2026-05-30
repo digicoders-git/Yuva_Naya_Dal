@@ -112,6 +112,10 @@ import image100 from '../assets/image-100.png';
 import image101 from '../assets/image-101.png';
 import image102 from '../assets/image-102.png';
 import image103 from '../assets/image-103.png';
+import image104 from '../assets/image-104.png';
+import image105 from '../assets/image-105.png';
+import image106 from '../assets/image-106.png';
+import image107 from '../assets/image-107.png';
 
 
 
@@ -131,7 +135,7 @@ export const galleryImages = {
    21: image21, 22: image22, 23: image23, 24: image24, 25: image25,
    26: image26, 27: image27, 28: image28, 30: image30,
    31: image31, 32: image32, 34: image34, 35: image35,
-   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43, 44: image44, 45: image45, 46: image46, 47: image47, 48: image48, 49: image49, 50: image50, 51: image51, 52: image52, 53: image53, 54: image54, 55: image55, 56: image56, 57: image57, 58: image58, 59: image59, 60: image60, 61: image61, 62: image62, 63: image63, 64: image64, 65: image65, 66: image66, 67: image67, 68: image68, 69: image69, 70: image70, 71: image71, 72: image72, 73: image73, 74: image74, 75: image75, 76: image76, 77: image77, 78: image78, 79: image79, 80: image80, 81: image81, 82: image82, 83: image83, 84: image84, 85: image85, 86: image86, 87:image87, 88:image88 , 89:image89, 90: image90, 91: image91, 92: image92, 93: image93 , 94: image94, 95: image95, 96: image96, 97: image97, 98: image98, 99: image99,100: image100,101: image101 ,102: image102, 103:image103
+   36: image36, 37: image37, 38: image38, 39: image39 ,40: image40, 41: image41, 42: image42, 43: image43, 44: image44, 45: image45, 46: image46, 47: image47, 48: image48, 49: image49, 50: image50, 51: image51, 52: image52, 53: image53, 54: image54, 55: image55, 56: image56, 57: image57, 58: image58, 59: image59, 60: image60, 61: image61, 62: image62, 63: image63, 64: image64, 65: image65, 66: image66, 67: image67, 68: image68, 69: image69, 70: image70, 71: image71, 72: image72, 73: image73, 74: image74, 75: image75, 76: image76, 77: image77, 78: image78, 79: image79, 80: image80, 81: image81, 82: image82, 83: image83, 84: image84, 85: image85, 86: image86, 87:image87, 88:image88 , 89:image89, 90: image90, 91: image91, 92: image92, 93: image93 , 94: image94, 95: image95, 96: image96, 97: image97, 98: image98, 99: image99,100: image100,101: image101 ,102: image102, 103:image103, 104:image104, 105:image105, 106:image106, 107:image107
 };
 
 // Export individual assets
@@ -141,5 +145,5 @@ export {
    image1, image2, image3, image4, image5, image7, image8, 
    image12, image13, image14, image15, image16, image17, image18, image19, image20,
    image21, image22, image23, image24, image25, image26, image27, image28, image30,
-   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43 ,image44, image45, image46, image47, image48, image49, image50, image51, image52, image53, image54, image55, image56, image57, image58, image59 , image60, image61, image62, image63, image64, image65, image66, image67, image68, image69,image70, image71, image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84, image85, image86, image87, image88, image89, image90, image91, image92,image93, image94, image95, image96, image97, image98, image99,image100,image101, image102 , image103
+   image31, image32,  image34, image35, image36, image37, image38, image39 ,image40, image41, image42, image43 ,image44, image45, image46, image47, image48, image49, image50, image51, image52, image53, image54, image55, image56, image57, image58, image59 , image60, image61, image62, image63, image64, image65, image66, image67, image68, image69,image70, image71, image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84, image85, image86, image87, image88, image89, image90, image91, image92,image93, image94, image95, image96, image97, image98, image99,image100,image101, image102 , image103, image104, image105 , image106, image107
 };
