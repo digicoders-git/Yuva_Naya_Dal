@@ -977,15 +977,7 @@ const Home = () => {
                                 स्तर - ५ &nbsp;|&nbsp; राष्ट्रीय प्रवक्ता
                             </div>
                             <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 w-full max-w-2xl">
-                                <LeaderCard
-                                    image={image40}
-                                    name="शिव कुमार सिंह"
-                                    title="राष्ट्रीय प्रवक्ता"
-                                    subtitle="अमेठी, उत्तर प्रदेश"
-                                    delay={0.5}
-                                    position="object-top object-contain"
-                                    onClick={() => setSelectedImage({ img: image40, name: "शिव कुमार सिंह" })}
-                                />
+                               
                                 <LeaderCard
                                     image={image45}
                                     name="विवेक श्रीवास्तव"
@@ -1072,6 +1064,27 @@ const Home = () => {
                             />
                         </div>
 
+
+                        {/* Connector */}
+                        <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+
+
+                         <div className="max-w-xs w-full">
+                            <LeaderCard
+                                image={image40}
+                                name="माननीय शिव कुमार सिंह"
+                                title="राष्ट्रीय अध्यक्ष"
+                                subtitle="(नेतृत्व युवा, पूर्व सैनिक)"
+                                delay={0.1}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image40, name: "आदरणीय श्री प्रेम शंकर शुक्ला" })}
+                            />
+                        </div>
+
                         {/* Connector */}
                         <div className="flex flex-col items-center my-1">
                             <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
@@ -1089,6 +1102,10 @@ const Home = () => {
                                 onClick={() => setSelectedImage({ img: image59, name: "माननीय सुश्री अर्चना गौहर" })}
                             />
                         </div>
+
+
+
+
 
 
                          {/* Connector */}
