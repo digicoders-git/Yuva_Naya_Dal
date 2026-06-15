@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107} from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108} from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1280,6 +1280,21 @@ const Home = () => {
                                 delay={0.2}
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image70, name: "सुश्री रेखा उतवानी" })}
+                            />
+
+                            <div className="flex flex-col items-center my-1">
+                            <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                            <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                        </div>
+
+                             <LeaderCard
+                                image={image108}
+                                name="श्रीमती विभा कुमारी"
+                                title="प्रदेश अध्यक्ष ,महिला नेतृत्व"
+                                subtitle="बंगाल राज्य"     
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image108, name: "श्रीमती विभा कुमारी" })}
                             />
                             
                         </div>
