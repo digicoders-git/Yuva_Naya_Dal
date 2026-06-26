@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108} from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108, image109, image110} from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -893,10 +893,10 @@ const Home = () => {
                                 />
 
                                 {/* Connector */}
-                        <div className="flex flex-col items-center my-1">
-                            <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
-                            <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
-                        </div>
+                                <div className="flex flex-col items-center my-1">
+                                    <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                                    <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                                </div>
                                  <LeaderCard
                             image={image75}
                             name="सुधीर कुमार सिंह"
@@ -1020,7 +1020,41 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image42, name: "नागेन्द्र द्विवेदी" })}
                                 />
+
+                                {/* Connector */}
+                                <div className="flex flex-col items-center my-1">
+                                    <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                                    <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                                </div>
+
+                                <LeaderCard
+                                    image={image109}
+                                    name="डॉ रमा शंकर"
+                                    title="सदस्य राष्ट्रीय कार्यकारिणी"
+                                    subtitle="प्रभारी/अध्यक्ष, वाराणसी मंडल जोन"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image109, name: "डॉ रमा शंकर" })}
+                                />
                             </div>
+
+
+                            {/* Connector */}
+                                <div className="flex flex-col items-center my-1">
+                                    <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                                    <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                                </div>
+
+                                <LeaderCard
+                                    image={image110}
+                                    name="श्री मनोज जी,"
+                                    title="खागा,सदस्य राष्ट्रीय कार्यकारिणी"
+                                    subtitle="प्रभारी/अध्यक्ष,प्रयागराज मंडल जोन"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image110, name: "श्री मनोज जी," })}
+                                />
+                            
                         </motion.div>
 
                     </div>
