@@ -1438,6 +1438,26 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image100, name: "मयंक सिंह" })}
                                 />
 
+                                <LeaderCard   
+                                    image={image107}
+                                    name="शिखा वर्मा"
+                                    title="प्रदेश उपाध्यक्ष (नेतृत्व महिला )"
+                                    subtitle="उत्तर प्रदेश"
+                                    delay={0.3}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image107, name: "शिखा वर्मा" })}
+                                />
+
+                                <LeaderCard 
+                            image={image115}
+                            name="अब्दुल मतीन"
+                            title="प्रदेश उपाध्यक्ष (नेतृत्व अल्पसंख्यक)"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image115, name: "अब्दुल मतीन" })}
+                        />
+
                         <LeaderCard
                             image={image91}
                             name="संजय कुमार"
@@ -1467,17 +1487,6 @@ const Home = () => {
                             onClick={() => setSelectedImage({ img: image96, name: "राघवेन्द्र जी" })}
                         />
 
-                        <LeaderCard
-                            image={image97}
-                            name="अमित कुमार जी"
-                            title="सचिव"
-                            subtitle="उत्तर प्रदेश"
-                            delay={0.3}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image97, name: "अमित कुमार जी" })}
-                        />
-
-
                          <LeaderCard   
                                     image={image99}
                                     name="अभिषेक सिंह"
@@ -1486,17 +1495,6 @@ const Home = () => {
                                     delay={0.3}
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image99, name: "अभिषेक सिंह" })}
-                                />
-
-
-                                <LeaderCard   
-                                    image={image107}
-                                    name="शिखा वर्मा"
-                                    title="प्रदेश उपाध्यक्ष (नेतृत्व महिला )"
-                                    subtitle="उत्तर प्रदेश"
-                                    delay={0.3}
-                                    position="object-top object-contain"
-                                    onClick={() => setSelectedImage({ img: image107, name: "शिखा वर्मा" })}
                                 />
 
                                  <LeaderCard   
@@ -1509,6 +1507,16 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image101, name: "रोशनी बेगम" })}
                                 />
 
+                        <LeaderCard
+                            image={image97}
+                            name="अमित कुमार जी"
+                            title="सचिव"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image97, name: "अमित कुमार जी" })}
+                        />
+
                                   <LeaderCard   
                                     image={image114}
                                     name="अनुज जायसवाल"
@@ -1518,22 +1526,6 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image114, name: "अनुज जायसवाल" })}
                                 />
-
-                                <LeaderCard 
-                            image={image115}
-                            name="अब्दुल मतीन"
-                            title="प्रदेश उपाध्यक्ष (नेतृत्व अल्पसंख्यक)"
-                            subtitle="उत्तर प्रदेश"
-                            delay={0.3}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image115, name: "अब्दुल मतीन" })}
-                        />
-
-                                
-                         
-
-                         
-                         
                     </div>
                 </div>
             </section>
