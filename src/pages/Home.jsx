@@ -1105,8 +1105,8 @@ const Home = () => {
                                     image={image118}
                                     name="राज नारायण
 ,"
-                                    title="फ़तेहपुर,सदस्य राष्ट्रीय कार्यकारिणी"
-                                    subtitle="उत्तर प्रदेश
+                                    title=",सदस्य राष्ट्रीय कार्यकारिणी"
+                                    subtitle="फ़तेहपुर, उत्तर प्रदेश
 "
                                     delay={0.6}
                                     position="object-top object-contain"
