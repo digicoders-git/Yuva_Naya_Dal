@@ -926,6 +926,22 @@ const Home = () => {
                         />
 
 
+                         {/* Connector */}
+                                <div className="flex flex-col items-center my-1">
+                                    <div className="w-0.5 h-8 bg-gradient-to-b from-navy-flag to-saffron opacity-40"/>
+                                    <div className="w-3 h-3 rounded-full bg-navy-flag/60"/>
+                                </div>
+                                 <LeaderCard
+                            image={image40}
+                            name="माननीय शिव कुमार सिंह"
+                            title="राष्ट्रीय प्रवक्ता"
+                            subtitle="लखनऊ, उत्तर प्रदेश"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image40, name: "माननीय शिव कुमार सिंह" })}
+                        />
+
+
 
                         </motion.div>
 
