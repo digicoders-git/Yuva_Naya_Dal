@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108, image109, image110, image111, image112, image113, image114, image115, image116, image117, image118} from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108, image109, image110, image111, image112, image113, image114, image115, image116, image117, image118, image119, image120, image121, image123, image124} from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -866,6 +866,16 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image44, name: "राम सिंह यादव" })}
                                 />
 
+                                <LeaderCard
+                                    image={image123}
+                                    name="विवेक कुमार वर्मा"
+                                    title="राष्ट्रीय उपाध्यक्ष"
+                                    subtitle="लखनऊ, उत्तर प्रदेश"
+                                    delay={0.6}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image123, name: "विवेक कुमार वर्मा" })}
+                                />
+
                               
                             </div>
                         </motion.div>
@@ -1018,7 +1028,30 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image116, name: "अनिल कुमार अंजना" })}
                                 />
 
+                                {/* Connector */}
+                                <div className="flex flex-col items-center my-1">
+                                    <div className="w-0.5 h-8 bg-gradient-to-b from-green-flag to-saffron opacity-40"/>
+                                    <div className="w-3 h-3 rounded-full bg-green-flag/60"/>
+                                </div>
+
+                                <LeaderCard
+                                    image={image119}
+                                    name="पियूष तिवारी"
+                                    title="राष्ट्रीय संगठन मंत्री"
+                                    subtitle="मध्य प्रदेश"
+                                    delay={0.1}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image119, name: "पियूष तिवारी" })}
+                                />
+
                         </motion.div>
+
+
+
+                        
+
+
+                        
 
                         {/* Connector */}
                         <div className="flex flex-col items-center my-1">
@@ -1561,6 +1594,26 @@ const Home = () => {
                                     position="object-top object-contain"
                                     onClick={() => setSelectedImage({ img: image114, name: "अनुज जायसवाल" })}
                                 />
+
+                                <LeaderCard
+                                    image={image120}
+                                    name="मनीष जी"
+                                    title="प्रदेश सचिव"
+                                    subtitle="लखनऊ, उत्तर प्रदेश"
+                                    delay={0.3}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image120, name: "मनीष जी" })}
+                                />
+
+                                <LeaderCard
+                                    image={image124}
+                                    name="प्रांजल जी"
+                                    title="सचिव"
+                                    subtitle="प्रयागराज, उत्तर प्रदेश"
+                                    delay={0.3}
+                                    position="object-top object-contain"
+                                    onClick={() => setSelectedImage({ img: image124, name: "प्रांजल जी" })}
+                                />
                     </div>
                 </div>
             </section>
@@ -1991,6 +2044,16 @@ const Home = () => {
                             delay={0.1}
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image113, name: "सुमित कुमार" })}
+                        />
+
+                        <LeaderCard 
+                            image={image121}
+                            name="देवानंद जी"
+                            title="ब्लॉक अध्यक्ष"
+                            subtitle="कटरा बाजार, गोंडा"
+                            delay={0.1}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image121, name: "देवानंद जी" })}
                         />
 
 
