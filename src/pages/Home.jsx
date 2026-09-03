@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108, image109, image110, image111, image112, image113, image114, image115, image116, image117, image118, image119, image120, image121, image123, image124} from '../utils/images';
+import { logo, image36, image37, image38, image8 , image40 , image41 ,image42 , image43, image44, image45, image47, image48, image49, image50, image51, image52, image53, image46, image54,image55, image56, image57, image58, image59, image60, image61, image62, image63, image64, image65, image66, image67, image68, image69, image70, image71,image72, image73, image74, image75, image76, image77, image78, image79, image80, image81, image82, image83, image84,image85 ,image86, image87, image88, image89, image90, image91, image92 , image93 , image94, image95, image96, image97, image98, image99, image100, image101, image103, image104, image105,image106, image107,image108, image109, image110, image111, image112, image113, image114, image115, image116, image117, image118, image119, image120, image121, image123, image124, image125} from '../utils/images';
 import { HiOutlineShieldCheck, HiOutlineGlobe, HiOutlineChartBar, HiOutlineArrowRight } from 'react-icons/hi';
 import { FaBalanceScale, FaGraduationCap, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -1437,6 +1437,21 @@ const Home = () => {
                                 position="object-top object-contain"
                                 onClick={() => setSelectedImage({ img: image108, name: "श्रीमती विभा कुमारी" })}
                             />
+
+                            <div className="flex flex-col items-center my-1">
+                                <div className="w-0.5 h-8 bg-gradient-to-b from-saffron to-navy-flag opacity-40"/>
+                                <div className="w-3 h-3 rounded-full bg-saffron/60"/>
+                            </div>
+
+                            <LeaderCard
+                                image={image125}
+                                name="राजिंदर कौर"
+                                title="प्रदेश अध्यक्ष"
+                                subtitle="नेतृत्व महिला, मध्य प्रदेश"
+                                delay={0.2}
+                                position="object-top object-contain"
+                                onClick={() => setSelectedImage({ img: image125, name: "राजिंदर कौर" })}
+                            />
                             
                         </div>
 
@@ -2256,14 +2271,14 @@ const LeaderCard = ({ image, name, title, subtitle, delay, position = "object-co
             <motion.img
                 src={image}
                 alt={name}
-                className={`w-full h-[350px] md:h-[450px] ${position} group-hover:scale-105 transition-transform duration-500`}
+                className={`w-full h-[280px] md:h-[360px] ${position} group-hover:scale-105 transition-transform duration-500`}
             />
         </div>
 
-        <div className="p-5 md:p-6 text-center">
-            <h4 className="text-lg md:text-xl font-bold text-navy-flag mb-2 leading-tight">{name}</h4>
-            <p className="text-saffron font-bold text-base md:text-lg mb-1">{title}</p>
-            <p className="text-slate-600 text-sm md:text-base">{subtitle}</p>
+        <div className="p-4 md:p-5 text-center">
+            <h4 className="text-base md:text-lg font-bold text-navy-flag mb-1 leading-tight">{name}</h4>
+            <p className="text-saffron font-bold text-sm md:text-base mb-1">{title}</p>
+            <p className="text-slate-600 text-xs md:text-sm">{subtitle}</p>
         </div>
 
         {/* Bottom accent */}
