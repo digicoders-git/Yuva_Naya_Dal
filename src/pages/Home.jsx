@@ -1636,7 +1636,7 @@ const Home = () => {
                                  title="प्रदेश महासचिव"
                                  subtitle="उत्तर प्रदेश"
                                  delay={0.3}
-                                 position="object-top object-content"
+                                 position="object-top object-contain"
                                  onClick={()=>setSelectedImage({img:image126, name:"शिवम सिंह"})}
                                  />
 
