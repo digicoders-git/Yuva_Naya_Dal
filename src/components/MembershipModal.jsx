@@ -1,482 +1,677 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiX, HiOutlineShieldCheck, HiOutlineDownload } from 'react-icons/hi';
+import { 
+  HiX, 
+  HiOutlineCheckCircle, 
+  HiOutlineUpload, 
+  HiOutlineArrowRight, 
+  HiOutlineArrowLeft,
+  HiOutlineClipboardCopy,
+  HiOutlineClock,
+  HiOutlinePhotograph,
+  HiOutlineShieldCheck
+} from 'react-icons/hi';
 import { logo } from '../utils/images';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 
 const MembershipModal = ({ isOpen, onClose }) => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState('idle');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [formData, setFormData] = useState({
+  const [step, setStep] = useState(1); // 1: Details, 2: Payment & Screenshot, 3: Submission Confirmation
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    fatherName: '',
+    email: '',
+    address: '',
+    transactionId: ''
+  });
+
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+  const [screenshotFile, setScreenshotFile] = useState(null);
+  const [screenshotPreview, setScreenshotPreview] = useState(null);
+  const [memberDetails, setMemberDetails] = useState(null);
+
+  // Reset modal on close
+  useEffect(() => {
+    if (!isOpen) {
+      setStep(1);
+      setFormData({
         name: '',
         phone: '',
         fatherName: '',
         email: '',
-        address: ''
-    });
-    const [memberDetails, setMemberDetails] = useState(null);
-    const [logoBase64, setLogoBase64] = useState('');
-    const cardRef = useRef(null);
+        address: '',
+        transactionId: ''
+      });
+      setPhotoFile(null);
+      setPhotoPreview(null);
+      setScreenshotFile(null);
+      setScreenshotPreview(null);
+      setMemberDetails(null);
+      setErrorMessage('');
+      setCopied(false);
+      setIsLoading(false);
+    }
+  }, [isOpen]);
 
-    // Convert logo to Base64 to bypass CORS issues on live servers
-    useEffect(() => {
-        const convertToBase64 = async () => {
-            try {
-                const img = new Image();
-                img.crossOrigin = 'anonymous';
-                img.src = logo;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-                    setLogoBase64(canvas.toDataURL('image/png'));
-                };
-            } catch (err) {
-                console.error("Logo conversion failed", err);
-                setLogoBase64(logo); // Fallback
-            }
-        };
-        convertToBase64();
-    }, []);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        setErrorMessage('कृपया केवल इमेज फ़ाइल (JPG, PNG, WEBP) चुनें।');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        setErrorMessage('फोटो का साइज़ 5MB से कम होना चाहिए।');
+        return;
+      }
+      setPhotoFile(file);
+      setErrorMessage('');
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setSubmitStatus('idle');
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        setErrorMessage('कृपया केवल इमेज फ़ाइल (JPG, PNG, WEBP) चुनें।');
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        setErrorMessage('स्क्रीनशॉट फ़ाइल का साइज़ 10MB से कम होना चाहिए।');
+        return;
+      }
+      setScreenshotFile(file);
+      setErrorMessage('');
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setScreenshotPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/membership`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+  const handleRemoveFile = () => {
+    setScreenshotFile(null);
+    setScreenshotPreview(null);
+  };
 
-            const data = await response.json();
+  // Step 1 Validation
+  const handleProceedToPayment = (e) => {
+    e.preventDefault();
+    if (!photoFile) {
+      setErrorMessage('कृपया अपनी पासपोर्ट साइज प्रोफाइल फोटो अवश्य अपलोड करें।');
+      return;
+    }
+    if (!formData.name.trim()) {
+      setErrorMessage('कृपया अपना पूरा नाम दर्ज करें।');
+      return;
+    }
+    const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
+    if (cleanPhone.length < 10) {
+      setErrorMessage('कृपया 10 अंकों का मान्य मोबाइल नंबर दर्ज करें।');
+      return;
+    }
+    if (!formData.fatherName.trim()) {
+      setErrorMessage('कृपया पिता का नाम दर्ज करें।');
+      return;
+    }
+    if (!formData.address.trim()) {
+      setErrorMessage('कृपया अपना पता या जिला दर्ज करें।');
+      return;
+    }
 
-            if (data.success) {
-                console.log('Submission successful, data:', data.data);
-                setSubmitStatus('success');
-                setMemberDetails(data.data);
-                setFormData({
-                    name: '',
-                    phone: '',
-                    fatherName: '',
-                    email: '',
-                    address: ''
-                });
-            } else {
-                setSubmitStatus('error');
-                setErrorMessage(data.error || 'कुछ गलत हुआ। कृपया पुनः प्रयास करें।');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            setSubmitStatus('error');
-            setErrorMessage('सर्वर से संपर्क करने में असमर्थ। कृपया बाद में प्रयास करें।');
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    setErrorMessage('');
+    setStep(2);
+  };
 
-    useEffect(() => {
-        if (!isOpen) {
-            setSubmitStatus('idle');
-            setErrorMessage('');
-            setMemberDetails(null);
-        }
-    }, [isOpen]);
+  // Step 2 Submission with Screenshot & Photo
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleDownload = async () => {
-        if (cardRef.current) {
-            try {
-                // Determine dimensions
-                const width = cardRef.current.offsetWidth;
-                const height = cardRef.current.offsetHeight;
+    if (!screenshotFile) {
+      setErrorMessage('कृपया सफल ₹20 भुगतान का स्क्रीनशॉट अवश्य अपलोड करें। यह अनिवार्य है।');
+      return;
+    }
 
-                // Create a temporary hidden iframe to isolate the card from global CSS errors (oklch)
-                const iframe = document.createElement('iframe');
-                iframe.style.position = 'fixed';
-                iframe.style.top = '-10000px'; 
-                iframe.style.left = '-10000px';
-                iframe.style.width = `${width}px`;
-                iframe.style.height = `${height}px`;
-                document.body.appendChild(iframe);
+    setIsLoading(true);
+    setErrorMessage('');
 
-                const iframeDoc = iframe.contentWindow.document;
-                iframeDoc.open();
-                
-                // Copy ONLY the necessary HTML and INLINE STYLES into the iframe
-                // We also include the Mukta font from Google Fonts in the iframe head for Hindi
-                iframeDoc.write(`
-                    <html>
-                        <head>
-                            <link rel="preconnect" href="https://fonts.googleapis.com">
-                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                            <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-                            <style>
-                                * { margin: 0; padding: 0; box-sizing: border-box; }
-                                body { background: white; }
-                            </style>
-                        </head>
-                        <body>
-                            ${cardRef.current.outerHTML}
-                        </body>
-                    </html>
-                `);
-                iframeDoc.close();
+    try {
+      const dataPayload = new FormData();
+      dataPayload.append('name', formData.name.trim());
+      dataPayload.append('phone', formData.phone.trim());
+      dataPayload.append('fatherName', formData.fatherName.trim());
+      dataPayload.append('email', formData.email.trim());
+      dataPayload.append('address', formData.address.trim());
+      dataPayload.append('transactionId', formData.transactionId.trim());
+      if (photoFile) {
+        dataPayload.append('photo', photoFile);
+      }
+      dataPayload.append('paymentScreenshot', screenshotFile);
 
-                // Wait for fonts and images in the iframe to load
-                await new Promise(resolve => {
-                    const checkImages = () => {
-                        const images = iframeDoc.getElementsByTagName('img');
-                        const allLoaded = Array.from(images).every(img => img.complete);
-                        if (allLoaded) resolve();
-                        else setTimeout(checkImages, 100);
-                    };
-                    iframe.onload = checkImages;
-                    // Fallback timeout
-                    setTimeout(resolve, 1000);
-                });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/membership`, {
+        method: 'POST',
+        body: dataPayload,
+      });
 
-                // Capture the content INSIDE the iframe
-                const iframeBody = iframeDoc.body;
-                const canvas = await html2canvas(iframeBody, { 
-                    scale: 2, 
-                    useCORS: true, 
-                    backgroundColor: '#ffffff',
-                    logging: false
-                });
-                
-                document.body.removeChild(iframe);
-                
-                const imgData = canvas.toDataURL('image/png');
-                
-                // Create PDF
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'px',
-                    format: [width, height]
-                });
+      const data = await response.json();
 
-                pdf.addImage(imgData, 'PNG', 0, 0, width, height);
-                pdf.save(`YND_ID_${memberDetails?.memberId || 'Card'}.pdf`);
-            } catch (err) {
-                console.error("Failed to generate ID card PDF", err);
-                alert("ID कार्ड बनाने में समस्या आई। कृपया दोबारा प्रयास करें या स्क्रीनशॉट लें।");
-            }
-        }
-    };
+      if (data.success && data.data) {
+        setMemberDetails(data.data);
+        setStep(3);
+      } else {
+        setErrorMessage(data.error || 'आवेदन जमा करने में समस्या आई। कृपया पुनः प्रयास करें।');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setErrorMessage('सर्वर से संपर्क करने में असमर्थ। कृपया बाद में प्रयास करें।');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-4 sm:py-10"
-                    onClick={onClose}
-                >
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="bg-white w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative my-auto"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Close Button */}
-                        <button
-                            onClick={onClose}
-                            className="absolute top-4 right-4 text-slate-400 hover:text-navy-flag transition-colors z-20 bg-white/50 backdrop-blur-md rounded-full p-1"
-                        >
-                            <HiX size={32} />
-                        </button>
+  const handleCopyId = () => {
+    if (memberDetails?.memberId) {
+      navigator.clipboard.writeText(memberDetails.memberId);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
 
-                        <div className="flex flex-col md:flex-row">
-                            {/* Left Side - Info */}
-                            <div className="hidden md:flex md:w-1/3 bg-gradient-to-br from-navy-flag to-slate-800 p-8 text-white flex-col justify-between relative overflow-hidden">
-                                 <div className="absolute top-0 right-0 w-32 h-32 bg-saffron/10 rounded-full blur-3xl" />
-                                 <div className="relative z-10">
-                                    <img src={logo} alt="Logo" className="w-16 h-16 rounded-full mb-6 border-2 border-white/20" />
-                                    <h3 className="text-2xl font-bold mb-4 font-hindi">जुड़ें हमारे साथ</h3>
-                                    <p className="text-sm text-slate-300">युवा न्याय दल का हिस्सा बनकर समाज में सकारात्मक बदलाव लाएं।</p>
-                                 </div>
-                                 <div className="mt-8 space-y-4 relative z-10">
-                                    <div className="flex items-center gap-3 text-sm">
-                                        <div className="w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron">✓</div>
-                                        <span>24/7 सहायता</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm">
-                                        <div className="w-6 h-6 bg-green-flag/20 rounded-full flex items-center justify-center text-green-flag">✓</div>
-                                        <span>तुरंत जवाब</span>
-                                    </div>
-                                 </div>
-                            </div>
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto py-6"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            className="bg-white w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative my-auto border border-slate-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-slate-400 hover:text-navy-flag transition-colors z-20 bg-white/70 backdrop-blur-md rounded-full p-1.5 shadow-sm"
+            >
+              <HiX size={26} />
+            </button>
 
-                            {/* Right Side - Form or Status */}
-                            <div className="md:w-2/3 p-6 sm:p-8 lg:p-10 flex flex-col justify-center min-h-[400px]">
-                                {submitStatus === 'success' && memberDetails ? (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="h-full flex flex-col items-center justify-center w-full"
-                                    >
-                                        <div className="flex flex-col md:flex-row gap-8 items-center justify-center w-full">
-                                            {/* Confirmation text */}
-                                            <div className="flex-1 text-center space-y-4 w-full md:max-w-sm">
-                                                <div className="w-16 h-16 bg-green-flag/10 rounded-full flex items-center justify-center text-green-flag mx-auto relative">
-                                                    <HiOutlineShieldCheck size={32} />
-                                                    <motion.div
-                                                        className="absolute inset-0 rounded-full border-4 border-green-flag/30"
-                                                        animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
-                                                        transition={{ duration: 2, repeat: Infinity }}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <h4 className="text-2xl font-bold text-navy-flag">बधाई हो!</h4>
-                                                    <p className="text-slate-600 font-medium text-sm mt-1">आपका सदस्यता आवेदन सफलतापूर्वक जमा हो गया है।</p>
-                                                </div>
-                                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 inline-block w-full text-center shadow-inner">
-                                                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">आपका सदस्यता नंबर (ID)</p>
-                                                    <p className="text-2xl font-black text-navy-flag tracking-widest">{memberDetails?.memberId || 'पेंडिंग'}</p>
-                                                </div>
-                                                <div className="pt-2 space-y-3">
-                                                    <button
-                                                        onClick={handleDownload}
-                                                        className="w-full bg-gradient-to-r from-navy-flag to-slate-800 text-white px-6 py-3.5 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
-                                                    >
-                                                        <HiOutlineDownload size={20} className="group-hover:-translate-y-1 transition-transform" />
-                                                        ID कार्ड डाउनलोड करें
-                                                    </button>
-                                                    <button
-                                                        onClick={() => { onClose(); setSubmitStatus('idle'); }}
-                                                        className="w-full bg-slate-100 text-slate-700 px-6 py-3.5 rounded-xl font-bold hover:bg-slate-200 transition-all border border-slate-200"
-                                                    >
-                                                        बंद करें
-                                                    </button>
-                                                </div>
-                                            </div>
+            <div className="flex flex-col md:flex-row">
+              {/* Left Side Banner */}
+              <div className="hidden md:flex md:w-1/3 bg-gradient-to-br from-navy-flag via-slate-900 to-navy-flag p-8 text-white flex-col justify-between relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-36 h-36 bg-saffron/15 rounded-full blur-3xl" />
+                <div className="relative z-10">
+                  <img src={logo} alt="Logo" className="w-16 h-16 rounded-full mb-6 border-2 border-white/30 shadow-lg" />
+                  <h3 className="text-2xl font-black mb-3 font-hindi leading-snug">युवा न्याय दल</h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    न्याय, समानता और युवाओं के सर्वांगीण विकास के लिए समर्पित। पार्टी की सदस्यता ग्रहण कर समाज में सकारात्मक परिवर्तन लाएं।
+                  </p>
+                </div>
 
-                                            {/* ID Card Design */}
-                                            <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                                                <div 
-                                                    ref={cardRef} 
-                                                    style={{ 
-                                                        width: '320px', 
-                                                        backgroundColor: '#ffffff', 
-                                                        borderRadius: '16px', 
-                                                        border: '1px solid #e2e8f0', 
-                                                        boxShadow: '0 10px 40px rgba(0,0,0,0.15)', 
-                                                        overflow: 'hidden', 
-                                                        position: 'relative',
-                                                        flexShrink: 0
-                                                    }}
-                                                >
-                                                    {/* ID Card Header - Tricolor Strip */}
-                                                    <div style={{ 
-                                                        height: '5px', 
-                                                        width: '100%', 
-                                                        background: 'linear-gradient(to right, #ff9933, #ffffff, #138808)' 
-                                                    }}></div>
-                                                    
-                                                    {/* ID Card Banner */}
-                                                    <div style={{ 
-                                                        background: 'linear-gradient(to bottom, #000080, #0f172a)', 
-                                                        padding: '20px', 
-                                                        textAlign: 'center', 
-                                                        color: '#ffffff', 
-                                                        position: 'relative', 
-                                                        overflow: 'hidden' 
-                                                    }}>
-                                                        <div style={{ 
-                                                            position: 'absolute', top: 0, right: 0, 
-                                                            width: '100px', height: '100px', 
-                                                            backgroundColor: 'rgba(255, 153, 51, 0.1)', 
-                                                            borderRadius: '50%', filter: 'blur(30px)',
-                                                            pointerEvents: 'none'
-                                                        }} />
-                                                        
-                                                        <div style={{ 
-                                                            width: '64px', height: '64px', 
-                                                            backgroundColor: '#ffffff', 
-                                                            borderRadius: '50%', margin: '0 auto 12px', 
-                                                            padding: '4px', 
-                                                            boxShadow: '0 0 15px rgba(255,255,255,0.3)', 
-                                                            border: '2px solid #ff9933', 
-                                                            zIndex: 10, position: 'relative' 
-                                                        }}>
-                                                            <img src={logoBase64 || logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
-                                                        </div>
-                                                        <h2 style={{ fontSize: '20px', fontWeight: '900', letterSpacing: '0.05em', margin: 0, fontFamily: 'Mukta, sans-serif' }}>युवा न्याय दल</h2>
-                                                        <p style={{ fontSize: '10px', letterSpacing: '0.1em', fontWeight: '600', textTransform: 'uppercase', opacity: 0.9, marginTop: '4px' }}>पहचान पत्र (Identity Card)</p>
-                                                    </div>
+                {/* Stepper Progress */}
+                <div className="mt-8 space-y-4 relative z-10">
+                  <div className={`flex items-center gap-3 text-xs font-bold ${step >= 1 ? 'text-saffron' : 'text-slate-400'}`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${step >= 1 ? 'bg-saffron text-white' : 'bg-slate-700 text-slate-400'}`}>
+                      1
+                    </div>
+                    <span>सदस्यता विवरण भरें</span>
+                  </div>
 
-                                                    {/* ID Card Body */}
-                                                    <div style={{ padding: '20px 24px', backgroundColor: '#ffffff', position: 'relative' }}>
-                                                        {/* Watermark Logo */}
-                                                        <div style={{ 
-                                                            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-                                                            display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                                                            overflow: 'hidden', pointerEvents: 'none',
-                                                            opacity: 0.05
-                                                        }}>
-                                                            <img src={logoBase64 || logo} alt="Watermark" style={{ width: '180px', height: '180px', filter: 'grayscale(100%)' }} />
-                                                        </div>
+                  <div className={`flex items-center gap-3 text-xs font-bold ${step >= 2 ? 'text-saffron' : 'text-slate-400'}`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${step >= 2 ? 'bg-saffron text-white' : 'bg-slate-700 text-slate-400'}`}>
+                      2
+                    </div>
+                    <span>QR शुल्क भुगतान व रसीद</span>
+                  </div>
 
-                                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative', zIndex: 10 }}>
-                                                            <div style={{ backgroundColor: '#f8fafc', border: '1px solid #f1f5f9', padding: '8px', borderRadius: '8px', textAlign: 'center' }}>
-                                                                <p style={{ fontSize: '9px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '2px', padding: 0, margin: 0 }}>Member ID / सदस्यता संख्या</p>
-                                                                <p style={{ fontSize: '16px', fontWeight: '900', color: '#000080', letterSpacing: '0.05em', margin: 0 }}>{memberDetails?.memberId || '...'}</p>
-                                                            </div>
+                  <div className={`flex items-center gap-3 text-xs font-bold ${step === 3 ? 'text-green-flag' : 'text-slate-400'}`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${step === 3 ? 'bg-green-flag text-white' : 'bg-slate-700 text-slate-400'}`}>
+                      3
+                    </div>
+                    <span>आवेदन पुष्टि (Pending)</span>
+                  </div>
+                </div>
 
-                                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '8px', rowGap: '16px' }}>
-                                                                <div style={{ paddingBottom: '4px' }}>
-                                                                    <p style={{ fontSize: '9px', color: '#ff9933', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', padding: 0, margin: 0, lineHeight: '1.2' }}>Name / नाम</p>
-                                                                    <p style={{ fontSize: '15px', fontWeight: '700', color: '#1e293b', textTransform: 'capitalize', margin: 0, lineHeight: '1.4' }}>{memberDetails.name}</p>
-                                                                </div>
-                                                                <div style={{ paddingBottom: '4px' }}>
-                                                                    <p style={{ fontSize: '9px', color: '#ff9933', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', padding: 0, margin: 0, lineHeight: '1.2' }}>Phone / फोन</p>
-                                                                    <p style={{ fontSize: '15px', fontWeight: '700', color: '#1e293b', margin: 0, lineHeight: '1.4' }}>{memberDetails.phone}</p>
-                                                                </div>
-                                                                <div style={{ gridColumn: 'span 2', paddingBottom: '4px' }}>
-                                                                    <p style={{ fontSize: '9px', color: '#ff9933', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', padding: 0, margin: 0, lineHeight: '1.2' }}>Father / पिता का नाम</p>
-                                                                    <p style={{ fontSize: '15px', fontWeight: '700', color: '#1e293b', textTransform: 'capitalize', margin: 0, lineHeight: '1.4' }}>{memberDetails.fatherName}</p>
-                                                                </div>
-                                                                <div style={{ gridColumn: 'span 2', paddingBottom: '4px' }}>
-                                                                    <p style={{ fontSize: '9px', color: '#ff9933', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', padding: 0, margin: 0, lineHeight: '1.2' }}>Address / पता</p>
-                                                                    <p style={{ fontSize: '15px', fontWeight: '700', color: '#1e293b', textTransform: 'capitalize', margin: 0, lineHeight: '1.4', wordBreak: 'break-word' }}>{memberDetails.address}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                <div className="pt-6 border-t border-white/10 text-[11px] text-slate-400">
+                  ✓ 100% सुरक्षित और पारदर्शी पंजीकरण
+                </div>
+              </div>
 
-                                                    {/* ID Card Footer */}
-                                                    <div style={{ backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', padding: '12px 16px', textAlign: 'center' }}>
-                                                        <p style={{ fontSize: '9px', color: '#475569', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px', padding: 0, margin: 0 }}>Valid Across India • Non-Transferable</p>
-                                                        <p style={{ fontSize: '9px', color: '#138808', fontWeight: '700', letterSpacing: '0.1em', margin: 0, padding: 0 }}>WWW.YUVANYAYDAL.COM</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ) : (
-                                    <>
-                                        <div className="mb-4 sm:mb-6">
-                                            <h4 className="text-xl sm:text-2xl font-bold text-navy-flag mb-1">सदस्यता फॉर्म</h4>
-                                            <p className="text-xs sm:text-sm text-slate-500 font-medium">अपनी जानकारी साझा करें</p>
-                                        </div>
+              {/* Right Side - Dynamic Content */}
+              <div className="md:w-2/3 p-6 sm:p-8 lg:p-10 flex flex-col justify-center min-h-[440px]">
+                {/* Error Banner */}
+                {errorMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-5 p-3.5 bg-red-50 border-l-4 border-red-500 text-red-700 text-xs sm:text-sm font-medium rounded-r-xl flex items-center gap-3"
+                  >
+                    <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center text-red-500 shrink-0 font-bold">!</div>
+                    <p>{errorMessage}</p>
+                  </motion.div>
+                )}
 
-                                        {submitStatus === 'error' && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: -10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm font-medium rounded-r-xl flex items-center gap-3"
-                                            >
-                                                <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-500 shrink-0">!</div>
-                                                <p>{errorMessage}</p>
-                                            </motion.div>
-                                        )}
+                {/* ================= STEP 1: PERSONAL DETAILS ================= */}
+                {step === 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15 }}
+                  >
+                    <div className="mb-5 sm:mb-6">
+                      <div className="flex items-center gap-2 text-xs font-bold text-saffron uppercase tracking-wider mb-1">
+                        चरण 1 / 2
+                      </div>
+                      <h4 className="text-xl sm:text-2xl font-extrabold text-navy-flag">सदस्यता पंजीकरण फॉर्म</h4>
+                      <p className="text-xs sm:text-sm text-slate-500">कृपया अपना सही व्यक्तिगत विवरण और पासपोर्ट साइज फोटो अपलोड करें</p>
+                    </div>
 
-                                        <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                                                <div className="space-y-1 sm:space-y-1.5">
-                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पूरा नाम</label>
-                                                    <input
-                                                        required
-                                                        name="name"
-                                                        value={formData.name}
-                                                        onChange={handleInputChange}
-                                                        type="text"
-                                                        placeholder="आपका नाम"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                    />
-                                                </div>
-                                                <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
-                                                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">मोबाइल नंबर</label>
-                                                    <input
-                                                        required
-                                                        name="phone"
-                                                        value={formData.phone}
-                                                        onChange={handleInputChange}
-                                                        type="tel"
-                                                        placeholder="91XXXXXXXX"
-                                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-1 sm:space-y-1.5 flex flex-col items-start w-full">
-                                                <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पिता का नाम</label>
-                                                <input
-                                                    required
-                                                    name="fatherName"
-                                                    value={formData.fatherName}
-                                                    onChange={handleInputChange}
-                                                    type="text"
-                                                    placeholder="पिता का नाम लिखें"
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                />
-                                            </div>
-
-                                            <div className="space-y-1 sm:space-y-1.5">
-                                                <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">ईमेल (वैकल्पिक)</label>
-                                                <input
-                                                    name="email"
-                                                    value={formData.email}
-                                                    onChange={handleInputChange}
-                                                    type="email"
-                                                    placeholder="email@example.com"
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                />
-                                            </div>
-
-                                            <div className="space-y-1 sm:space-y-1.5">
-                                                <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">पता / जिला</label>
-                                                <input
-                                                    required
-                                                    name="address"
-                                                    value={formData.address}
-                                                    onChange={handleInputChange}
-                                                    type="text"
-                                                    placeholder="अपना पता लिखें"
-                                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm"
-                                                />
-                                            </div>
-
-                                            <motion.button
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                type="submit"
-                                                disabled={isLoading}
-                                                className={`w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-saffron/20 transition-all mt-2 sm:mt-4 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                                            >
-                                                {isLoading ? (
-                                                    <div className="flex items-center justify-center gap-2">
-                                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                                        <span>जमा हो रहा है...</span>
-                                                    </div>
-                                                ) : 'अभी आवेदन करें'}
-                                            </motion.button>
-                                        </form>
-                                    </>
-                                )}
-                            </div>
+                    <form className="space-y-3 sm:space-y-4" onSubmit={handleProceedToPayment}>
+                      {/* Profile Photo Upload Box */}
+                      <div className="flex items-center gap-4 p-3.5 bg-slate-50 border-2 border-dashed border-slate-300 hover:border-saffron rounded-2xl transition-all">
+                        <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden bg-white border-2 border-saffron shadow-md shrink-0 flex items-center justify-center">
+                          {photoPreview ? (
+                            <img src={photoPreview} alt="Profile Preview" className="w-full h-full object-cover" />
+                          ) : (
+                            <HiOutlinePhotograph size={28} className="text-slate-400" />
+                          )}
                         </div>
-                    </motion.div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+                        <div className="flex-1">
+                          <label className="text-xs font-bold text-navy-flag block mb-1">
+                            पासपोर्ट साइज फोटो (Profile Photo) <span className="text-red-500">* अनिवार्य</span>
+                          </label>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <label className="cursor-pointer bg-navy-flag hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition-all inline-block">
+                              <span>{photoFile ? 'फोटो बदलें' : 'अपनी फोटो अपलोड करें'}</span>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={handlePhotoChange}
+                              />
+                            </label>
+                            {photoFile && (
+                              <span className="text-[11px] text-green-600 font-bold truncate max-w-[160px]">
+                                ✓ {photoFile.name}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[10px] text-slate-400 mt-1">यह फोटो आपके डिजिटल पहचान पत्र (ID Card) पर लगाई जाएगी (Max 5MB)</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div className="space-y-1 sm:space-y-1.5">
+                          <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">
+                            पूरा नाम <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            required
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            type="text"
+                            placeholder="उदा: राहुल कुमार"
+                            className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm font-medium"
+                          />
+                        </div>
+
+                        <div className="space-y-1 sm:space-y-1.5">
+                          <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">
+                            मोबाइल नंबर <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            required
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            type="tel"
+                            maxLength={10}
+                            placeholder="10 अंकों का मोबाइल नंबर"
+                            className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm font-medium"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1 sm:space-y-1.5">
+                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">
+                          पिता का नाम <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          required
+                          name="fatherName"
+                          value={formData.fatherName}
+                          onChange={handleInputChange}
+                          type="text"
+                          placeholder="पिता का नाम दर्ज करें"
+                          className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm font-medium"
+                        />
+                      </div>
+
+                      <div className="space-y-1 sm:space-y-1.5">
+                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">
+                          ईमेल पता (वैकल्पिक)
+                        </label>
+                        <input
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          type="email"
+                          placeholder="email@example.com"
+                          className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm font-medium"
+                        />
+                      </div>
+
+                      <div className="space-y-1 sm:space-y-1.5">
+                        <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider px-1">
+                          स्थाई पता / जिला <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          required
+                          name="address"
+                          value={formData.address}
+                          onChange={handleInputChange}
+                          type="text"
+                          placeholder="ग्राम/मोहल्ला, पोस्ट, जिला, पिनकोड"
+                          className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-saffron focus:bg-white transition-all text-sm font-medium"
+                        />
+                      </div>
+
+                      <motion.button
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-navy-flag to-saffron text-white py-3 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-saffron/20 transition-all mt-3 flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <span>आगे बढ़ें (₹20 भुगतान हेतु)</span>
+                        <HiOutlineArrowRight size={18} />
+                      </motion.button>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* ================= STEP 2: QR PAYMENT & SCREENSHOT ================= */}
+                {step === 2 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -15 }}
+                    className="space-y-4"
+                  >
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                      <div>
+                        <div className="text-xs font-bold text-saffron uppercase tracking-wider">
+                          चरण 2 / 2
+                        </div>
+                        <h4 className="text-lg sm:text-xl font-extrabold text-navy-flag">
+                          सदस्यता शुल्क भुगतान (₹20)
+                        </h4>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => { setStep(1); setErrorMessage(''); }}
+                        className="text-xs font-bold text-navy-flag hover:text-saffron flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                      >
+                        <HiOutlineArrowLeft size={14} />
+                        <span>विवरण बदलें</span>
+                      </button>
+                    </div>
+
+                    {/* ₹20 Fee Highlight Banner */}
+                    <div className="flex items-center justify-between p-3.5 bg-gradient-to-r from-amber-500 via-saffron to-amber-600 text-white rounded-2xl shadow-md">
+                      <div>
+                        <span className="text-[11px] font-bold uppercase tracking-wider block text-white/90">
+                          निर्धारित सदस्यता शुल्क
+                        </span>
+                        <h5 className="text-2xl font-black font-hindi flex items-baseline gap-1.5">
+                          ₹20 <span className="text-xs font-medium text-white/90">(मात्र बीस रुपये)</span>
+                        </h5>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black border border-white/30 tracking-wider">
+                        ₹20 ONLY
+                      </div>
+                    </div>
+
+                    {/* QR Code Section - Centered & Significantly Enlarged */}
+                    <div className="bg-slate-50/80 border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col items-center text-center shadow-inner space-y-3">
+                      <div className="flex items-center gap-2">
+                        <span className="bg-navy-flag text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                          आधिकारिक UPI QR कोड
+                        </span>
+                        <span className="bg-green-100 text-green-800 text-[11px] font-bold px-3 py-1 rounded-full">
+                          राशि: ₹20 मात्र
+                        </span>
+                      </div>
+
+                      {/* Large QR Card */}
+                      <div className="w-56 h-56 sm:w-64 sm:h-64 bg-white p-2.5 rounded-2xl shadow-xl border-2 border-saffron flex items-center justify-center relative my-1">
+                        <img
+                          src="/QR.png"
+                          alt="Yuva Nyay Dal Payment QR"
+                          className="w-full h-full object-contain rounded-xl"
+                        />
+                        <div className="absolute -bottom-3 bg-gradient-to-r from-navy-flag to-saffron text-white text-xs font-black px-4 py-1 rounded-full shadow-lg border border-white/40 tracking-wider">
+                          ₹20 स्कैन एवं भुगतान करें
+                        </div>
+                      </div>
+
+                      <div className="pt-2 max-w-sm space-y-1">
+                        <p className="text-xs sm:text-sm font-bold text-navy-flag">
+                          PhonePe, Google Pay, Paytm या BHIM UPI से स्कैन करें
+                        </p>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          कैमरे या UPI ऐप से ऊपर दिए गए बड़े QR कोड को आसानी से स्कैन करें और ₹20 का भुगतान करके स्क्रीनशॉट नीचे अपलोड करें।
+                        </p>
+                      </div>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-3 pt-1">
+                      {/* Screenshot Upload - Mandatory */}
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-800 flex items-center justify-between">
+                          <span>₹20 भुगतान का स्क्रीनशॉट <span className="text-red-500">* अनिवार्य</span></span>
+                          <span className="text-[10px] text-slate-400 font-normal">अधिकतम 10MB (JPG/PNG)</span>
+                        </label>
+
+                        {!screenshotPreview ? (
+                          <label className="border-2 border-dashed border-slate-300 hover:border-saffron rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer bg-slate-50/60 hover:bg-amber-50/30 transition-all group">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={handleFileChange}
+                            />
+                            <div className="w-10 h-10 rounded-full bg-saffron/10 text-saffron flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                              <HiOutlineUpload size={22} />
+                            </div>
+                            <span className="text-xs font-bold text-navy-flag">
+                              स्क्रीनशॉट अपलोड करने के लिए यहाँ क्लिक करें
+                            </span>
+                            <span className="text-[11px] text-slate-400 mt-0.5">
+                              सफल भुगतान की रसीद की फोटो या स्क्रीनशॉट
+                            </span>
+                          </label>
+                        ) : (
+                          <div className="p-3 bg-slate-50 border-2 border-green-300 rounded-xl flex items-center justify-between">
+                            <div className="flex items-center gap-3 overflow-hidden">
+                              <img
+                                src={screenshotPreview}
+                                alt="Preview"
+                                className="w-12 h-12 object-cover rounded-lg border border-slate-200 shrink-0"
+                              />
+                              <div className="overflow-hidden">
+                                <p className="text-xs font-bold text-navy-flag truncate max-w-[180px] sm:max-w-xs">
+                                  {screenshotFile?.name}
+                                </p>
+                                <p className="text-[10px] text-green-600 font-medium">
+                                  ✓ स्क्रीनशॉट सफलतापूर्वक चुना गया
+                                </p>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={handleRemoveFile}
+                              className="text-xs text-red-500 hover:text-red-700 font-bold px-2 py-1 bg-red-50 hover:bg-red-100 rounded-lg transition-colors shrink-0"
+                            >
+                              बदलें
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Optional Transaction ID */}
+                      <div className="space-y-1">
+                        <label className="text-[11px] font-bold text-slate-700 uppercase tracking-wider">
+                          UPI Ref No. / ट्रांजेक्शन ID (वैकल्पिक)
+                        </label>
+                        <input
+                          name="transactionId"
+                          value={formData.transactionId}
+                          onChange={handleInputChange}
+                          type="text"
+                          placeholder="उदा: 412345678901 (यदि उपलब्ध हो)"
+                          className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-3.5 py-2 outline-none focus:border-saffron focus:bg-white transition-all text-xs font-medium"
+                        />
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => { setStep(1); setErrorMessage(''); }}
+                          className="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-xl font-bold text-sm transition-all"
+                        >
+                          ← पिछला
+                        </button>
+                        <motion.button
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                          type="submit"
+                          disabled={isLoading}
+                          className={`w-2/3 bg-gradient-to-r from-navy-flag to-saffron text-white py-3 rounded-xl font-bold text-sm shadow-lg hover:shadow-saffron/20 transition-all flex items-center justify-center gap-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                        >
+                          {isLoading ? (
+                            <div className="flex items-center gap-2">
+                              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                              <span>जमा हो रहा है...</span>
+                            </div>
+                          ) : (
+                            <>
+                              <HiOutlineShieldCheck size={18} />
+                              <span>आवेदन जमा करें</span>
+                            </>
+                          )}
+                        </motion.button>
+                      </div>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* ================= STEP 3: SUBMISSION CONFIRMED (PENDING STATUS) ================= */}
+                {step === 3 && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-4 space-y-4"
+                  >
+                    <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto shadow-inner relative">
+                      <HiOutlineClock size={36} />
+                      <motion.div
+                        className="absolute inset-0 rounded-full border-4 border-amber-400/40"
+                        animate={{ scale: [1, 1.25, 1], opacity: [1, 0, 1] }}
+                        transition={{ duration: 2.2, repeat: Infinity }}
+                      />
+                    </div>
+
+                    <div>
+                      <div className="inline-block bg-amber-100 text-amber-900 font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider mb-2">
+                        आवेदन स्थिति: विचाराधीन (Pending Approval)
+                      </div>
+                      <h4 className="text-2xl font-black text-navy-flag font-hindi">
+                        आवेदन सफलतापूर्वक प्राप्त हुआ!
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-md mx-auto leading-relaxed">
+                        नमस्ते <strong>{memberDetails?.name}</strong> जी, आपका सदस्यता आवेदन और भुगतान रसीद सफलतापूर्वक दर्ज कर ली गई है।
+                      </p>
+                    </div>
+
+                    {/* Member ID Card Highlight */}
+                    <div className="bg-gradient-to-br from-navy-flag/5 to-saffron/10 p-4 rounded-2xl border-2 border-dashed border-navy-flag/20 max-w-sm mx-auto">
+                      <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-1">
+                        आपकी सदस्यता संख्या (Member ID)
+                      </p>
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-2xl font-black text-navy-flag font-mono tracking-wider">
+                          {memberDetails?.memberId || 'पेंडिंग'}
+                        </span>
+                        <button
+                          onClick={handleCopyId}
+                          title="आईडी कॉपी करें"
+                          className="p-1.5 rounded-lg bg-white shadow-sm border border-slate-200 text-navy-flag hover:text-saffron transition-colors"
+                        >
+                          <HiOutlineClipboardCopy size={18} />
+                        </button>
+                      </div>
+                      {copied && (
+                        <p className="text-[10px] text-green-600 font-bold mt-1">
+                          ✓ सदस्यता आईडी कॉपी हो गई!
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Verification Notice in Hindi */}
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 max-w-md mx-auto text-left text-xs text-slate-700 space-y-1.5 leading-relaxed">
+                      <p className="font-bold text-navy-flag flex items-center gap-1.5">
+                        <HiOutlineShieldCheck size={16} className="text-saffron" />
+                        महत्वपूर्ण सूचना:
+                      </p>
+                      <p>
+                        1. व्यवस्थापक (Admin) द्वारा आपके भुगतान स्क्रीनशॉट एवं विवरण का सत्यापन किया जाएगा।
+                      </p>
+                      <p>
+                        2. <strong>व्यवस्थापक द्वारा अनुमोदन (Approval) के बाद ही आपका आधिकारिक पहचान पत्र (ID Card) सक्रिय होगा।</strong>
+                      </p>
+                      <p>
+                        3. अनुमोदन के पश्चात आप वेबसाइट के मुख्य मेनू में दिए गए <strong>'पहचान पत्र (ID Card)'</strong> विकल्प से अपनी सदस्य आईडी या मोबाइल नंबर डालकर ID कार्ड डाउनलोड कर सकते हैं।
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => { onClose(); setStep(1); }}
+                      className="w-full max-w-xs mx-auto bg-navy-flag hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all"
+                    >
+                      समाप्त करें (Close)
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default MembershipModal;

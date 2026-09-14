@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi';
+import { HiOutlineMenuAlt3, HiOutlineX, HiOutlineIdentification } from 'react-icons/hi';
 import { logo } from '../utils/images';
+import IdCardModal from './IdCardModal';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isIdCardOpen, setIsIdCardOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
@@ -26,10 +28,7 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Our Gallery', path: '/gallery' },
-
         { name: 'Contact Us', path: '/contact' },
-        // { name: 'Terms', path: '/terms' },
-        // { name: 'Privacy', path: '/privacy' },
     ];
 
     return (
@@ -55,7 +54,7 @@ const Header = () => {
                 </NavLink>
 
                 {/* Desktop Menu */}
-                <div className="hidden xl:flex items-center gap-9">
+                <div className="hidden xl:flex items-center gap-7">
                     {navLinks.map((link) => (
                         <NavLink
                             key={link.path}
@@ -67,6 +66,17 @@ const Header = () => {
                             {link.name}
                         </NavLink>
                     ))}
+
+                    {/* ID Card Download Header Button */}
+                    <button
+                        type="button"
+                        onClick={() => setIsIdCardOpen(true)}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm text-navy-flag bg-amber-50 hover:bg-saffron hover:text-white border-2 border-amber-200 hover:border-saffron transition-all shadow-sm group cursor-pointer"
+                    >
+                        <HiOutlineIdentification size={19} className="text-saffron group-hover:text-white transition-colors" />
+                        <span>पहचान पत्र (ID Card)</span>
+                    </button>
+
                     <NavLink
                         to="/connect"
                         className={({ isActive }) =>
@@ -96,7 +106,8 @@ const Header = () => {
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}                        className="xl:hidden bg-white border-b border-gray-100 overflow-hidden shadow-xl relative z-10"
+                        exit={{ opacity: 0, height: 0 }}
+                        className="xl:hidden bg-white border-b border-gray-100 overflow-hidden shadow-xl relative z-10"
                     >
                         <ul className="container mx-auto px-6 py-8 flex flex-col gap-6 font-medium">
                             {navLinks.map((link) => (
@@ -111,7 +122,20 @@ const Header = () => {
                                     </NavLink>
                                 </li>
                             ))}
-                            <li className="mt-4">
+
+                            {/* Mobile ID Card Button */}
+                            <li className="mt-2">
+                                <button
+                                    type="button"
+                                    onClick={() => { setIsMenuOpen(false); setIsIdCardOpen(true); }}
+                                    className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-sm text-navy-flag bg-amber-50 hover:bg-saffron hover:text-white border-2 border-amber-200 transition-all shadow-md"
+                                >
+                                    <HiOutlineIdentification size={22} className="text-saffron" />
+                                    <span>पहचान पत्र डाउनलोड (ID Card)</span>
+                                </button>
+                            </li>
+
+                            <li className="mt-1">
                                 <NavLink
                                     to="/connect"
                                     className={({ isActive }) =>
@@ -128,6 +152,9 @@ const Header = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* ID Card Download Modal */}
+            <IdCardModal isOpen={isIdCardOpen} onClose={() => setIsIdCardOpen(false)} />
         </header>
     );
 };
