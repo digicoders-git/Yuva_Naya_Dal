@@ -1521,6 +1521,16 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image100, name: "मयंक सिंह" })}
                                 />
 
+                                    <LeaderCard
+                            image={image128}
+                            name="जेम्स पॉल"
+                            title="प्रदेश उपाध्यक्ष"
+                            subtitle="उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image128, name: "जेम्स पॉल" })}
+                        />
+
                                 <LeaderCard   
                                     image={image107}
                                     name="शिखा वर्मा"
@@ -1649,10 +1659,6 @@ const Home = () => {
                             position="object-top object-contain"
                             onClick={() => setSelectedImage({ img: image79, name: "सैफी रिजवी" })}
                         />
-
-
-
-
 
 
                     </div>
@@ -1810,15 +1816,7 @@ const Home = () => {
                             onClick={() => setSelectedImage({ img: image62, name: "मयंक जी" })}
                         />
 
-                          <LeaderCard
-                            image={image128}
-                            name="जेम्स पॉल"
-                            title="प्रदेश उपाध्यक्ष"
-                            subtitle="उत्तर प्रदेश"
-                            delay={0.6}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image128, name: "जेम्स पॉल" })}
-                        />
+                      
                         <LeaderCard
                             image={image63}
                             name="करुणेंद्र जी"
