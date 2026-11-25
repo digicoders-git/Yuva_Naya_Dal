@@ -1617,6 +1617,17 @@ const Home = () => {
                                     onClick={() => setSelectedImage({ img: image101, name: "रोशनी बेगम" })}
                                 />
 
+
+                                   <LeaderCard 
+                            image={image130}
+                            name="अश्वनी यादव"
+                            title="प्रदेश महासचिव"
+                            subtitle="एटा , उत्तर प्रदेश"
+                            delay={0.3}
+                            position="object-top object-contain"
+                            onClick={() => setSelectedImage({ img: image130, name: "अश्वनी यादव" })}
+                        />
+
                         <LeaderCard
                             image={image97}
                             name="अमित कुमार जी"
@@ -1678,15 +1689,7 @@ const Home = () => {
                         />
 
 
-                         <LeaderCard 
-                            image={image130}
-                            name="अश्वनी यादव"
-                            title="प्रदेश महासचिव"
-                            subtitle="एटा , उत्तर प्रदेश"
-                            delay={0.3}
-                            position="object-top object-contain"
-                            onClick={() => setSelectedImage({ img: image130, name: "अश्वनी यादव" })}
-                        />
+                     
 
 
                     </div>
